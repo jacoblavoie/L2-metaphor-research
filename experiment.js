@@ -1,4 +1,4 @@
-/* global jsPsych, initJsPsych, jsPsychHtmlButtonResponse, jsPsychSurveyText, jsPsychCallFunction,
+/* global jsPsychModule, initJsPsych, jsPsychHtmlButtonResponse, jsPsychSurveyText, jsPsychCallFunction,
           STIM_HV1, STIM_HV2, STIM_LV1, STIM_LV2 */
 
 (function () {
@@ -16,19 +16,19 @@
       name: "underline-metaphor",
       parameters: {
         prompt: {
-          type: jsPsych.ParameterType.HTML_STRING,
+          type: jsPsychModule.ParameterType.HTML_STRING,
           default: ""
         },
         text: {
-          type: jsPsych.ParameterType.HTML_STRING,
+          type: jsPsychModule.ParameterType.HTML_STRING,
           default: ""
         },
         language: {
-          type: jsPsych.ParameterType.STRING,
+          type: jsPsychModule.ParameterType.STRING,
           default: ""
         },
         trial_id: {
-          type: jsPsych.ParameterType.STRING,
+          type: jsPsychModule.ParameterType.STRING,
           default: ""
         }
       }
