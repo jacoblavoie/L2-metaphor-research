@@ -112,8 +112,6 @@
     }
   }
 
-  jsPsych.plugins["underline-metaphor"] = UnderlineMetaphorPlugin;
-
   // -----------------------------
   // Study configuration
   // -----------------------------
@@ -313,7 +311,7 @@ function buildStimulusList(condition) {
 
   function makeUnderlineTrial(stim) {
     return {
-      type: "underline-metaphor",
+      type: UnderlineMetaphorPlugin,
       prompt: `
         <h3>Metaphorical Language Task</h3>
         <p>Now please look back at the same passage.</p>
