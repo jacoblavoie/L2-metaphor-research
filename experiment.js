@@ -228,11 +228,11 @@ function buildStimulusList(condition) {
     ],
     button_label: "Continue",
     on_finish: function (data) {
-      const response = JSON.parse(data.responses);
+      const response = data.response || {};
       participantId = String(response.participant_id || "").trim();
       assignedCondition = assignCondition(participantId);
       assignedStimuli = buildStimulusList(assignedCondition);
-
+    
       jsPsychInstance.data.addProperties({
         participant_id: participantId,
         condition: assignedCondition
