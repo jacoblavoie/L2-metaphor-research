@@ -16,19 +16,19 @@
       name: "underline-metaphor",
       parameters: {
         prompt: {
-          type: jsPsychModule.ParameterType.HTML_STRING,
+          type: "HTML_STRING",
           default: ""
         },
         text: {
-          type: jsPsychModule.ParameterType.HTML_STRING,
+          type: "HTML_STRING",
           default: ""
         },
         language: {
-          type: jsPsychModule.ParameterType.STRING,
+          type: "STRING",
           default: ""
         },
         trial_id: {
-          type: jsPsychModule.ParameterType.STRING,
+          type: "STRING",
           default: ""
         }
       }
