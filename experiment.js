@@ -204,8 +204,11 @@
                 preamble: `
                   <div class="study-wrap instruction-box">
                     <h3>Recall Task</h3>
-                    <p>Please recall as much as you can from the passage you just read.</p>
-                    <p>You may include events, images, wording, ideas, or details.</p>
+                    <p>Now that you have finished reading the passage, please recall as much as you can from the passage you just read in the language most comfortable for you.</p>
+                    <p>Please tell us, in your own words, everything you remember from the passage. Try to be as complete and detailed as possible. You do not need to repeat the exact wording from the text; you can rephrase or paraphrase.</p>
+                    <p>We are interested in the ideas, points, and overall message you took away from the passage.</p>
+                    <p>If some part were unclear or surprising, you may still include them in your recall as best you can. Just try to explain what made sense to you and what the passage seemd to be about.</p>
+                    <p>Please take your time and include as much as you remember.</p>
                   </div>
                 `,
                 questions: [
@@ -234,11 +237,12 @@
               return {
                 type: UnderlineMetaphorPlugin,
                 prompt: `
-                  <h3>Metaphorical Language Task</h3>
+                  <h3>Metaphor Underlining Task</h3>
                   <p>Now please look back at the same passage.</p>
-                  <p>Please underline any word or group of words that, in your judgment, is being used metaphorically.</p>
+                  <p>As you read, please underline any word or group of words that, in your judgment, is being used metaphorically.</p>
                   <p>Please use your own understanding of what counts as metaphorical language. There may be several examples, only a few, or none.</p>
-                  <p>Please underline the smallest stretch of text that you think carries the metaphorical use. If you are unsure, you may still underline it.</p>
+                  <p>Please underline the smallest stretch of text that you think carries the metaphorical use. This may be a single word, a phrase, or a longer expression. If you are unsure, you may still underline it.</p>
+                  <p>Some people may mark more expressions than others; please make the selections that best reflect your own reading. We are interested in how you read the passage and what you notice while reading</p>
                 `,
                 text: stim.presented_text,
                 language: stim.presented_language.toUpperCase(),
@@ -310,7 +314,7 @@
                   <div class="study-wrap instruction-box">
                     <h2>Instructions</h2>
                     <p>You will read several short passages in German and English.</p>
-                    <p>After each passage, you will first be asked to recall as much as you can from what you just read.</p>
+                    <p>After each passage, you will first be asked to recall as much as you can from what you just read <strong>in the language you feel most comfortable with</strong>.</p>
                     <p>After the recall task, you will look back at the same passage and complete a metaphor-underlining task.</p>
                     <p>Please read carefully and work at your own pace.</p>
                   </div>
