@@ -199,23 +199,46 @@
               };
             }
           
+            function makeRecallIntroTrial(stim) {
+              return {
+                type: jsPsychHtmlButtonResponse,
+                stimulus: `
+                  <div class="study-wrap instruction-box">
+                    <h3>Oral Recall Task</h3>
+                    <p>Now that you have finished reading the passage, please recall aloud as much as you can from the passage you just read, in the language most comfortable for you.</p>
+                    <p>Please tell us, in your own words, everything you remember from the passage. Try to be as complete and detailed as possible. You do not need to repeat the exact wording from the text; you can rephrase or paraphrase.</p>
+                    <p>We are interested in the ideas, points, and overall message you took away from the passage.</p>
+                    <p>If some parts were unclear or surprising, you may still include them in your recall as best you can.</p>
+                    <p>When you are ready to begin speaking, click the button below.</p>
+                  </div>
+                `,
+                choices: ["Start recall"],
+                data: {
+                  task: "recall_intro",
+                  stimulus_id: stim.stimulus_id,
+                  visibility: stim.visibility,
+                  title: stim.title,
+                  source: stim.source,
+                  presented_language: stim.presented_language,
+                  serial_position: stim.serial_position
+                }
+              };
+            }
+            
             function makeRecallTrial(stim) {
               return {
                 type: jsPsychHtmlAudioResponse,
                 stimulus: `
                   <div class="study-wrap instruction-box">
-                    <h3>Oral Recall Task</h3>
-                    <p>Now that you have finished reading the passage, please recall aloud as much as you can from the passage you just read in the language most comfortable for you.</p>
-                    <p>Please tell us, in your own words, everything you remember from the passage. Try to be as complete and detailed as possible. You do not need to repeat the exact wording from the text; you can rephrase or paraphrase.</p>
-                    <p>We are interested in the ideas, points, and overall message you took away from the passage.</p>
-                    <p>If some parts were unclear or surprising, you may still include them in your recall as best you can. Just try to explain what made sense to you and what the passage seemed to be about.</p>
-                    <p>When you are finished speaking, click the button below.</p>
+                    <h3>Oral Recall</h3>
+                    <p>Please speak now.</p>
+                    <p>Try to include everything you remember, even if you were unsure or confused.</p>
                   </div>
                 `,
-                show_done_button: true,
-                done_button_label: "Continue",
-                allow_playback: false,
                 recording_duration: null,
+                show_done_button: true,
+                done_button_label: "End Recall / Continue",
+                allow_playback: false,
                 data: {
                   task: "oral_recall",
                   stimulus_id: stim.stimulus_id,
@@ -323,6 +346,7 @@
 
               const trialTimeline = assignedStimuli.flatMap((stim) => [
                 makeReadingTrial(stim),
+                makeRecallIntroTrial(stim),
                 makeRecallTrial(stim),
                 makeUnderlineTrial(stim),
                 makeReasoningTrial(stim)
