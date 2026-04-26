@@ -31,6 +31,14 @@
                   trial_id: {
                     type: "STRING",
                     default: ""
+                  },
+                  stimulus_id: {
+                    type: "STRING",
+                    default: ""
+                  },
+                  serial_position: {
+                    type: "INT",
+                    default: 0
                   }
                 }
               };
@@ -102,6 +110,9 @@
                 finishBtn.addEventListener("click", () => {
                   const markedStrings = collectMarkedStrings();
                   this.jsPsych.finishTrial({
+                    task: "underline",
+                    stimulus_id: trial.stimulus_id,
+                    serial_position: trial.serial_position,
                     trial_id: trial.trial_id,
                     language: trial.language,
                     original_text: trial.text,
@@ -260,11 +271,13 @@
                   <p>As you read, please underline any word or group of words that, in your judgment, is being used metaphorically.</p>
                   <p>Please use your own understanding of what counts as metaphorical language. There may be several examples, only a few, or none.</p>
                   <p>Please underline the smallest stretch of text that you think carries the metaphorical use. This may be a single word, a phrase, or a longer expression. If you are unsure, you may still underline it.</p>
-                  <p>Some people may mark more expressions than others; please make the selections that best reflect your own reading. We are interested in how you read the passage and what you notice while reading</p>
+                  <p>Some people may mark more expressions than others; please make the selections that best reflect your own reading. We are interested in how you read the passage and what you notice while reading.</p>
                 `,
                 text: stim.presented_text,
                 language: stim.presented_language.toUpperCase(),
                 trial_id: String(stim.serial_position),
+                stimulus_id: stim.stimulus_id,
+                serial_position: stim.serial_position,
                 data: {
                   task: "underline",
                   stimulus_id: stim.stimulus_id,
@@ -280,12 +293,39 @@
             function makeReasoningTrial(stim) {
               return {
                 type: jsPsychSurveyText,
-                preamble: `
-                  <div class="study-wrap instruction-box">
-                    <h3>Brief Follow-up</h3>
-                    <p>In a sentence or two, what made the expressions you underlined seem metaphorical to you?</p>
-                  </div>
-                `,
+                preamble: function () {
+                  const lastUnderline = jsPsych.data.get().filter({
+                    task: "underline",
+                    stimulus_id: stim.stimulus_id,
+                    serial_position: stim.serial_position
+                  }).last(1).values()[0];
+            
+                  const annotatedPassage = lastUnderline?.annotated_html || stim.presented_text;
+                  const underlinedSegments = lastUnderline?.underlined_segments || [];
+            
+                  const segmentList = underlinedSegments.length
+                    ? `<p><strong>You underlined:</strong> ${underlinedSegments.map(s => `"${s}"`).join(", ")}</p>`
+                    : `<p><strong>You did not underline any expressions.</strong></p>`;
+            
+                  return `
+                    <div class="study-wrap instruction-box">
+                      <h3>Brief Follow-up</h3>
+                      <p>Below is the passage with your underlining.</p>
+            
+                      <div class="passage-box" style="margin-top: 16px; text-align: left;">
+                        ${annotatedPassage}
+                      </div>
+            
+                      <div style="margin-top: 16px; text-align: left;">
+                        ${segmentList}
+                      </div>
+            
+                      <p style="margin-top: 16px;">
+                        What made the expression(s) you underlined seem metaphorical to you?
+                      </p>
+                    </div>
+                  `;
+                },
                 questions: [
                   {
                     prompt: "Your response:",
