@@ -290,7 +290,7 @@
               };
             }
           
-            function makeReasoningTrial(stim) {
+            function makeReasoningTrial(stim, jsPsych) {
               return {
                 type: jsPsychSurveyText,
                 preamble: function () {
@@ -389,7 +389,7 @@
                 makeRecallIntroTrial(stim),
                 makeRecallTrial(stim),
                 makeUnderlineTrial(stim),
-                makeReasoningTrial(stim)
+                makeReasoningTrial(stim, jsPsych)
               ]);
           
               const thank_you = {
