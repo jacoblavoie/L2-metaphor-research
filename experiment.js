@@ -1,4 +1,5 @@
 /* global initJsPsych, jsPsychHtmlButtonResponse, jsPsychSurveyText,
+          jsPsychInitializeMicrophone, jsPsychHtmlAudioResponse,
           STIM_HV1, STIM_HV2, STIM_LV1, STIM_LV2 */
 
           (function () {
@@ -200,29 +201,23 @@
           
             function makeRecallTrial(stim) {
               return {
-                type: jsPsychSurveyText,
-                preamble: `
+                type: jsPsychHtmlAudioResponse,
+                stimulus: `
                   <div class="study-wrap instruction-box">
-                    <h3>Recall Task</h3>
-                    <p>Now that you have finished reading the passage, please recall as much as you can from the passage you just read in the language most comfortable for you.</p>
+                    <h3>Oral Recall Task</h3>
+                    <p>Now that you have finished reading the passage, please recall aloud as much as you can from the passage you just read in the language most comfortable for you.</p>
                     <p>Please tell us, in your own words, everything you remember from the passage. Try to be as complete and detailed as possible. You do not need to repeat the exact wording from the text; you can rephrase or paraphrase.</p>
                     <p>We are interested in the ideas, points, and overall message you took away from the passage.</p>
-                    <p>If some part were unclear or surprising, you may still include them in your recall as best you can. Just try to explain what made sense to you and what the passage seemd to be about.</p>
-                    <p>Please take your time and include as much as you remember.</p>
+                    <p>If some parts were unclear or surprising, you may still include them in your recall as best you can. Just try to explain what made sense to you and what the passage seemed to be about.</p>
+                    <p>When you are finished speaking, click the button below.</p>
                   </div>
                 `,
-                questions: [
-                  {
-                    prompt: "Type your recall below:",
-                    name: "recall_text",
-                    rows: 14,
-                    columns: 90,
-                    required: true
-                  }
-                ],
-                button_label: "Continue",
+                show_done_button: true,
+                done_button_label: "Continue",
+                allow_playback: false,
+                recording_duration: null,
                 data: {
-                  task: "recall",
+                  task: "oral_recall",
                   stimulus_id: stim.stimulus_id,
                   visibility: stim.visibility,
                   title: stim.title,
@@ -321,7 +316,11 @@
                 `,
                 choices: ["Begin"]
               };
-          
+
+            const initialize_microphone = {
+                type: jsPsychInitializeMicrophone
+              };
+
               const trialTimeline = assignedStimuli.flatMap((stim) => [
                 makeReadingTrial(stim),
                 makeRecallTrial(stim),
@@ -343,6 +342,7 @@
           
               jsPsych.run([
                 general_intro,
+                initialize_microphone,
                 ...trialTimeline,
                 thank_you
               ]);
