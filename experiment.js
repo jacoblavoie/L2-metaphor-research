@@ -184,6 +184,8 @@
               });
             }
           
+            const PRACTICE_PASSAGE_DE = `Wie oft hat er sich in diesem Leben bereits von Bagdad verabschiedet? Drei Mal. Das erste Mal war, als das ganze Land noch unter der Diktatur litt. Er stand vor dem Grenzposten Trebil an der jordanischen Grenze. Es gab um ihn herum weit und breit nur Wüste. Er hatte Angst, sein ganzer Körper zitterte, sein Herz pochte wie ein Presslufthammer und schien ihm bald aus dem Brustkorb zu springen. Er versuchte, langsam ein- und auszuatmen, aber es gelang ihm nicht, die Nervosität war gewaltig. Er konnte nicht glauben, dass er wirklich ausreisen durfte. Das Land war ein riesiger Käfig, alle Insassen waren entweder Soldaten oder Sklaven der eigenen Regierung. Heimaten sind oft nur Gefängnisse – mit zugelassenen Folterinstrumenten. Aber Said stand nun kurz davor, das Gefängnistor zu passieren. Sein Reisepass war nicht gefälscht, er hatte alles ordnungsgemäß, allerdings auch mit Bestechung, erledigt. Trotzdem erschien es Said Al-Wahid unwirklich, dass er irgendwohin gehen konnte, wo die Fotos und Statuen des Präsidenten und das Antlitz seiner bewaffneten Männer nicht überall zu sehen sein würden. Sie waren wie die Gespenster eines langen, scheinbar nie enden wollenden Albtraums.`;
+
             // -----------------------------
             // Trial builders
             // -----------------------------
@@ -348,6 +350,139 @@
               };
             }
           
+            function makePracticeIntroTrial() {
+              return {
+                type: jsPsychHtmlButtonResponse,
+                stimulus: `
+                  <div class="study-wrap instruction-box">
+                    <h2>Practice Round</h2>
+                    <p>Before the main study begins, you will complete one short practice round in German.</p>
+                    <p>This practice will help you get used to the sequence of tasks:</p>
+                    <p>1. reading a passage<br>
+                    2. recalling it aloud<br>
+                    3. underlining language you judge to be metaphorical</p>
+                    <p>The practice responses are only for familiarization.</p>
+                  </div>
+                `,
+                choices: ["Begin practice"]
+              };
+            }
+
+            function makePracticeReadingTrial() {
+              return {
+                type: jsPsychHtmlButtonResponse,
+                stimulus: `
+                  <div class="study-wrap">
+                    <div class="trial-header">Practice Passage</div>
+                    <div class="language-badge">Language: DE</div>
+                    <div class="passage-box">${PRACTICE_PASSAGE_DE}</div>
+                  </div>
+                `,
+                choices: ["Continue to recall"],
+                data: {
+                  task: "practice_reading",
+                  stimulus_id: "PRACTICE",
+                  visibility: "practice",
+                  title: "Practice passage",
+                  source: "Khider practice excerpt",
+                  presented_language: "de",
+                  serial_position: 0
+                }
+              };
+            }
+
+            function makePracticeRecallIntroTrial() {
+              return {
+                type: jsPsychHtmlButtonResponse,
+                stimulus: `
+                  <div class="study-wrap instruction-box">
+                    <h3>Practice Oral Recall</h3>
+                    <p>Now please recall aloud as much as you can from the passage you just read, in the language most comfortable for you.</p>
+                    <p>Please tell us, in your own words, everything you remember from the passage. Try to be as complete and detailed as possible.</p>
+                    <p>When you are ready to begin speaking, click the button below.</p>
+                  </div>
+                `,
+                choices: ["Start recall"],
+                data: {
+                  task: "practice_recall_intro",
+                  stimulus_id: "PRACTICE",
+                  visibility: "practice",
+                  title: "Practice passage",
+                  source: "Khider practice excerpt",
+                  presented_language: "de",
+                  serial_position: 0
+                }
+              };
+            }
+
+            function makePracticeRecallTrial() {
+              return {
+                type: jsPsychHtmlAudioResponse,
+                stimulus: `
+                  <div class="study-wrap instruction-box">
+                    <h3>Practice Oral Recall</h3>
+                    <p>Please speak now.</p>
+                    <p>Try to include everything you remember, even if you were unsure or confused.</p>
+                  </div>
+                `,
+                recording_duration: null,
+                show_done_button: true,
+                done_button_label: "End Recall / Continue",
+                allow_playback: false,
+                data: {
+                  task: "practice_oral_recall",
+                  stimulus_id: "PRACTICE",
+                  visibility: "practice",
+                  title: "Practice passage",
+                  source: "Khider practice excerpt",
+                  presented_language: "de",
+                  serial_position: 0
+                }
+              };
+            }
+
+            function makeTransitionToMainTrial() {
+              return {
+                type: jsPsychHtmlButtonResponse,
+                stimulus: `
+                  <div class="study-wrap instruction-box">
+                    <h2>Main Study</h2>
+                    <p>The practice round is now complete.</p>
+                    <p>You will now begin the main part of the study.</p>
+                    <p>Please continue to read carefully, recall as much as you can, and mark any language you judge to be metaphorical.</p>
+                  </div>
+                `,
+                choices: ["Begin main study"]
+              };
+            }
+
+            function makePracticeUnderlineTrial() {
+              return {
+                type: UnderlineMetaphorPlugin,
+                prompt: `
+                  <h3>Practice Metaphor Underlining Task</h3>
+                  <p>Now please look back at the same passage.</p>
+                  <p>As you read, please underline any word or group of words that, in your judgment, is being used metaphorically.</p>
+                  <p>Please use your own understanding of what counts as metaphorical language. There may be several examples, only a few, or none.</p>
+                  <p>Please underline the smallest stretch of text that you think carries the metaphorical use. This may be a single word, a phrase, or a longer expression. If you are unsure, you may still underline it.</p>
+                  <p>Some people may mark more expressions than others; please make the selections that best reflect your own reading.</p>
+                `,
+                text: PRACTICE_PASSAGE_DE,
+                language: "DE",
+                trial_id: "Practice",
+                stimulus_id: "PRACTICE",
+                serial_position: 0,
+                data: {
+                  task: "practice_underline",
+                  stimulus_id: "PRACTICE",
+                  visibility: "practice",
+                  title: "Practice passage",
+                  source: "Khider practice excerpt",
+                  presented_language: "de",
+                  serial_position: 0
+                }
+              };
+            }
             // -----------------------------
             // Start experiment after ID entry
             // -----------------------------
@@ -384,6 +519,15 @@
                 type: jsPsychInitializeMicrophone
               };
 
+              const practiceTimeline = [
+                makePracticeIntroTrial(),
+                makePracticeReadingTrial(),
+                makePracticeRecallIntroTrial(),
+                makePracticeRecallTrial(),
+                makePracticeUnderlineTrial(),
+                makeTransitionToMainTrial()
+              ];
+
               const trialTimeline = assignedStimuli.flatMap((stim) => [
                 makeReadingTrial(stim),
                 makeRecallIntroTrial(stim),
@@ -407,6 +551,7 @@
               jsPsych.run([
                 general_intro,
                 initialize_microphone,
+                ...practiceTimeline,
                 ...trialTimeline,
                 thank_you
               ]);
