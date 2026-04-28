@@ -1,6 +1,10 @@
 /* global initJsPsych, jsPsychHtmlButtonResponse, jsPsychSurveyText,
+          jsPsychSurveyMultiChoice, jsPsychSurveyLikert,
           jsPsychInitializeMicrophone, jsPsychHtmlAudioResponse,
+          jsPsychPipe,
           STIM_HV1, STIM_HV2, STIM_LV1, STIM_LV2 */
+
+          const EXPERIMENT_ID = "pyYN5xjQ1Iey";
 
           (function () {
             "use strict";
@@ -238,7 +242,7 @@
               };
             }
             
-            function makeRecallTrial(stim) {
+            function makeRecallTrial(stim, participantId, subject_id) {
               return {
                 type: jsPsychHtmlAudioResponse,
                 stimulus: `
@@ -260,6 +264,11 @@
                   source: stim.source,
                   presented_language: stim.presented_language,
                   serial_position: stim.serial_position
+                },
+                on_finish: async function(data) {
+                  const audioFilename = `${subject_id}_${participantId}_${stim.stimulus_id}_${stim.serial_position}_recall.webm`;
+                  await jsPsychPipe.saveBase64Data(EXPERIMENT_ID, audioFilename, data.response);
+                  data.response = audioFilename;
                 }
               };
             }
@@ -415,7 +424,7 @@
               };
             }
 
-            function makePracticeRecallTrial() {
+            function makePracticeRecallTrial(participantId, subject_id) {
               return {
                 type: jsPsychHtmlAudioResponse,
                 stimulus: `
@@ -437,6 +446,11 @@
                   source: "Khider practice excerpt",
                   presented_language: "de",
                   serial_position: 0
+                },
+                on_finish: async function(data) {
+                  const audioFilename = `${subject_id}_${participantId}_PRACTICE_recall.webm`;
+                  await jsPsychPipe.saveBase64Data(EXPERIMENT_ID, audioFilename, data.response);
+                  data.response = audioFilename;
                 }
               };
             }
@@ -483,6 +497,281 @@
                 }
               };
             }
+
+            function makeSurveyIntroTrial() {
+              return {
+                type: jsPsychHtmlButtonResponse,
+                stimulus: `
+                  <div class="study-wrap instruction-box">
+                    <h2>Background Survey</h2>
+                    <p>You have now completed the reading tasks.</p>
+                    <p>Next, please answer a short survey about your language background.</p>
+                  </div>
+                `,
+                choices: ["Begin survey"]
+              };
+            }
+            
+            function makeSurveyDemographicsTrial() {
+              return {
+                type: jsPsychSurveyMultiChoice,
+                preamble: `
+                  <div class="study-wrap instruction-box">
+                    <h3>Demographic Information</h3>
+                  </div>
+                `,
+                questions: [
+                  {
+                    prompt: "What is your gender?",
+                    name: "gender",
+                    options: ["Female", "Male", "Prefer not to say", "Other"],
+                    required: false
+                  }
+                ],
+                button_label: "Continue",
+                data: {
+                  task: "survey_demographics"
+                }
+              };
+            }
+            
+            function makeSurveyAgeTrial() {
+              return {
+                type: jsPsychSurveyText,
+                preamble: `
+                  <div class="study-wrap instruction-box">
+                    <h3>Age</h3>
+                  </div>
+                `,
+                questions: [
+                  {
+                    prompt: "What is your age?",
+                    name: "age",
+                    required: true
+                  }
+                ],
+                button_label: "Continue",
+                data: {
+                  task: "survey_age"
+                }
+              };
+            }
+            
+            function makeSurveyLanguageBackgroundTrial1() {
+              return {
+                type: jsPsychSurveyText,
+                preamble: `
+                  <div class="study-wrap instruction-box">
+                    <h3>Language Background</h3>
+                  </div>
+                `,
+                questions: [
+                  {
+                    prompt: "What is/are your native language(s) (L1)?",
+                    name: "l1",
+                    required: true
+                  },
+                  {
+                    prompt: "What is your country of birth?",
+                    name: "country_of_birth",
+                    required: true
+                  },
+                  {
+                    prompt: "If you have lived in countries other than your country of birth, please list the countries and the ages you lived there. If not, leave blank.",
+                    name: "residency_details",
+                    rows: 4,
+                    columns: 80,
+                    required: false
+                  }
+                ],
+                button_label: "Continue",
+                data: {
+                  task: "survey_language_background_1"
+                }
+              };
+            }
+            
+            function makeSurveyResidenceCheckTrial() {
+              return {
+                type: jsPsychSurveyMultiChoice,
+                preamble: `
+                  <div class="study-wrap instruction-box">
+                    <h3>Residence History</h3>
+                  </div>
+                `,
+                questions: [
+                  {
+                    prompt: "Have you ever lived in a country other than your country of birth?",
+                    name: "lived_elsewhere",
+                    options: ["Yes", "No"],
+                    required: true
+                  }
+                ],
+                button_label: "Continue",
+                data: {
+                  task: "survey_residence_check"
+                }
+              };
+            }
+            
+            function makeSurveyL2Trial1() {
+              return {
+                type: jsPsychSurveyText,
+                preamble: `
+                  <div class="study-wrap instruction-box">
+                    <h3>L2 Background</h3>
+                  </div>
+                `,
+                questions: [
+                  {
+                    prompt: "What is your second language (L2)?",
+                    name: "l2",
+                    required: true
+                  },
+                  {
+                    prompt: "At what age were you first exposed to your L2 (e.g., through family, school, media, etc.)?",
+                    name: "l2_first_exposure_age",
+                    required: true
+                  },
+                  {
+                    prompt: "If you have received formal instruction in your L2, at what age did you begin, what courses did you complete, and how long did the instruction last? If not, leave blank.",
+                    name: "l2_formal_instruction_details",
+                    rows: 4,
+                    columns: 80,
+                    required: false
+                  },
+                  {
+                    prompt: "If you have ever lived in a country where your L2 is spoken as a primary language, which country and at what age did you live there? If not, leave blank.",
+                    name: "l2_immersion_details",
+                    rows: 4,
+                    columns: 80,
+                    required: false
+                  }
+                ],
+                button_label: "Continue",
+                data: {
+                  task: "survey_l2_background_1"
+                }
+              };
+            }
+            
+            function makeSurveyL2ChecksTrial() {
+              return {
+                type: jsPsychSurveyMultiChoice,
+                preamble: `
+                  <div class="study-wrap instruction-box">
+                    <h3>L2 Experience</h3>
+                  </div>
+                `,
+                questions: [
+                  {
+                    prompt: "Have you ever received formal instruction in your L2 (e.g., through school or private courses)?",
+                    name: "l2_formal_instruction_check",
+                    options: ["Yes", "No"],
+                    required: true
+                  },
+                  {
+                    prompt: "Have you ever lived in a country where your L2 is spoken as a primary language?",
+                    name: "l2_immersion_check",
+                    options: ["Yes", "No"],
+                    required: true
+                  }
+                ],
+                button_label: "Continue",
+                data: {
+                  task: "survey_l2_checks"
+                }
+              };
+            }
+            
+            function makeSurveyProficiencyTrial() {
+              return {
+                type: jsPsychSurveyLikert,
+                preamble: `
+                  <div class="study-wrap instruction-box">
+                    <h3>L2 Proficiency</h3>
+                    <p>Please answer using the scale below.</p>
+                  </div>
+                `,
+                questions: [
+                  {
+                    prompt: "On a scale from 1 to 5, with 1 being 'not proficient' and 5 being 'extremely proficient', how would you rate your current overall proficiency in your L2?",
+                    name: "l2_current_proficiency",
+                    labels: ["1", "2", "3", "4", "5"],
+                    required: true
+                  },
+                  {
+                    prompt: "On the same scale, what is the highest proficiency you have ever achieved?",
+                    name: "l2_highest_proficiency",
+                    labels: ["1", "2", "3", "4", "5"],
+                    required: true
+                  }
+                ],
+                button_label: "Continue",
+                data: {
+                  task: "survey_l2_proficiency"
+                }
+              };
+            }
+            
+            function makeSurveyDominanceTrial() {
+              return {
+                type: jsPsychSurveyMultiChoice,
+                preamble: `
+                  <div class="study-wrap instruction-box">
+                    <h3>Language Use and Dominance</h3>
+                  </div>
+                `,
+                questions: [
+                  {
+                    prompt: "Which language do you use MOST often now?",
+                    name: "language_used_most",
+                    options: ["L1", "L2", "Equal"],
+                    required: true
+                  },
+                  {
+                    prompt: "Which language do you consider STRONGER?",
+                    name: "stronger_language",
+                    options: ["L1", "L2", "Equal"],
+                    required: true
+                  }
+                ],
+                button_label: "Continue",
+                data: {
+                  task: "survey_dominance"
+                }
+              };
+            }
+            
+            function makeSurveyOtherLanguagesTrial() {
+              return {
+                type: jsPsychSurveyText,
+                preamble: `
+                  <div class="study-wrap instruction-box">
+                    <h3>Other Languages</h3>
+                  </div>
+                `,
+                questions: [
+                  {
+                    prompt: "Have you studied any other languages beyond L1/L2? (Yes/No)",
+                    name: "other_languages_check",
+                    required: true
+                  },
+                  {
+                    prompt: "If yes, please list the languages and your proficiency levels. If not, leave blank.",
+                    name: "other_languages_details",
+                    rows: 4,
+                    columns: 80,
+                    required: false
+                  }
+                ],
+                button_label: "Continue",
+                data: {
+                  task: "survey_other_languages"
+                }
+              };
+            }
+
             // -----------------------------
             // Start experiment after ID entry
             // -----------------------------
@@ -490,14 +779,13 @@
               const assignedCondition = assignCondition(participantId);
               const assignedStimuli = buildStimulusList(assignedCondition);
           
-              const jsPsych = initJsPsych({
-                on_finish: function () {
-                  jsPsych.data.displayData();
-                }
-              });
-          
+              const jsPsych = initJsPsych({});
+
+              const subject_id = jsPsych.randomization.randomID(10);
+
               jsPsych.data.addProperties({
                 participant_id: participantId,
+                subject_id: subject_id,
                 condition: assignedCondition
               });
           
@@ -523,7 +811,7 @@
                 makePracticeIntroTrial(),
                 makePracticeReadingTrial(),
                 makePracticeRecallIntroTrial(),
-                makePracticeRecallTrial(),
+                makePracticeRecallTrial(participantId, subject_id),
                 makePracticeUnderlineTrial(),
                 makeTransitionToMainTrial()
               ];
@@ -531,11 +819,35 @@
               const trialTimeline = assignedStimuli.flatMap((stim) => [
                 makeReadingTrial(stim),
                 makeRecallIntroTrial(stim),
-                makeRecallTrial(stim),
+                makeRecallTrial(stim, participantId, subject_id),
                 makeUnderlineTrial(stim),
                 makeReasoningTrial(stim, jsPsych)
               ]);
           
+              const surveyTimeline = [
+                makeSurveyIntroTrial(),
+                makeSurveyDemographicsTrial(),
+                makeSurveyAgeTrial(),
+                makeSurveyLanguageBackgroundTrial1(),
+                makeSurveyResidenceCheckTrial(),
+                makeSurveyL2Trial1(),
+                makeSurveyL2ChecksTrial(),
+                makeSurveyProficiencyTrial(),
+                makeSurveyDominanceTrial(),
+                makeSurveyOtherLanguagesTrial()
+              ];
+
+          
+              const filename = `${subject_id}_${participantId}_condition${assignedCondition}.csv`;
+
+              const save_data = {
+                type: jsPsychPipe,
+                action: "save",
+                experiment_id: EXPERIMENT_ID,
+                filename: filename,
+                data_string: ()=>jsPsych.data.get().csv()
+              };
+
               const thank_you = {
                 type: jsPsychHtmlButtonResponse,
                 stimulus: `
@@ -553,6 +865,8 @@
                 initialize_microphone,
                 ...practiceTimeline,
                 ...trialTimeline,
+                ...surveyTimeline,
+                save_data,
                 thank_you
               ]);
             }
