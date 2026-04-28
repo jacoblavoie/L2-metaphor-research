@@ -19,6 +19,7 @@
           
               static info = {
                 name: "underline-metaphor",
+                version: "1.0.0",
                 parameters: {
                   prompt: {
                     type: "HTML_STRING",
@@ -43,6 +44,36 @@
                   serial_position: {
                     type: "INT",
                     default: 0
+                  }
+                },
+                data: {
+                  task: {
+                    type: "STRING"
+                  },
+                  stimulus_id: {
+                    type: "STRING"
+                  },
+                  serial_position: {
+                    type: "INT"
+                  },
+                  trial_id: {
+                    type: "STRING"
+                  },
+                  language: {
+                    type: "STRING"
+                  },
+                  original_text: {
+                    type: "STRING"
+                  },
+                  annotated_html: {
+                    type: "STRING"
+                  },
+                  underlined_segments: {
+                    type: "STRING",
+                    array: true
+                  },
+                  underlined_count: {
+                    type: "INT"
                   }
                 }
               };
