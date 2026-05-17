@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Metaphor Recognition Study</title>
 
-  <link rel="stylesheet" href="https://unpkg.com/jspsych@7.3.4/css/jspsych.css" />
 
   <script src="https://unpkg.com/jspsych@8.2.1"></script>
   <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.1.0"></script>
@@ -89,6 +88,29 @@
       margin-top: 10px;
       text-align: left;
     }
+    .recording-indicator {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: #d00;
+  border-radius: 50%;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
   </style>
 </head>
 <body>

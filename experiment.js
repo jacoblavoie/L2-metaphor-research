@@ -277,11 +277,19 @@
               return {
                 type: jsPsychHtmlAudioResponse,
                 stimulus: `
-                  <div class="study-wrap instruction-box">
-                    <h3>Oral Recall</h3>
-                    <p>Please speak now.</p>
-                    <p>Try to include everything you remember, even if you were unsure or confused.</p>
+                 <div class="study-wrap instruction-box">
+                  <div style="display:flex; align-items:center; gap:10px; justify-content:center; margin-bottom:16px;">
+                    <span class="recording-indicator"></span>
+                    <span style="color:#b00000; font-weight:700; font-size:20px;">
+                      Recording in progress
+                    </span>
                   </div>
+
+                  <h3>Oral Recall</h3>
+                  <p>Please speak now.</p>
+                  <p>Try to include everything you remember, even if you were unsure or confused.</p>
+                  <p>Click <strong>End Recall / Continue</strong> when you are finished.</p>
+                 </div>
                 `,
                 recording_duration: null,
                 show_done_button: true,
@@ -459,12 +467,20 @@
               return {
                 type: jsPsychHtmlAudioResponse,
                 stimulus: `
-                  <div class="study-wrap instruction-box">
-                    <h3>Practice Oral Recall</h3>
-                    <p>Please speak now.</p>
-                    <p>Try to include everything you remember, even if you were unsure or confused.</p>
-                  </div>
-                `,
+  <div class="study-wrap instruction-box">
+    <div style="display:flex; align-items:center; gap:10px; justify-content:center; margin-bottom:16px;">
+      <span class="recording-indicator"></span>
+      <span style="color:#b00000; font-weight:700; font-size:20px;">
+        Recording in progress
+      </span>
+    </div>
+
+    <h3>Oral Recall</h3>
+    <p>Please speak now.</p>
+    <p>Try to include everything you remember, even if you were unsure or confused.</p>
+    <p>Click <strong>End Recall / Continue</strong> when you are finished.</p>
+  </div>
+`,
                 recording_duration: null,
                 show_done_button: true,
                 done_button_label: "End Recall / Continue",
