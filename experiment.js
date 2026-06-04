@@ -108,7 +108,7 @@
                   <div class="study-wrap">
                     <div class="trial-header">Passage ${trial.trial_id}</div>
                     <div class="instruction-box">${trial.prompt}</div>
-                    <div class="meta-tools">
+                    <div class="meta-tools meta-tools-sticky">
                       <button id="underline-btn" type="button">Underline selection</button>
                       <button id="clear-btn" type="button">Clear all underlining</button>
                       <button id="finish-btn" type="button">Continue</button>
@@ -304,22 +304,22 @@
 
                 const blocks = segments.map((seg, i) => {
                   const checkboxes = REASONS.map((r) => `
-                    <label style="display:block; margin:6px 0; text-align:left;">
+                    <label class="reason-option">
                       <input type="checkbox" data-seg="${i}" data-reason="${r.tag}" />
                       ${r.label}
                     </label>
                   `).join("");
 
                   return `
-                    <div class="passage-box" style="margin-bottom:18px;">
-                      <p style="margin-top:0;"><strong>You underlined:</strong>
+                    <div class="passage-box reason-block">
+                      <p class="reason-segment"><strong>You underlined:</strong>
                         \u201c${String(seg).replace(/</g, "&lt;").replace(/>/g, "&gt;")}\u201d</p>
-                      <p>What made this seem metaphorical to you? (Check all that apply.)</p>
+                      <p class="reason-q">What made this seem metaphorical to you? (Check all that apply.)</p>
                       ${checkboxes}
-                      <label style="display:block; margin-top:8px; text-align:left;">
+                      <label class="reason-option reason-other">
                         Anything else? (optional)
                         <textarea data-seg="${i}" data-reason="other_text"
-                          rows="2" style="width:100%; margin-top:4px;"></textarea>
+                          rows="2"></textarea>
                       </label>
                     </div>
                   `;
