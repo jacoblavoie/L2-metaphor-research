@@ -44,6 +44,14 @@
                   serial_position: {
                     type: "INT",
                     default: 0
+                  },
+                  // coded metaphor instances for THIS passage+language
+                  // (array of {id, expression, term_visibility, ...}); used to
+                  // match underlines to coded items and copied into the data.
+                  coded_instances: {
+                    type: "COMPLEX",
+                    default: [],
+                    array: true
                   }
                 },
                 data: {
@@ -74,6 +82,23 @@
                   },
                   underlined_count: {
                     type: "INT"
+                  },
+                  // Coded-instance matching (Option B markers):
+                  // every data-met ID whose marker intersects ANY underline
+                  identified_met_ids: {
+                    type: "STRING",
+                    array: true
+                  },
+                  // per-underline detail: [{segment, met_ids:[...]}]
+                  underline_details: {
+                    type: "COMPLEX",
+                    array: true
+                  },
+                  // the full coded-instance list for this passage+language,
+                  // copied into the data so analysis never reconstructs it
+                  coded_instances: {
+                    type: "COMPLEX",
+                    array: true
                   }
                 }
               };
@@ -138,12 +163,43 @@
                 const collectMarkedStrings = () => {
                   return Array.from(target.querySelectorAll("span.underlined")).map((el) => el.innerText);
                 };
-          
+
+                // For each underline span, find every [data-met] marker whose
+                // text intersects that underline. Intersection (not full
+                // containment) is the rule: underlining part of a marked phrase
+                // still counts the marker as identified. Implemented by testing
+                // each marker element against the underline's Range.
+                const collectUnderlineDetails = () => {
+                  const allMarkers = Array.from(target.querySelectorAll("[data-met]"));
+                  return Array.from(target.querySelectorAll("span.underlined")).map((uSpan) => {
+                    const uRange = document.createRange();
+                    uRange.selectNodeContents(uSpan);
+                    const ids = [];
+                    allMarkers.forEach((mk) => {
+                      let hit = false;
+                      try {
+                        // intersectsNode: true if the marker overlaps the underline range
+                        hit = uRange.intersectsNode(mk);
+                      } catch (e) {
+                        // fallback: containment either direction
+                        hit = uSpan.contains(mk) || mk.contains(uSpan);
+                      }
+                      if (hit) ids.push(mk.getAttribute("data-met"));
+                    });
+                    return { segment: uSpan.innerText, met_ids: ids };
+                  });
+                };
+
                 underlineBtn.addEventListener("click", applyUnderline);
                 clearBtn.addEventListener("click", clearUnderlining);
-          
+
                 finishBtn.addEventListener("click", () => {
                   const markedStrings = collectMarkedStrings();
+                  const details = collectUnderlineDetails();
+                  // union of all identified marker ids across underlines
+                  const identified = Array.from(
+                    new Set(details.flatMap((d) => d.met_ids))
+                  );
                   this.jsPsych.finishTrial({
                     task: "underline",
                     stimulus_id: trial.stimulus_id,
@@ -153,9 +209,158 @@
                     original_text: trial.text,
                     annotated_html: target.innerHTML,
                     underlined_segments: markedStrings,
-                    underlined_count: markedStrings.length
+                    underlined_count: markedStrings.length,
+                    identified_met_ids: identified,
+                    underline_details: details,
+                    coded_instances: trial.coded_instances || []
                   });
                 });
+              }
+            }
+          
+            // -----------------------------
+            // Per-instance reasoning checklist plugin
+            // -----------------------------
+            // Renders ONE checklist per underlined segment. Each checklist is a
+            // multi-select of L2-relevant recognition bases (each stored as a
+            // binary) plus an optional free-text field. The number of segments
+            // is not known until runtime, so this is built as a custom plugin
+            // rather than a static survey trial.
+            //
+            // Recognition-basis reasons (participant-facing text -> internal tag):
+            //   semantic_clash          - can't be literally true / no literal sense here
+            //   pragmatic_clash         - could be literally true, but no one would mean it that way
+            //   l1_divergence           - differs from how my other language expresses it
+            //   conventional_familiarity- a familiar figure of speech / common expression
+            //   lexical_gap             - contains a word/phrase I didn't fully know
+            //   processing_effort       - had to stop and work out what it meant
+            //   other_text              - optional free-text (not a checkbox)
+            class ReasoningChecklistPlugin {
+              constructor(jsPsych) {
+                this.jsPsych = jsPsych;
+              }
+
+              static REASONS = [
+                { tag: "semantic_clash",           label: "It can\u2019t be literally true / it doesn\u2019t make sense literally here." },
+                { tag: "pragmatic_clash",          label: "It could be literally true, but no one would really mean it that way." },
+                { tag: "l1_divergence",            label: "It\u2019s different from how my other language would express this." },
+                { tag: "conventional_familiarity", label: "It\u2019s a familiar figure of speech / a common expression." },
+                { tag: "lexical_gap",              label: "It contains a word or phrase I didn\u2019t fully know." },
+                { tag: "processing_effort",        label: "I had to stop and work out what it really meant." }
+              ];
+
+              static info = {
+                name: "reasoning-checklist",
+                version: "1.0.0",
+                parameters: {
+                  prompt:          { type: "HTML_STRING", default: "" },
+                  segments:        { type: "COMPLEX",     default: [], array: true },
+                  language:        { type: "STRING",      default: "" },
+                  stimulus_id:     { type: "STRING",      default: "" },
+                  serial_position: { type: "INT",         default: 0 }
+                },
+                data: {
+                  task:            { type: "STRING" },
+                  stimulus_id:     { type: "STRING" },
+                  serial_position: { type: "INT" },
+                  language:        { type: "STRING" },
+                  // One object per underlined segment:
+                  //   { segment, segment_index, semantic_clash, pragmatic_clash,
+                  //     l1_divergence, conventional_familiarity, lexical_gap,
+                  //     processing_effort, other_text }
+                  instance_reasons: { type: "COMPLEX", array: true },
+                  n_segments:       { type: "INT" }
+                }
+              };
+
+              trial(display_element, trial) {
+                const REASONS = ReasoningChecklistPlugin.REASONS;
+                const segments = Array.isArray(trial.segments) ? trial.segments : [];
+
+                // Edge case: nothing underlined -> log an empty record and move on.
+                if (segments.length === 0) {
+                  display_element.innerHTML = `
+                    <div class="study-wrap instruction-box">
+                      <h3>Brief Follow-up</h3>
+                      <p>You did not underline any expressions in this passage.</p>
+                      <div class="meta-tools">
+                        <button id="reasoning-continue" type="button">Continue</button>
+                      </div>
+                    </div>
+                  `;
+                  display_element.querySelector("#reasoning-continue")
+                    .addEventListener("click", () => {
+                      this.jsPsych.finishTrial({
+                        task: "reasoning",
+                        stimulus_id: trial.stimulus_id,
+                        serial_position: trial.serial_position,
+                        language: trial.language,
+                        instance_reasons: [],
+                        n_segments: 0
+                      });
+                    });
+                  return;
+                }
+
+                const blocks = segments.map((seg, i) => {
+                  const checkboxes = REASONS.map((r) => `
+                    <label style="display:block; margin:6px 0; text-align:left;">
+                      <input type="checkbox" data-seg="${i}" data-reason="${r.tag}" />
+                      ${r.label}
+                    </label>
+                  `).join("");
+
+                  return `
+                    <div class="passage-box" style="margin-bottom:18px;">
+                      <p style="margin-top:0;"><strong>You underlined:</strong>
+                        \u201c${String(seg).replace(/</g, "&lt;").replace(/>/g, "&gt;")}\u201d</p>
+                      <p>What made this seem metaphorical to you? (Check all that apply.)</p>
+                      ${checkboxes}
+                      <label style="display:block; margin-top:8px; text-align:left;">
+                        Anything else? (optional)
+                        <textarea data-seg="${i}" data-reason="other_text"
+                          rows="2" style="width:100%; margin-top:4px;"></textarea>
+                      </label>
+                    </div>
+                  `;
+                }).join("");
+
+                display_element.innerHTML = `
+                  <div class="study-wrap instruction-box">
+                    ${trial.prompt}
+                    <div style="margin-top:16px;">${blocks}</div>
+                    <div class="meta-tools">
+                      <button id="reasoning-continue" type="button">Continue</button>
+                    </div>
+                  </div>
+                `;
+
+                display_element.querySelector("#reasoning-continue")
+                  .addEventListener("click", () => {
+                    const instance_reasons = segments.map((seg, i) => {
+                      const record = { segment: seg, segment_index: i };
+                      REASONS.forEach((r) => {
+                        const box = display_element.querySelector(
+                          `input[data-seg="${i}"][data-reason="${r.tag}"]`
+                        );
+                        record[r.tag] = box && box.checked ? 1 : 0;
+                      });
+                      const ta = display_element.querySelector(
+                        `textarea[data-seg="${i}"][data-reason="other_text"]`
+                      );
+                      record.other_text = ta ? ta.value.trim() : "";
+                      return record;
+                    });
+
+                    this.jsPsych.finishTrial({
+                      task: "reasoning",
+                      stimulus_id: trial.stimulus_id,
+                      serial_position: trial.serial_position,
+                      language: trial.language,
+                      instance_reasons: instance_reasons,
+                      n_segments: segments.length
+                    });
+                  });
               }
             }
           
@@ -163,19 +368,6 @@
             // Study configuration
             // -----------------------------
             const STIMULI = [STIM_HV1, STIM_HV2, STIM_LV1, STIM_LV2];
-          
-            function hashParticipantId(id) {
-              let hash = 0;
-              for (let i = 0; i < id.length; i += 1) {
-                hash = ((hash << 5) - hash) + id.charCodeAt(i);
-                hash |= 0;
-              }
-              return Math.abs(hash);
-            }
-          
-            function assignCondition(id) {
-              return hashParticipantId(id) % 16;
-            }
           
             const ORDERS = [
               [0, 1, 2, 3],
@@ -209,11 +401,13 @@
                 const stim = STIMULI[stimulusIndex];
                 const presentedLanguage = languageByStimulusId[stim.stimulus_id];
                 const presentedText = presentedLanguage === "de" ? stim.de : stim.en;
+                const presentedTitle = presentedLanguage === "de" ? stim.title_de : stim.title_en;
           
                 return {
                   ...stim,
                   presented_language: presentedLanguage,
                   presented_text: presentedText,
+                  presented_title: presentedTitle,
                   serial_position: serialPos + 1
                 };
               });
@@ -238,8 +432,8 @@
                 data: {
                   task: "reading",
                   stimulus_id: stim.stimulus_id,
-                  visibility: stim.visibility,
-                  title: stim.title,
+                  text_visibility_label: stim.text_visibility_label,
+                  title: stim.presented_title,
                   source: stim.source,
                   presented_language: stim.presented_language,
                   serial_position: stim.serial_position
@@ -264,8 +458,8 @@
                 data: {
                   task: "recall_intro",
                   stimulus_id: stim.stimulus_id,
-                  visibility: stim.visibility,
-                  title: stim.title,
+                  text_visibility_label: stim.text_visibility_label,
+                  title: stim.presented_title,
                   source: stim.source,
                   presented_language: stim.presented_language,
                   serial_position: stim.serial_position
@@ -298,8 +492,8 @@
                 data: {
                   task: "oral_recall",
                   stimulus_id: stim.stimulus_id,
-                  visibility: stim.visibility,
-                  title: stim.title,
+                  text_visibility_label: stim.text_visibility_label,
+                  title: stim.presented_title,
                   source: stim.source,
                   presented_language: stim.presented_language,
                   serial_position: stim.serial_position
@@ -328,11 +522,14 @@
                 trial_id: String(stim.serial_position),
                 stimulus_id: stim.stimulus_id,
                 serial_position: stim.serial_position,
+                coded_instances: stim.presented_language === "de"
+                  ? (stim.metaphors_de || [])
+                  : (stim.metaphors_en || []),
                 data: {
                   task: "underline",
                   stimulus_id: stim.stimulus_id,
-                  visibility: stim.visibility,
-                  title: stim.title,
+                  text_visibility_label: stim.text_visibility_label,
+                  title: stim.presented_language === "de" ? stim.title_de : stim.title_en,
                   source: stim.source,
                   presented_language: stim.presented_language,
                   serial_position: stim.serial_position
@@ -342,55 +539,29 @@
           
             function makeReasoningTrial(stim, jsPsych) {
               return {
-                type: jsPsychSurveyText,
-                preamble: function () {
+                type: ReasoningChecklistPlugin,
+                prompt: `
+                  <h3>Brief Follow-up</h3>
+                  <p>For each expression you underlined below, please tell us what made it
+                     seem metaphorical to you. You may check more than one reason for each.</p>
+                `,
+                // segments are resolved at runtime from the preceding underline trial
+                segments: function () {
                   const lastUnderline = jsPsych.data.get().filter({
                     task: "underline",
                     stimulus_id: stim.stimulus_id,
                     serial_position: stim.serial_position
                   }).last(1).values()[0];
-            
-                  const annotatedPassage = lastUnderline?.annotated_html || stim.presented_text;
-                  const underlinedSegments = lastUnderline?.underlined_segments || [];
-            
-                  const segmentList = underlinedSegments.length
-                    ? `<p><strong>You underlined:</strong> ${underlinedSegments.map(s => `"${s}"`).join(", ")}</p>`
-                    : `<p><strong>You did not underline any expressions.</strong></p>`;
-            
-                  return `
-                    <div class="study-wrap instruction-box">
-                      <h3>Brief Follow-up</h3>
-                      <p>Below is the passage with your underlining.</p>
-            
-                      <div class="passage-box" style="margin-top: 16px; text-align: left;">
-                        ${annotatedPassage}
-                      </div>
-            
-                      <div style="margin-top: 16px; text-align: left;">
-                        ${segmentList}
-                      </div>
-            
-                      <p style="margin-top: 16px;">
-                        What made the expression(s) you underlined seem metaphorical to you?
-                      </p>
-                    </div>
-                  `;
+                  return lastUnderline?.underlined_segments || [];
                 },
-                questions: [
-                  {
-                    prompt: "Your response:",
-                    name: "metaphor_reasoning",
-                    rows: 6,
-                    columns: 90,
-                    required: false
-                  }
-                ],
-                button_label: "Continue",
+                language: stim.presented_language.toUpperCase(),
+                stimulus_id: stim.stimulus_id,
+                serial_position: stim.serial_position,
                 data: {
                   task: "reasoning",
                   stimulus_id: stim.stimulus_id,
-                  visibility: stim.visibility,
-                  title: stim.title,
+                  text_visibility_label: stim.text_visibility_label,
+                  title: stim.presented_title,
                   source: stim.source,
                   presented_language: stim.presented_language,
                   serial_position: stim.serial_position
@@ -430,7 +601,7 @@
                 data: {
                   task: "practice_reading",
                   stimulus_id: "PRACTICE",
-                  visibility: "practice",
+                  text_visibility_label: "practice",
                   title: "Practice passage",
                   source: "Khider practice excerpt",
                   presented_language: "de",
@@ -454,7 +625,7 @@
                 data: {
                   task: "practice_recall_intro",
                   stimulus_id: "PRACTICE",
-                  visibility: "practice",
+                  text_visibility_label: "practice",
                   title: "Practice passage",
                   source: "Khider practice excerpt",
                   presented_language: "de",
@@ -488,7 +659,7 @@
                 data: {
                   task: "practice_oral_recall",
                   stimulus_id: "PRACTICE",
-                  visibility: "practice",
+                  text_visibility_label: "practice",
                   title: "Practice passage",
                   source: "Khider practice excerpt",
                   presented_language: "de",
@@ -536,7 +707,7 @@
                 data: {
                   task: "practice_underline",
                   stimulus_id: "PRACTICE",
-                  visibility: "practice",
+                  text_visibility_label: "practice",
                   title: "Practice passage",
                   source: "Khider practice excerpt",
                   presented_language: "de",
@@ -822,8 +993,20 @@
             // -----------------------------
             // Start experiment after ID entry
             // -----------------------------
-            function startExperiment(participantId) {
-              const assignedCondition = assignCondition(participantId);
+            async function startExperiment(participantId) {
+              // Balanced, server-side sequential condition assignment (0–15).
+              // REQUIRES "Number of conditions" = 16 set on the DataPipe
+              // dashboard for experiment pyYN5xjQ1Iey, or the counter will not
+              // reset correctly and assignment will be unbalanced.
+              let assignedCondition;
+              try {
+                assignedCondition = await jsPsychPipe.getCondition(EXPERIMENT_ID);
+              } catch (err) {
+                console.error("DataPipe getCondition failed:", err);
+                alert("There was a problem starting the study. Please check your connection and try again.");
+                return;
+              }
+
               const assignedStimuli = buildStimulusList(assignedCondition);
           
               const jsPsych = initJsPsych({});
@@ -943,7 +1126,7 @@
               </div>
             `;
           
-            document.getElementById("start-study-btn").addEventListener("click", function () {
+            document.getElementById("start-study-btn").addEventListener("click", async function () {
               const participantId = document.getElementById("participant-id-input").value.trim();
           
               if (!participantId) {
@@ -952,6 +1135,6 @@
               }
           
               document.body.innerHTML = "";
-              startExperiment(participantId);
+              await startExperiment(participantId);
             });
           })();

@@ -82,6 +82,11 @@
       text-underline-offset: 3px;
       background: rgba(255, 235, 59, 0.22);
     }
+    /* Coded-metaphor markers must be invisible to the reader: inherit all
+       text properties from the surrounding prose, no color/underline/bg. */
+    #underline-target span[data-met] {
+      all: unset;
+    }
     .small-note {
       font-size: 14px;
       color: #555;
@@ -117,10 +122,8 @@
   <noscript>This study requires JavaScript to run.</noscript>
 
   <!-- Stimulus files -->
-  <script src="stimuli/hv1.js"></script>
-  <script src="stimuli/hv2.js"></script>
-  <script src="stimuli/lv1.js"></script>
-  <script src="stimuli/lv2.js"></script>
+  <!-- Stimulus file (combined: defines STIM_HV1, STIM_HV2, STIM_LV1, STIM_LV2) -->
+  <script src="stimuli/stimuli.js"></script>
 
   <!-- Main experiment logic -->
   <script src="experiment.js"></script>
