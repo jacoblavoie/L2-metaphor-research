@@ -285,7 +285,7 @@ const STIM_HV1 = {
       note: "Repetition broadening alienation; topic (anyone) + vehicle (stand); verb link." }
   ],
 
-  de: `<span data-met="m01">ich habe den Teufel im Leib</span>, <span data-met="m02">sobald ich am Steuer sitze</span>. Zugegeben, <span data-met="m03">ich fahre rasch, rasch aber sauber</span>. <span data-met="m04">Kann man denn sauber fahren</span>, wenn man rasch fährt?
+  de: `Es ist ja nicht wahr, was Fedja immer sagt, <span data-met="m01">ich habe den Teufel im Leib</span>, <span data-met="m02">sobald ich am Steuer sitze</span>. Zugegeben, <span data-met="m03">ich fahre rasch, rasch aber sauber</span>. <span data-met="m04">Kann man denn sauber fahren</span>, wenn man rasch fährt?
 
 <span data-met="m05">Der Abend — aufgeklart nach Regen</span>. Im Westen, fern, der blaßgelbe Schein, <span data-met="m06">der Himmel reingefegt</span> und <span data-met="m07">kalt wie aus Jade</span>. <span data-met="m08">Die Stadt sinkt unter der Rampe weg</span>. <span data-met="m09">Wie kühn die Straße steigt</span>, Kurve um Kurve. Da unten <span data-met="m10">in dem Lichtgesprenkel</span> blinkt auch Fedjas Haus und das meine. Er sitzt daheim und liest, liest und denkt nach und schweigt, die Uhr tickt, <span data-met="m11">ihre Zeiger kriechen</span>, von Zeit zu Zeit stäubt Fedja seine Zigarette ab und <span data-met="m12">die Asche häuft sich in der Schale</span>.
 
