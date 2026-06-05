@@ -406,7 +406,7 @@
               });
             }
           
-            const PRACTICE_PASSAGE_DE = `Wie oft hat er sich in diesem Leben bereits von Bagdad verabschiedet? Drei Mal. Das erste Mal war, als das ganze Land noch unter der Diktatur litt. Er stand vor dem Grenzposten Trebil an der jordanischen Grenze. Es gab um ihn herum weit und breit nur Wüste. Er hatte Angst, sein ganzer Körper zitterte, sein Herz pochte wie ein Presslufthammer und schien ihm bald aus dem Brustkorb zu springen. Er versuchte, langsam ein- und auszuatmen, aber es gelang ihm nicht, die Nervosität war gewaltig. Er konnte nicht glauben, dass er wirklich ausreisen durfte. Das Land war ein riesiger Käfig, alle Insassen waren entweder Soldaten oder Sklaven der eigenen Regierung. Heimaten sind oft nur Gefängnisse – mit zugelassenen Folterinstrumenten. Aber Said stand nun kurz davor, das Gefängnistor zu passieren. Sein Reisepass war nicht gefälscht, er hatte alles ordnungsgemäß, allerdings auch mit Bestechung, erledigt. Trotzdem erschien es Said Al-Wahid unwirklich, dass er irgendwohin gehen konnte, wo die Fotos und Statuen des Präsidenten und das Antlitz seiner bewaffneten Männer nicht überall zu sehen sein würden. Sie waren wie die Gespenster eines langen, scheinbar nie enden wollenden Albtraums.`;
+            const PRACTICE_PASSAGE_DE = `Dein Wagen wartet an der Kreuzung auf das grüne Licht. Es regnet schwächer. Die Tropfen tanzen auf dem Wagendach. Das Heu riecht aus der Ferne. Die Straßen sind frisch getauft, und der Himmel legt seine Hand auf alle Dächer. Dein Wagen fährt aus reiner Höflichkeit ein Stück Neben der Trambahn her. Zwei kleine Jungen am Straßenrand wetten um ihre Ehre. Aber der auf die Trambahn gesetzt hat, wird verlieren. Du hättest ihn warnen können, aber um dieser Ehre willen ist noch keiner aus dem Sarg gestiegen. Sei geduldig. Es ist ja Frühsommer. Da reicht der Morgen noch lange in die Nacht hinein. Ihr kommt zurecht. Bevor es dunkel wird und alle Kinder von den Straßenrändern verschwunden sind, biegt auch der Wagen schon in den Spitalshof ein, ein Streifen Mond fällt zugleich in die Einfahrt. Gleich kommen die Männer und heben deinen Sarg vom Leichenwagen. Und der Leichenwagen fährt fröhlich nach Hause.`;
 
             // -----------------------------
             // Trial builders
@@ -717,12 +717,18 @@
                     <h2>Background Survey</h2>
                     <p>You have now completed the reading tasks.</p>
                     <p>Next, please answer a short survey about your language background.</p>
+                    <p>This study is designed for participants whose first language is English and who have learned German as an additional language.</p>
                   </div>
                 `,
-                choices: ["Begin survey"]
+                choices: ["Begin survey"],
+                data: {
+                  task: "survey_intro",
+                  l1: "English",
+                  l2: "German"
+                }
               };
             }
-            
+
             function makeSurveyDemographicsTrial() {
               return {
                 type: jsPsychSurveyMultiChoice,
@@ -735,7 +741,7 @@
                   {
                     prompt: "What is your gender?",
                     name: "gender",
-                    options: ["Female", "Male", "Prefer not to say", "Other"],
+                    options: ["Female", "Male", "Non-binary", "Prefer not to say", "Other"],
                     required: false
                   }
                 ],
@@ -745,7 +751,7 @@
                 }
               };
             }
-            
+
             function makeSurveyAgeTrial() {
               return {
                 type: jsPsychSurveyText,
@@ -767,165 +773,129 @@
                 }
               };
             }
-            
-            function makeSurveyLanguageBackgroundTrial1() {
+
+            function makeSurveyLanguageBackgroundTrial() {
               return {
                 type: jsPsychSurveyText,
                 preamble: `
                   <div class="study-wrap instruction-box">
                     <h3>Language Background</h3>
+                    <p>For this study, English is treated as your L1 and German as your L2.</p>
                   </div>
                 `,
                 questions: [
-                  {
-                    prompt: "What is/are your native language(s) (L1)?",
-                    name: "l1",
-                    required: true
-                  },
                   {
                     prompt: "What is your country of birth?",
                     name: "country_of_birth",
                     required: true
                   },
                   {
-                    prompt: "If you have lived in countries other than your country of birth, please list the countries and the ages you lived there. If not, leave blank.",
+                    prompt: "Please list any countries, other than your country of birth, where you have lived for three months or longer. Include approximate ages or years. If none, write 'None'.",
                     name: "residency_details",
                     rows: 4,
                     columns: 80,
-                    required: false
-                  }
-                ],
-                button_label: "Continue",
-                data: {
-                  task: "survey_language_background_1"
-                }
-              };
-            }
-            
-            function makeSurveyResidenceCheckTrial() {
-              return {
-                type: jsPsychSurveyMultiChoice,
-                preamble: `
-                  <div class="study-wrap instruction-box">
-                    <h3>Residence History</h3>
-                  </div>
-                `,
-                questions: [
+                    required: true
+                  },
                   {
-                    prompt: "Have you ever lived in a country other than your country of birth?",
-                    name: "lived_elsewhere",
-                    options: ["Yes", "No"],
+                    prompt: "Did you grow up multilingual, or do you speak another language that you also consider one of your native languages? If yes, please briefly explain. If no, write 'No'.",
+                    name: "multilingual_native_language_background",
+                    rows: 4,
+                    columns: 80,
                     required: true
                   }
                 ],
                 button_label: "Continue",
                 data: {
-                  task: "survey_residence_check"
+                  task: "survey_language_background",
+                  l1: "English",
+                  l2: "German"
                 }
               };
             }
-            
-            function makeSurveyL2Trial1() {
+
+            function makeSurveyGermanBackgroundTrial() {
               return {
                 type: jsPsychSurveyText,
                 preamble: `
                   <div class="study-wrap instruction-box">
-                    <h3>L2 Background</h3>
+                    <h3>German Background</h3>
                   </div>
                 `,
                 questions: [
                   {
-                    prompt: "What is your second language (L2)?",
-                    name: "l2",
+                    prompt: "At what age were you first exposed to German? Include exposure through school, family, media, travel, or other contexts.",
+                    name: "german_first_exposure_age",
                     required: true
                   },
                   {
-                    prompt: "At what age were you first exposed to your L2 (e.g., through family, school, media, etc.)?",
-                    name: "l2_first_exposure_age",
-                    required: true
-                  },
-                  {
-                    prompt: "If you have received formal instruction in your L2, at what age did you begin, what courses did you complete, and how long did the instruction last? If not, leave blank.",
-                    name: "l2_formal_instruction_details",
+                    prompt: "Describe your formal instruction in German. Include the age or year you began, the kinds of courses you completed, and approximately how long you studied German formally. If you have not received formal instruction in German, write 'None'.",
+                    name: "german_formal_instruction_details",
                     rows: 4,
                     columns: 80,
-                    required: false
-                  },
-                  {
-                    prompt: "If you have ever lived in a country where your L2 is spoken as a primary language, which country and at what age did you live there? If not, leave blank.",
-                    name: "l2_immersion_details",
-                    rows: 4,
-                    columns: 80,
-                    required: false
-                  }
-                ],
-                button_label: "Continue",
-                data: {
-                  task: "survey_l2_background_1"
-                }
-              };
-            }
-            
-            function makeSurveyL2ChecksTrial() {
-              return {
-                type: jsPsychSurveyMultiChoice,
-                preamble: `
-                  <div class="study-wrap instruction-box">
-                    <h3>L2 Experience</h3>
-                  </div>
-                `,
-                questions: [
-                  {
-                    prompt: "Have you ever received formal instruction in your L2 (e.g., through school or private courses)?",
-                    name: "l2_formal_instruction_check",
-                    options: ["Yes", "No"],
                     required: true
                   },
                   {
-                    prompt: "Have you ever lived in a country where your L2 is spoken as a primary language?",
-                    name: "l2_immersion_check",
-                    options: ["Yes", "No"],
+                    prompt: "Have you ever lived in a German-speaking country? If yes, list the country or countries, approximate ages or years, and duration of stay. If no, write 'None'.",
+                    name: "german_immersion_details",
+                    rows: 4,
+                    columns: 80,
                     required: true
                   }
                 ],
                 button_label: "Continue",
                 data: {
-                  task: "survey_l2_checks"
+                  task: "survey_german_background",
+                  l1: "English",
+                  l2: "German"
                 }
               };
             }
-            
-            function makeSurveyProficiencyTrial() {
+
+            function makeSurveyGermanProficiencyTrial() {
               return {
                 type: jsPsychSurveyLikert,
                 preamble: `
                   <div class="study-wrap instruction-box">
-                    <h3>L2 Proficiency</h3>
+                    <h3>German Proficiency</h3>
                     <p>Please answer using the scale below.</p>
                   </div>
                 `,
                 questions: [
                   {
-                    prompt: "On a scale from 1 to 5, with 1 being 'not proficient' and 5 being 'extremely proficient', how would you rate your current overall proficiency in your L2?",
-                    name: "l2_current_proficiency",
-                    labels: ["1", "2", "3", "4", "5"],
+                    prompt: "How would you rate your current overall proficiency in German?",
+                    name: "german_current_proficiency",
+                    labels: [
+                      "1 = not proficient",
+                      "2",
+                      "3",
+                      "4",
+                      "5 = extremely proficient"
+                    ],
                     required: true
                   },
                   {
-                    prompt: "On the same scale, what is the highest proficiency you have ever achieved?",
-                    name: "l2_highest_proficiency",
-                    labels: ["1", "2", "3", "4", "5"],
+                    prompt: "What is the highest level of German proficiency you have ever had?",
+                    name: "german_highest_proficiency",
+                    labels: [
+                      "1 = not proficient",
+                      "2",
+                      "3",
+                      "4",
+                      "5 = extremely proficient"
+                    ],
                     required: true
                   }
                 ],
                 button_label: "Continue",
                 data: {
-                  task: "survey_l2_proficiency"
+                  task: "survey_german_proficiency",
+                  l1: "English",
+                  l2: "German"
                 }
               };
             }
-            
-            function makeSurveyDominanceTrial() {
+
+            function makeSurveyLanguageUseTrial() {
               return {
                 type: jsPsychSurveyMultiChoice,
                 preamble: `
@@ -935,25 +905,27 @@
                 `,
                 questions: [
                   {
-                    prompt: "Which language do you use MOST often now?",
+                    prompt: "Which language do you use most often now?",
                     name: "language_used_most",
-                    options: ["L1", "L2", "Equal"],
+                    options: ["English", "German", "About equal"],
                     required: true
                   },
                   {
-                    prompt: "Which language do you consider STRONGER?",
+                    prompt: "Which language do you currently consider stronger?",
                     name: "stronger_language",
-                    options: ["L1", "L2", "Equal"],
+                    options: ["English", "German", "About equal"],
                     required: true
                   }
                 ],
                 button_label: "Continue",
                 data: {
-                  task: "survey_dominance"
+                  task: "survey_language_use",
+                  l1: "English",
+                  l2: "German"
                 }
               };
             }
-            
+
             function makeSurveyOtherLanguagesTrial() {
               return {
                 type: jsPsychSurveyText,
@@ -964,24 +936,22 @@
                 `,
                 questions: [
                   {
-                    prompt: "Have you studied any other languages beyond L1/L2? (Yes/No)",
-                    name: "other_languages_check",
-                    required: true
-                  },
-                  {
-                    prompt: "If yes, please list the languages and your proficiency levels. If not, leave blank.",
+                    prompt: "Please list any languages you have studied or used other than English and German, along with your approximate proficiency in each. If none, write 'None'.",
                     name: "other_languages_details",
                     rows: 4,
                     columns: 80,
-                    required: false
+                    required: true
                   }
                 ],
                 button_label: "Continue",
                 data: {
-                  task: "survey_other_languages"
+                  task: "survey_other_languages",
+                  l1: "English",
+                  l2: "German"
                 }
               };
             }
+
 
             // -----------------------------
             // Start experiment after ID entry
@@ -1051,12 +1021,10 @@
                 makeSurveyIntroTrial(),
                 makeSurveyDemographicsTrial(),
                 makeSurveyAgeTrial(),
-                makeSurveyLanguageBackgroundTrial1(),
-                makeSurveyResidenceCheckTrial(),
-                makeSurveyL2Trial1(),
-                makeSurveyL2ChecksTrial(),
-                makeSurveyProficiencyTrial(),
-                makeSurveyDominanceTrial(),
+                makeSurveyLanguageBackgroundTrial(),
+                makeSurveyGermanBackgroundTrial(),
+                makeSurveyGermanProficiencyTrial(),
+                makeSurveyLanguageUseTrial(),
                 makeSurveyOtherLanguagesTrial()
               ];
 
