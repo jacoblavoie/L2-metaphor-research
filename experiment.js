@@ -304,10 +304,7 @@
 
                 const blocks = segments.map((seg, i) => {
                   const checkboxes = REASONS.map((r) => `
-                    <label class="reason-option">
-                      <input type="checkbox" data-seg="${i}" data-reason="${r.tag}" />
-                      ${r.label}
-                    </label>
+                    <label class="reason-option"><input type="checkbox" data-seg="${i}" data-reason="${r.tag}" /><span class="reason-text">${r.label}</span></label>
                   `).join("");
 
                   return `
@@ -316,11 +313,7 @@
                         \u201c${String(seg).replace(/</g, "&lt;").replace(/>/g, "&gt;")}\u201d</p>
                       <p class="reason-q">What made this seem metaphorical to you? (Check all that apply.)</p>
                       ${checkboxes}
-                      <label class="reason-option reason-other">
-                        Anything else? (optional)
-                        <textarea data-seg="${i}" data-reason="other_text"
-                          rows="2"></textarea>
-                      </label>
+                      <label class="reason-option reason-other"><span class="reason-text">Anything else? (optional)</span><textarea data-seg="${i}" data-reason="other_text" rows="2"></textarea></label>
                     </div>
                   `;
                 }).join("");

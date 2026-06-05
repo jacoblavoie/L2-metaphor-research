@@ -88,26 +88,40 @@
       padding: 10px 0;
       border-bottom: 1px solid #e2e2e2;
     }
-    /* Tighter spacing for the per-instance reasoning checklist so the
-       options don't feel sparse. ~1.4 line-height (close to Word's 1.5). */
-    .reason-block {
-      margin-bottom: 14px;
-      line-height: 1.4;
+    /* Per-instance reasoning checklist. Compact rows: checkbox + label text
+       on one line via flex, with line-height/margins forced past the jsPsych
+       default stylesheet (which otherwise inflates the spacing). */
+    .study-wrap .reason-block {
+      margin: 0 0 14px 0 !important;
+      line-height: 1.35 !important;
     }
-    .reason-block .reason-segment { margin: 0 0 4px 0; }
-    .reason-block .reason-q { margin: 0 0 6px 0; }
-    .reason-option {
-      display: block;
+    .study-wrap .reason-block .reason-segment { margin: 0 0 4px 0 !important; line-height: 1.35 !important; }
+    .study-wrap .reason-block .reason-q       { margin: 0 0 8px 0 !important; line-height: 1.35 !important; }
+    .study-wrap .reason-block .reason-option {
+      display: flex !important;
+      align-items: flex-start;
+      gap: 8px;
       text-align: left;
-      margin: 2px 0;
-      line-height: 1.4;
+      margin: 4px 0 !important;
+      line-height: 1.35 !important;
+      cursor: pointer;
     }
-    .reason-other {
-      margin-top: 8px;
+    .study-wrap .reason-block .reason-option input[type="checkbox"] {
+      margin: 3px 0 0 0;          /* nudge box to align with first text line */
+      flex: 0 0 auto;
     }
-    .reason-other textarea {
+    .study-wrap .reason-block .reason-option .reason-text {
+      flex: 1 1 auto;
+      line-height: 1.35 !important;
+    }
+    .study-wrap .reason-block .reason-other {
+      display: block !important;
+      margin-top: 10px !important;
+    }
+    .study-wrap .reason-block .reason-other textarea {
       width: 100%;
       margin-top: 4px;
+      display: block;
     }
     .underlined {
       text-decoration: underline;
