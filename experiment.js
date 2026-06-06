@@ -45,6 +45,17 @@
                     type: "INT",
                     default: 0
                   },
+                  // The task label written into the data. Defaults to "underline"
+                  // for the main trials; the practice trial passes
+                  // "practice_underline" so it can be filtered separately and
+                  // does not contaminate the main underline records. (The plugin
+                  // must emit this itself: finishTrial fields override the trial
+                  // `data` parameter in jsPsych v8, so a hardcoded task here
+                  // would win over data.task.)
+                  task: {
+                    type: "STRING",
+                    default: "underline"
+                  },
                   // coded metaphor instances for THIS passage+language
                   // (array of {id, expression, term_visibility, ...}); used to
                   // match underlines to coded items and copied into the data.
@@ -201,7 +212,7 @@
                     new Set(details.flatMap((d) => d.met_ids))
                   );
                   this.jsPsych.finishTrial({
-                    task: "underline",
+                    task: trial.task || "underline",
                     stimulus_id: trial.stimulus_id,
                     serial_position: trial.serial_position,
                     trial_id: trial.trial_id,
@@ -257,7 +268,11 @@
                   segments:        { type: "COMPLEX",     default: [], array: true },
                   language:        { type: "STRING",      default: "" },
                   stimulus_id:     { type: "STRING",      default: "" },
-                  serial_position: { type: "INT",         default: 0 }
+                  serial_position: { type: "INT",         default: 0 },
+                  // Task label written into the data; defaults to "reasoning",
+                  // practice trial passes "practice_reasoning". Must be emitted
+                  // by the plugin: finishTrial fields override the data param.
+                  task:            { type: "STRING",      default: "reasoning" }
                 },
                 data: {
                   task:            { type: "STRING" },
@@ -291,7 +306,7 @@
                   display_element.querySelector("#reasoning-continue")
                     .addEventListener("click", () => {
                       this.jsPsych.finishTrial({
-                        task: "reasoning",
+                        task: trial.task || "reasoning",
                         stimulus_id: trial.stimulus_id,
                         serial_position: trial.serial_position,
                         language: trial.language,
@@ -346,7 +361,7 @@
                     });
 
                     this.jsPsych.finishTrial({
-                      task: "reasoning",
+                      task: trial.task || "reasoning",
                       stimulus_id: trial.stimulus_id,
                       serial_position: trial.serial_position,
                       language: trial.language,
@@ -511,6 +526,7 @@
                 trial_id: String(stim.serial_position),
                 stimulus_id: stim.stimulus_id,
                 serial_position: stim.serial_position,
+                task: "underline",
                 coded_instances: stim.presented_language === "de"
                   ? (stim.metaphors_de || [])
                   : (stim.metaphors_en || []),
@@ -546,6 +562,7 @@
                 language: stim.presented_language.toUpperCase(),
                 stimulus_id: stim.stimulus_id,
                 serial_position: stim.serial_position,
+                task: "reasoning",
                 data: {
                   task: "reasoning",
                   stimulus_id: stim.stimulus_id,
@@ -688,6 +705,7 @@
                 trial_id: "Practice",
                 stimulus_id: "PRACTICE",
                 serial_position: 0,
+                task: "practice_underline",
                 coded_instances: STIM_PRACTICE.metaphors_de || [],
                 data: {
                   task: "practice_underline",
@@ -722,6 +740,7 @@
                 language: "DE",
                 stimulus_id: "PRACTICE",
                 serial_position: 0,
+                task: "practice_reasoning",
                 data: {
                   task: "practice_reasoning",
                   stimulus_id: "PRACTICE",
