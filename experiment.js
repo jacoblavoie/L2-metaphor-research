@@ -634,7 +634,7 @@
                   stimulus_id: "PRACTICE",
                   text_visibility_label: "practice",
                   title: "Practice passage",
-                  source: "Khider practice excerpt",
+                  source: "Fussenegger practice excerpt",
                   presented_language: "de",
                   serial_position: 0
                 }

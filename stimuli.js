@@ -25,289 +25,192 @@
 // =====================================================================
 
 // ---------------------------------------------------------------------
-// HV1 -- Gertrud Fussenegger, "Dame am Steuer" / "Woman Driver" (HIGH)
-// Replaces the Der Lacher shell. Postwar German short prose (interior
-// monologue). Coded from the German and English MIPVU sheets; per-instance
-// Picken features assigned (term_visibility 0/1, link_strength 0/1/2,
-// lexical_cue 0/1; composite = sum). First-pass codes for Jacob to check.
+// HV1 -- Ilse Aichinger, "Spiegelgeschichte" / "Story in Reverse" (HIGH)
+// Replaces Fussenegger (removed over author-controversy concerns).
+// Aichinger: persecuted under National Socialism; canonical postwar text
+// (1949). Coheres with the postwar-reckoning framing of the corpus.
+// Coded from German + English MIPVU; Picken features assigned per the
+// corpus rubric. First-pass codes for Jacob to check.
 //
-// Notes on borderline blocks (coded but flagged):
-//   - DE m15-m18 / EN e16-e18: the hunting-frame block (Jaegermond / Halali /
-//     Buesche knallt / Wild birgt sich). Mostly FRAME INVOCATION, not discrete
-//     metaphor; coded low. Decide whether to keep as coded instances.
-//   - DE m02 / EN e02 ("am Steuer" / "behind the wheel"): metonymic, low.
-//   - DE m30 ("Augen schmal") and the dead idioms (im Grunde, Ausreden) coded 0.
-// lexical_cue=1 items: DE m07 "kalt wie aus Jade", DE m34 "als wuerden sie...";
-//   EN e05 "cold as jade", EN e36 "as though they are going to smother me".
-//   (Gives the corpus a SECOND cue-bearing text besides Schischyphusch.)
+// REVERSE-CHRONOLOGY DECISION: items that are figurative ONLY by virtue of
+// the text's reversed temporality (flowers un-wilting -> buds; "frisch"
+// reversal) are EXCLUDED from coding, since their figurativeness is a
+// text-level effect, not a lexical metaphor. "die Toten erwecken / awaken
+// the dead" is KEPT (death-as-sleep is a conventional lexical metaphor
+// independent of the reversal, per MIPVU).
+// lexical_cue=1: DE m20 "als stünden Gläser...", m21 "ein unmündiges Kind"
+//   (apposition-as-direct-metaphor borderline); EN e20 "as though glasses
+//   stood...", e21 "like a romping child" ('like' marker).
 // ---------------------------------------------------------------------
 const STIM_HV1 = {
   stimulus_id: "HV1",
   text_visibility_label: "high",
-  title_de: "Dame am Steuer",
-  title_en: "Woman Driver",
-  source: "Gertrud Fussenegger",
+  title_de: "Spiegelgeschichte",
+  title_en: "Story in Reverse",
+  source: "Ilse Aichinger",
 
   metaphors_de: [
-    { id: "m01", expression: "ich habe den Teufel im Leib", type: "indirect", mipvu_status: "positive",
+    { id: "m01", expression: "Dein Wagen wartet", type: "personification", mipvu_status: "positive",
       term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Recklessness as demonic possession; topic (she/behavior) + vehicle (Teufel im Leib) present; copula 'habe' link. Conventional idiom, vivid." },
-    { id: "m02", expression: "sobald ich am Steuer sitze", type: "metonymy", mipvu_status: "borderline",
+      note: "Car given human waiting; topic (Wagen) + vehicle (warten); verb link. Conventional personification." },
+    { id: "m02", expression: "auf das grüne Licht", type: "metonymy", mipvu_status: "borderline",
       term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
-      note: "Metonymic 'am Steuer' = in control; near-literal if physically seated. Filterable." },
-    { id: "m03", expression: "ich fahre rasch, rasch aber sauber", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Skill as cleanliness; topic (fahren) + vehicle (sauber) juxtaposed. Conventional, active." },
-    { id: "m04", expression: "Kann man denn sauber fahren", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Repetition of sauber=control; topic+vehicle adjacent." },
-    { id: "m05", expression: "Der Abend — aufgeklart nach Regen", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Weather clearing / also 'enlightened'; topic (Abend) + vehicle (aufgeklart) adjacent. Conventional, poetic." },
-    { id: "m06", expression: "der Himmel reingefegt", type: "indirect", mipvu_status: "positive",
+      note: "Green light = permission to proceed; literal traffic light. Metonymic/borderline. Filterable." },
+    { id: "m03", expression: "Die Tropfen tanzen", type: "personification", mipvu_status: "positive",
       term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "VIVID. Sky as swept surface/room; topic (Himmel) + vehicle (reingefegt); participle predicate link." },
-    { id: "m07", expression: "kalt wie aus Jade", type: "direct", mipvu_status: "positive",
+      note: "VIVID. Raindrops as dancing bodies; topic (Tropfen) + vehicle (tanzen); verb link." },
+    { id: "m04", expression: "Die Straßen sind frisch getauft", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "STRONG. Rain-wet streets as baptized; topic (Straßen) + vehicle (getauft); copula 'sind' + participle. Ritual/sacred." },
+    { id: "m05", expression: "der Himmel legt seine Hand auf alle Dächer", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "STRONG. Sky given body/agency; topic (Himmel) + vehicle (Hand legen); verb link. Central image." },
+    { id: "m06", expression: "Dein Wagen fährt aus reiner Höflichkeit", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "Car's motion as human politeness; topic (Wagen) + vehicle (Höflichkeit); verb+adverbial link." },
+    { id: "m07", expression: "wetten um ihre Ehre", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      note: "Honor as wagerable possession; topic (Ehre) + vehicle (wetten um) verb-object. Conventional, active." },
+    { id: "m08", expression: "auf die Trambahn gesetzt", type: "indirect", mipvu_status: "positive",
+      term_visibility: 0, link_strength: 2, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      note: "Betting as physical placing; topic implicit, vehicle (setzen auf) verb. Dead/conventional." },
+    { id: "m09", expression: "ist noch keiner aus dem Sarg gestiegen", type: "indirect", mipvu_status: "borderline",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "Finality of death via impossible bodily motion out of coffin; topic+vehicle; verb link. Hyperbolic concrete image. Borderline." },
+    { id: "m10", expression: "reicht der Morgen noch lange in die Nacht hinein", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "Time/light as spatially reaching body; topic (Morgen) + vehicle (reichen, Nacht as space); verb link. (Folds in #11/#12 from MIPVU.)" },
+    { id: "m11", expression: "ein Streifen Mond fällt zugleich in die Einfahrt", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "Moonlight as falling object; topic (Mond/light) + vehicle (fallen); verb link. Imageable." },
+    { id: "m12", expression: "der Leichenwagen fährt fröhlich nach Hause", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "STRONG, disturbing. Hearse given cheerfulness; topic (Leichenwagen) + vehicle (fröhlich); verb+adverb link." },
+    { id: "m13", expression: "Dort wartet der leere Sockel", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "Pedestal given expectant waiting; topic (Sockel) + vehicle (warten); verb link." },
+    { id: "m14", expression: "Diese verdammte Gründlichkeit", type: "indirect", mipvu_status: "borderline",
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      note: "Abstract thoroughness personified as blamed agent (cursed); topic+vehicle. Borderline / personified abstraction." },
+    { id: "m15", expression: "es war schon hohe Zeit", type: "indirect", mipvu_status: "positive",
+      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
+      note: "Urgency as vertical height; vehicle (hoch) only. Dead/conventional." },
+    { id: "m16", expression: "die Toten zu erwecken", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "CENTRAL. Death as sleep one can be woken from; topic (Toten) + vehicle (erwecken); verb link. Conventional but structurally central (kept despite reversal context)." },
+    { id: "m17", expression: "der Regen ihm keine Tränen gibt", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "STRONG. Rain as agent that could give tears; topic (Regen) + vehicle (geben); verb link." },
+    { id: "m18", expression: "starrt er ins Leere", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      note: "Emotional blankness spatialized as void; topic (gaze) + vehicle (Leere) PP. Conventional, active." },
+    { id: "m19", expression: "Die Spatzen schreien fröhlich", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "Sparrows humanized (schreien) + cheerful; topic (Spatzen) + vehicle; verb+adverb. Ironic contrast." },
+    { id: "m20", expression: "als stünden Gläser zwischen seinen Schritten", type: "direct", mipvu_status: "positive",
       term_visibility: 1, link_strength: 1, lexical_cue: 1, visibility_composite: 3, vehicle_zipf: null,
-      note: "Sky's quality via jade; 'wie' explicit simile marker -> lexical_cue 1; topic+vehicle present." },
-    { id: "m08", expression: "Die Stadt sinkt unter der Rampe weg", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "City as sinking object (perceptual); topic (Stadt) + vehicle (sinken); verb link." },
-    { id: "m09", expression: "Wie kühn die Straße steigt", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Road given bold agency; topic (Straße) + vehicle (kühn steigen); verb link + evaluative adverb." },
-    { id: "m10", expression: "in dem Lichtgesprenkel", type: "indirect", mipvu_status: "positive",
+      note: "VIVID. Fragile gait as walking among breakable glass; 'als' explicit comparison marker -> lexical_cue 1. (Folds in #34.)" },
+    { id: "m21", expression: "Der Wind ist kühl und verspielt, ein unmündiges Kind", type: "direct", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 1, visibility_composite: 4, vehicle_zipf: null,
+      note: "MAX. Wind personified (verspielt) AND direct metaphor (= ein unmündiges Kind); copula + appositive identity = explicit figure -> lexical_cue 1. Strongest item." },
+    { id: "m22", expression: "Dein Bett ist frisch gerichtet", type: "indirect", mipvu_status: "borderline",
       term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Light as sprinkled substance; topic (Licht) + vehicle (Gesprenkel) fused compound." },
-    { id: "m11", expression: "ihre Zeiger kriechen", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "STRONG. Clock hands as creeping creature; topic (Zeiger) + vehicle (kriechen); verb link. Oppressive-scene salience." },
-    { id: "m12", expression: "die Asche häuft sich in der Schale", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Ash accumulation; near-literal but part of claustrophobic buildup. Borderline-positive; verb link." },
-    { id: "m13", expression: "Großer breitgedrückter bronzebrauner Ball", type: "direct", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Moon re-seen as ball; topic (Mond, named next) + vehicle (Ball) appositive. Imagistic." },
-    { id: "m14", expression: "schweres glosendes Licht", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Light given weight/heat; topic (Licht) + vehicle (schwer/glosend) attributive. Sensory." },
-    { id: "m15", expression: "Jägermond", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Cultural compound; activates hunting frame. Borderline (frame marker). FILTER CANDIDATE." },
-    { id: "m16", expression: "Halali über Heide und Felder", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 0, link_strength: 0, lexical_cue: 0, visibility_composite: 0, vehicle_zipf: null,
-      note: "Hunting-call frame invocation, not metaphor per se. FILTER CANDIDATE." },
-    { id: "m17", expression: "die Büsche knallt", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Acoustic violence compressed into landscape; topic (Büsche) + vehicle (knallen); verb link." },
-    { id: "m18", expression: "das Wild birgt sich zitternd im Busch", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 0, link_strength: 0, lexical_cue: 0, visibility_composite: 0, vehicle_zipf: null,
-      note: "Literal within hunting frame; figuratively resonant as self-projection. Borderline. FILTER CANDIDATE." },
-    { id: "m19", expression: "altes Gestirn", type: "personification", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Apostrophe begins; direct address personifies moon. Topic (moon) + vehicle (alt, addressed) attributive." },
-    { id: "m20", expression: "dein Schein ist nichtig", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Light given moral/existential worth; topic (Schein) + vehicle (nichtig); copula 'ist'." },
-    { id: "m21", expression: "nicht geworden in unseren Nächten", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
-      note: "Moonlight's being/becoming failing in historical time; abstract. Borderline." },
-    { id: "m22", expression: "Nächte, die hell sind von anderen und so viel stärkeren Lichtern", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Night as container/field filled by light; topic (Nächte) + vehicle (hell von) PP. Low salience." },
-    { id: "m23", expression: "Du bist nicht mehr fern wie einst, unerreichbar", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Spatial distance as existential/romantic remoteness; topic (du/moon) + vehicle (fern/unerreichbar); copula. Conventional, active." },
-    { id: "m24", expression: "alter Mond der Liebenden", type: "personification", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Moon assigned cultural-human role; topic (Mond) + vehicle (der Liebenden) genitive. Symbolic/borderline." },
-    { id: "m25", expression: "Freund der seufzenden Dichter", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Moon personified as companion; topic (Mond) + vehicle (Freund) appositive genitive." },
-    { id: "m26", expression: "Das Geschoß hat dich getroffen", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "CENTRAL. Moon as body that can be struck; topic (dich/moon) + vehicle (treffen); verb link." },
-    { id: "m27", expression: "eine Wunde deiner eisigen Haut geschlagen", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "CENTRAL. Lunar surface as wounded flesh; topic (Haut/moon) + vehicle (Wunde); verb link." },
-    { id: "m28", expression: "deiner eisigen Haut", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Lunar surface as bodily skin; topic (moon) + vehicle (Haut) genitive attributive." },
-    { id: "m29", expression: "deiner narbigen Kraterhaut", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "CENTRAL image. Craters as scars on skin; topic+vehicle fused compound (Krater+Haut). " },
-    { id: "m30", expression: "Da machte er die Augen schmal", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 0, link_strength: 0, lexical_cue: 0, visibility_composite: 0, vehicle_zipf: null,
-      note: "Near-literal bodily action indexing suspicion. Filterable." },
-    { id: "m31", expression: "wegfahre ohne Ziel und Zweck", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "'Ziel' bridges destination/purpose; topic+vehicle adjacent. Low salience; existential link in context." },
-    { id: "m32", expression: "dein Schweigen die Wände anschweigt", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "STRONG, unusual. Silence as agent addressing walls; topic (Schweigen) + vehicle (anschweigen); verb link." },
-    { id: "m33", expression: "daß sie näher rücken, immer näher", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Psychological pressure as spatial contraction; topic (Wände) + vehicle (rücken); verb link." },
-    { id: "m34", expression: "als würden sie mich erdrücken", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 1, visibility_composite: 3, vehicle_zipf: null,
-      note: "Emotional oppression as bodily crushing; 'als' explicit comparison marker -> lexical_cue 1; topic+vehicle present." },
-    { id: "m35", expression: "Da muß ich fahren", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
-      note: "Psychological compulsion as necessity; weak. Borderline." },
-    { id: "m36", expression: "An Ausreden fehlt es mir nicht", type: "indirect", mipvu_status: "positive",
-      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
-      note: "Lack as absence of objects; topic implicit, vehicle (fehlen) verb. Dead/conventional." },
-    { id: "m37", expression: "diese armseligen Lügen", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Lies via poverty/wretchedness; topic (Lügen) + vehicle (armselig) attributive. Conventional, active." },
-    { id: "m38", expression: "im Grunde", type: "indirect", mipvu_status: "positive",
-      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
-      note: "Essence as depth/foundation; vehicle (Grund) only. Dead/conventional." }
+      note: "'gerichtet' = set in order/prepared; conventional, faint ritual echo. Borderline / low-salience." }
   ],
 
   metaphors_en: [
-    { id: "e01", expression: "the devil’s within me", type: "indirect", mipvu_status: "positive",
+    { id: "e01", expression: "Your car is waiting", type: "personification", mipvu_status: "positive",
       term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Recklessness as possession; topic (me) + vehicle (devil within); copula link. Conventional, vivid." },
-    { id: "e02", expression: "sitting behind the wheel", type: "metonymy", mipvu_status: "borderline",
-      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
-      note: "Metonymic 'behind the wheel' = in control; near-literal. Filterable." },
-    { id: "e03", expression: "drive fast; fast but well", type: "indirect", mipvu_status: "borderline",
+      note: "Car given human waiting; topic (car) + vehicle (waiting); verb link." },
+    { id: "e02", expression: "The rain is easing off", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "Rain as force/pressure that relaxes; topic (rain) + vehicle (ease off); verb link. (No DE counterpart - EN-only.)" },
+    { id: "e03", expression: "The raindrops dance off the car roof", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "VIVID. Raindrops as dancing bodies; topic (raindrops) + vehicle (dance); verb link." },
+    { id: "e04", expression: "The streets are freshly christened", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "STRONG. Wet streets as baptized; topic (streets) + vehicle (christened); copula + participle. Ritual." },
+    { id: "e05", expression: "the sky placing its hand on all the roofs", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "STRONG. Sky given body/agency; topic (sky) + vehicle (placing hand); participial verb link." },
+    { id: "e06", expression: "Out of sheer gallantry your car drives", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "Car's motion as chivalrous courtesy; topic (car) + vehicle (gallantry); verb+adverbial link." },
+    { id: "e07", expression: "staking their honor", type: "indirect", mipvu_status: "positive",
       term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Skill as 'well/good condition'; weaker than German sauber. Topic+vehicle adjacent. Borderline." },
-    { id: "e04", expression: "the sky swept clean", type: "indirect", mipvu_status: "positive",
+      note: "Honor as stakeable possession; topic (honor) + vehicle (stake) verb-object. Conventional, active." },
+    { id: "e08", expression: "has bet on the tram", type: "indirect", mipvu_status: "positive",
+      term_visibility: 0, link_strength: 2, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      note: "Betting as placing on; topic implicit, vehicle (bet on) verb. Dead/conventional." },
+    { id: "e09", expression: "arisen from his coffin", type: "indirect", mipvu_status: "borderline",
       term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "VIVID. Sky as swept surface; topic (sky) + vehicle (swept clean); participle predicate link." },
-    { id: "e05", expression: "cold as jade", type: "direct", mipvu_status: "positive",
+      note: "Death's finality via impossible rising from coffin; topic+vehicle; verb link. Hyperbolic. Borderline." },
+    { id: "e10", expression: "The morning still reaches far back into the night", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "Time/light as reaching body, night as space; topic (morning) + vehicle (reach into); verb link. (Folds in #11/#12.)" },
+    { id: "e11", expression: "a ray of moonlight falls directly onto the entrance", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "Moonlight as falling object; topic (moonlight) + vehicle (fall); verb link. Imageable." },
+    { id: "e12", expression: "the hearse drives cheerfully home", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "STRONG, disturbing. Hearse given cheerfulness; topic (hearse) + vehicle (cheerfully); verb+adverb link." },
+    { id: "e13", expression: "the empty pedestal … is waiting", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "Pedestal given expectant waiting; topic (pedestal) + vehicle (waiting); verb link." },
+    { id: "e14", expression: "It was high time", type: "indirect", mipvu_status: "positive",
+      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
+      note: "Urgency as vertical height; vehicle (high) only. Dead/conventional." },
+    { id: "e15", expression: "you can relax", type: "indirect", mipvu_status: "borderline",
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      note: "Reassurance as bodily relaxation; topic (you) + vehicle (relax). Conventional, weak. Borderline." },
+    { id: "e16", expression: "forbidden to awaken the dead", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "CENTRAL. Death as sleep one is woken from; topic (dead) + vehicle (awaken); verb link. (Kept despite reversal context.)" },
+    { id: "e17", expression: "the rain gives him no tears", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "STRONG. Rain as agent that could give tears; topic (rain) + vehicle (give); verb link." },
+    { id: "e18", expression: "stares into the emptiness", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      note: "Blankness as void; topic (gaze) + vehicle (emptiness) PP. Conventional, active." },
+    { id: "e19", expression: "The sparrows twitter joyfully", type: "personification", mipvu_status: "borderline",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "Sparrows given joy; topic (sparrows) + vehicle (joyfully); verb+adverb. Borderline-positive (birds do vocalize)." },
+    { id: "e20", expression: "as though glasses stood between his steps", type: "direct", mipvu_status: "positive",
       term_visibility: 1, link_strength: 1, lexical_cue: 1, visibility_composite: 3, vehicle_zipf: null,
-      note: "Sky via jade; 'as' explicit simile marker -> lexical_cue 1; topic+vehicle present." },
-    { id: "e06", expression: "The town is falling away", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Town as falling object (perceptual); topic (town) + vehicle (fall away); verb link." },
-    { id: "e07", expression: "the road is climbing", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Road given climbing agency; topic (road) + vehicle (climb); verb link. (No 'boldly' in EN -> slightly weaker than DE m09 but still verb-carried.)" },
-    { id: "e08", expression: "speckles of light", type: "indirect", mipvu_status: "positive",
+      note: "VIVID. Fragile gait as walking among breakable glass; 'as though' explicit comparison marker -> lexical_cue 1." },
+    { id: "e21", expression: "The wind is cool and playful like a romping child", type: "direct", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 1, visibility_composite: 4, vehicle_zipf: null,
+      note: "MAX. Wind personified (playful) AND simile (like a romping child); copula + 'like' marker -> lexical_cue 1. Strongest item." },
+    { id: "e22", expression: "Your bed has been freshly made", type: "indirect", mipvu_status: "borderline",
       term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Light as scattered specks; topic (light) + vehicle (speckles) 'of'-genitive." },
-    { id: "e09", expression: "Fedja’s house and mine is blinking away", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Houses/lights animated as blinking; topic (house) + vehicle (blink); verb link. (EN adds personification absent in DE.)" },
-    { id: "e10", expression: "the clock is ticking away", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Time as something spent/passing away; topic (clock/time) + vehicle (away); verb link." },
-    { id: "e11", expression: "its fingers are creeping round", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "STRONG. Clock hands as fingers (body) AND creeping (creature); topic (hands) + vehicle; verb link. EN doubles the image (fingers + creep)." },
-    { id: "e12", expression: "ash will be mounting in the ash-tray", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Ash as rising/piling; near-literal, claustrophobic buildup. Borderline-positive; verb link." },
-    { id: "e13", expression: "bronze-brown ball", type: "direct", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Moon as ball; topic (moon, named next) + vehicle (ball) appositive. Imagistic." },
-    { id: "e14", expression: "a dull, gleaming light", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Light materialized as surface-shine; topic (light) + vehicle (gleaming) attributive. Low salience." },
-    { id: "e15", expression: "the Hunter’s Moon", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Cultural compound; hunting-frame marker. Borderline. FILTER CANDIDATE." },
-    { id: "e16", expression: "the gun barks", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "STRONG (stronger than DE knallt). Firearm given animal voice; topic (gun) + vehicle (bark); verb link." },
-    { id: "e17", expression: "the deer hides trembling with fear", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 0, link_strength: 0, lexical_cue: 0, visibility_composite: 0, vehicle_zipf: null,
-      note: "Literal within hunting frame; mirrors Barbara's fear. Borderline. FILTER CANDIDATE." },
-    { id: "e18", expression: "poor old star", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Apostrophe; moon humanized ('poor old' applies to persons); topic (moon/star) + vehicle attributive." },
-    { id: "e19", expression: "your light is nothing", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Light evaluated as existentially worthless; topic (light) + vehicle (nothing); copula." },
-    { id: "e20", expression: "nights … bright with other … lights", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Night as field made bright; topic (nights) + vehicle (bright with) PP. Low salience." },
-    { id: "e21", expression: "no longer remote", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Spatial distance as existential remoteness; topic (moon) + vehicle (remote) adjacent." },
-    { id: "e22", expression: "no longer beyond our reach", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Access as physical reach; topic (moon) + vehicle (reach) adjacent. Conventional, active." },
-    { id: "e23", expression: "old moon of lovers", type: "personification", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Moon assigned cultural-human role; topic (moon) + vehicle (of lovers) 'of'-genitive. Symbolic/borderline." },
-    { id: "e24", expression: "friend of sighing poets", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Moon personified as companion; topic (moon) + vehicle (friend) appositive genitive." },
-    { id: "e25", expression: "The rocket struck you", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "CENTRAL. Moon as body struck; topic (you/moon) + vehicle (struck); verb link." },
-    { id: "e26", expression: "cut a wound in your icy skin", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "CENTRAL. Lunar surface as wounded flesh; topic (skin/moon) + vehicle (wound, cut); verb link." },
-    { id: "e27", expression: "your icy skin", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Lunar surface as skin; topic (moon) + vehicle (skin) attributive." },
-    { id: "e28", expression: "skin pock-marked with craters", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "CENTRAL. Craters as pock-marks/scars on skin; topic (skin) + vehicle (pock-marked); PP 'with craters' link." },
-    { id: "e29", expression: "without rhyme or reason", type: "indirect", mipvu_status: "positive",
-      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
-      note: "Purposelessness via failed poetic/rational order; idiom. Dead/conventional." },
-    { id: "e30", expression: "for the sake of steering", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
-      note: "'sake' as cause/interest; weak idiomatic. Borderline." },
-    { id: "e31", expression: "the clock is ticking away", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Repetition: domestic time as draining/passing; topic+vehicle; verb link." },
-    { id: "e32", expression: "the ash-tray filling with ash", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Container filling; near-literal, accumulation/stasis image. Borderline." },
-    { id: "e33", expression: "your silence is a silent appeal to the walls", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "STRONG. Silence as agent appealing to walls; topic (silence) + vehicle (appeal); copula 'is'." },
-    { id: "e34", expression: "the walls … close in", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Claustrophobia as spatial compression; topic (walls) + vehicle (close in); verb link." },
-    { id: "e35", expression: "they are going to smother me", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 1, visibility_composite: 3, vehicle_zipf: null,
-      note: "Oppression as bodily suffocation; preceded by 'as though' comparison marker -> lexical_cue 1; topic+vehicle present." },
-    { id: "e36", expression: "I’m not short of other excuses", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Lack as physical shortness; topic (excuses) + vehicle (short of) adjacent. Dead/conventional." },
-    { id: "e37", expression: "pitiful lies", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Lies as wretched beings; topic (lies) + vehicle (pitiful) attributive. Conventional, active." },
-    { id: "e38", expression: "I can’t stand Ruth", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Tolerance as standing/enduring; topic (Ruth) + vehicle (stand); verb link. Conventional idiom, active." },
-    { id: "e39", expression: "I really can’t stand anyone", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Repetition broadening alienation; topic (anyone) + vehicle (stand); verb link." }
+      note: "'made/prepared' conventional; faint ritual echo. Borderline / low-salience." }
   ],
 
-  de: `Es ist ja nicht wahr, was Fedja immer sagt, <span data-met="m01">ich habe den Teufel im Leib</span>, <span data-met="m02">sobald ich am Steuer sitze</span>. Zugegeben, <span data-met="m03">ich fahre rasch, rasch aber sauber</span>. <span data-met="m04">Kann man denn sauber fahren</span>, wenn man rasch fährt?
+  de: `<span data-met="m01">Dein Wagen wartet</span> an der Kreuzung <span data-met="m02">auf das grüne Licht</span>. Es regnet schwächer. <span data-met="m03">Die Tropfen tanzen</span> auf dem Wagendach. Das Heu riecht aus der Ferne. <span data-met="m04">Die Straßen sind frisch getauft</span>, und <span data-met="m05">der Himmel legt seine Hand auf alle Dächer</span>. <span data-met="m06">Dein Wagen fährt aus reiner Höflichkeit</span> ein Stück Neben der Trambahn her. Zwei kleine Jungen am Straßenrand <span data-met="m07">wetten um ihre Ehre</span>. Aber der <span data-met="m08">auf die Trambahn gesetzt</span> hat, wird verlieren. Du hättest ihn warnen können, aber um dieser Ehre willen <span data-met="m09">ist noch keiner aus dem Sarg gestiegen</span>.
 
-<span data-met="m05">Der Abend — aufgeklart nach Regen</span>. Im Westen, fern, der blaßgelbe Schein, <span data-met="m06">der Himmel reingefegt</span> und <span data-met="m07">kalt wie aus Jade</span>. <span data-met="m08">Die Stadt sinkt unter der Rampe weg</span>. <span data-met="m09">Wie kühn die Straße steigt</span>, Kurve um Kurve. Da unten <span data-met="m10">in dem Lichtgesprenkel</span> blinkt auch Fedjas Haus und das meine. Er sitzt daheim und liest, liest und denkt nach und schweigt, die Uhr tickt, <span data-met="m11">ihre Zeiger kriechen</span>, von Zeit zu Zeit stäubt Fedja seine Zigarette ab und <span data-met="m12">die Asche häuft sich in der Schale</span>.
+Sei geduldig. Es ist ja Frühsommer. Da <span data-met="m10">reicht der Morgen noch lange in die Nacht hinein</span>. Ihr kommt zurecht. Bevor es dunkel wird und alle Kinder von den Straßenrändern verschwunden sind, biegt auch der Wagen schon in den Spitalshof ein, <span data-met="m11">ein Streifen Mond fällt zugleich in die Einfahrt</span>. Gleich kommen die Männer und heben deinen Sarg vom Leichenwagen. Und <span data-met="m12">der Leichenwagen fährt fröhlich nach Hause</span>.
 
-Da — im Rückspiegel, was ist das? <span data-met="m13">Großer breitgedrückter bronzebrauner Ball</span> — ah, der Mond! geht dort im Osten auf, <span data-met="m14">schweres glosendes Licht</span>, Mond im September. Man nennt ihn <span data-met="m15">Jägermond</span>, wohl weil September die Zeit der Jäger ist, <span data-met="m16">Halali über Heide und Felder</span>, <span data-met="m17">die Büsche knallt</span> und <span data-met="m18">das Wild birgt sich zitternd im Busch</span>.
+Sie tragen deinen Sarg durch die zweite Einfahrt über den Hof in die Leichenhalle. <span data-met="m13">Dort wartet der leere Sockel</span> schwarz und schief und erhöht, und sie setzen den Sarg darauf und öffnen ihn wieder, und einer von ihnen flucht, weil die Nägel zu fest eingeschlagen sind. <span data-met="m14">Diese verdammte Gründlichkeit</span>!
 
-Was willst du, <span data-met="m19">altes Gestirn</span>, <span data-met="m20">dein Schein ist nichtig</span>, <span data-met="m21">nicht geworden in unseren Nächten</span>, <span data-met="m22">die hell sind von anderen und so viel stärkeren Lichtern</span>. <span data-met="m23">Du bist nicht mehr fern wie einst, unerreichbar</span>, <span data-met="m24">alter Mond der Liebenden</span>, <span data-met="m25">Freund der seufzenden Dichter</span>. <span data-met="m26">Das Geschoß hat dich getroffen</span>, <span data-met="m27">eine Wunde <span data-met="m28">deiner eisigen Haut</span> geschlagen</span>, <span data-met="m29">deiner narbigen Kraterhaut</span>. Erst gestern hab ich mit Fedja darüber geredet, und Fedja sagte: Wozu das alles? Ich verstehe die Menschen nicht. — Und ich darauf: Fedja, verstehst du denn auch nur mich? — <span data-met="m30">Da machte er die Augen schmal</span> und schaute mich lange an und sagte endlich : Nicht immer, Barbara, verstehe ich dich.
+Gleich darauf kommt auch der junge Mann und bringt den Kranz zurück, <span data-met="m15">es war schon hohe Zeit</span>. Die Männer ordnen die Schleifen und legen ihn vorne hin, da kannst du ruhig sein, der Kranz liegt gut. Bis morgen sind die welken Blüten frisch und schließen sich zu Knospen. Die Nacht über bleibst du allein, das Kreuz zwischen den Händen, und auch den Tag über wirst du viel Ruhe haben. Du wirst es später lange nicht mehr fertig bringen, so still zu liegen.
 
-Nicht immer? Nie verstehst du mich, Fedja; am wenigsten, wenn ich abends <span data-met="m31">wegfahre ohne Ziel und Zweck</span>, fahre wie jetzt, nur um den Wagen zu steuern, um nicht mit dir im Zimmer zu sitzen, wo die Uhr tickt, wo sich die Schale mit Asche füllt, wo <span data-met="m32">dein Schweigen die Wände anschweigt</span> <span data-met="m33">daß sie näher rücken, immer näher</span>, bis mir ist, <span data-met="m34">als würden sie mich erdrücken</span>.
+Am nächsten Tag kommt der junge Mann wieder. Und weil <span data-met="m17">der Regen ihm keine Tränen gibt</span>, <span data-met="m18">starrt er ins Leere</span> und dreht die Mütze zwischen den Fingern. Erst bevor sie den Sarg wieder auf das Brett heben, schlägt er die Hände vor das Gesicht. Er weint. Du bleibst nicht länger in der Leichenhalle. Warum weint er? Der Sargdeckel liegt nur mehr lose, und es ist heller Morgen. <span data-met="m19">Die Spatzen schreien fröhlich</span>. Sie wissen nicht, daß es verboten ist, <span data-met="m16">die Toten zu erwecken</span>. Der junge Mann geht vor deinem Sarg her, <span data-met="m20">als stünden Gläser zwischen seinen Schritten</span>. <span data-met="m21">Der Wind ist kühl und verspielt, ein unmündiges Kind</span>.
 
-<span data-met="m35">Da muß ich fahren</span>, Fedja. <span data-met="m36">An Ausreden fehlt es mir nicht</span>, wenn du sie mir auch nicht mehr glaubst, <span data-met="m37">diese armseligen Lügen</span>. Auch heute belog ich dich: Ich wollte Ruth besuchen, meine Schwester, die krank ist. Ja, krank ist sie; trotzdem besuch ich sie nicht, und du weißt es, weißt, daß ich Ruth nicht mag, daß ich <span data-met="m38">im Grunde</span> niemand mag, nicht einmal — dich.`,
-  en: `It’s simply not true, as Fedja always maintains, that <span data-met="e01">the devil’s within me</span> the moment I’m <span data-met="e02">sitting behind the wheel</span>. Admittedly I <span data-met="e03">drive fast; fast but well</span>. Is it possible to drive well if one is driving fast?
+Sie tragen dich ins Haus und die Stiegen hinauf. Du wirst aus dem Sarg gehoben. <span data-met="m22">Dein Bett ist frisch gerichtet</span>. Der junge Mann starrt durch das Fenster in den Hof hinunter, da paaren sich zwei Tauben und gurren laut, geekelt wendet er sich ab.`,
+  en: `<span data-met="e01">Your car is waiting</span> for the green light at the crossroads. <span data-met="e02">The rain is easing off</span>. <span data-met="e03">The raindrops dance off the car roof</span>. There is a smell of distant hay. <span data-met="e04">The streets are freshly christened</span>, <span data-met="e05">the sky placing its hand on all the roofs</span>. <span data-met="e06">Out of sheer gallantry your car drives</span> for a while alongside the tram. Two little boys at the curb are <span data-met="e07">staking their honor</span> on which is the faster. But the one who <span data-met="e08">has bet on the tram</span> is going to lose. You might have warned him, but no one has yet for the sake of this honor <span data-met="e09">arisen from his coffin</span>.
 
-The evening — clear after rain. In the west, far away, the pale yellow light, <span data-met="e04">the sky swept clean</span> and looking as <span data-met="e05">cold as jade</span>. <span data-met="e06">The town is falling away</span> now behind the slope. How boldly <span data-met="e07">the road is climbing</span>, curve after curve. Down there among the <span data-met="e08">speckles of light</span>, <span data-met="e09">Fedja’s house and mine is blinking away</span>. He’s sitting at home reading, reading and thinking and not saying a word, <span data-met="e10">the clock is ticking away</span>, <span data-met="e11">its fingers are creeping round</span>, from time to time Fedja flicks the ash off his cigarette and the <span data-met="e12">ash will be mounting in the ash-tray</span>.
+Have patience. After all, it is early summer. <span data-met="e10">The morning still reaches far back into the night</span>. You arrive in time. Before it is dark and all the children have vanished from the curbs, the car turns into the courtyard of the hospital, <span data-met="e11">a ray of moonlight falls directly onto the entrance</span>. Soon the men have come and lift your coffin from the hearse. And <span data-met="e12">the hearse drives cheerfully home</span>.
 
-There — in the rear-mirror, what’s that? A great flat-looking <span data-met="e13">bronze-brown ball</span> — ah, the moon! Rises in the east, <span data-met="e14">a dull, gleaming light</span>, the September moon. They call it <span data-met="e15">the Hunter’s Moon</span>, because September is the huntsman’s season I suppose. “Tally-ho!” over moors and fields, <span data-met="e16">the gun barks</span>, and <span data-met="e17">the deer hides trembling with fear</span> in the woods.
+They carry your coffin through the second entrance across the court and into the mortuary. There <span data-met="e13">the empty pedestal</span>, black and lopsided and raised, is waiting, and they set the coffin on it and open it again, and one of them curses because the nails have been hammered in too firmly. This damned thoroughness!
 
-What do you want, <span data-met="e18">poor old star</span>, <span data-met="e19">your light is nothing</span>, is nothing now in our <span data-met="e20">nights with are bright with other and far stronger lights</span>. You are <span data-met="e21">no longer remote</span> as you were once, <span data-met="e22">no longer beyond our reach</span>, <span data-met="e23">old moon of lovers</span>, <span data-met="e24">friend of sighing poets</span>. <span data-met="e25">The rocket struck you</span>, <span data-met="e26">cut a wound in <span data-met="e27">your icy skin</span></span>, in your <span data-met="e28">skin pock-marked with craters</span>. Only yesterday I was talking to Fedja about it, and Fedja said: What’s the point of it all? I don’t understand human beings. And I in reply: Fedja, do you even understand me? He narrowed his eyes and looked at me for a long time, and finally said: I don’t always understand you, Barbara.
+Soon afterwards the young man also comes and returns the wreath. <span data-met="e14">It was high time</span>. The men arrange the ribbons and place them at the front; there now, <span data-met="e15">you can relax</span>, the wreath is in good order. By morning the faded blooms will be fresh and closed up in buds. During the night you remain alone with the cross between your hands, and by day too you will have plenty of peace. Later on you will not manage to lie nearly so still.
 
-Not  always? You’ve never understood me, Fedja; least of all when I drive off in the evening <span data-met="e29">without rhyme or reason</span>, drive like I’m driving now, just <span data-met="e30">for the sake of steering</span> the car, to avoid sitting with you in the room, where <span data-met="e31">the clock is ticking away</span>, <span data-met="e32">the ash-tray filling with ash</span>, where <span data-met="e33">your silence is a silent appeal to the walls</span>, so that <span data-met="e34">they close in</span>, close in more and more, tile I feel <span data-met="e35">as though they are going to smother me</span>.
+Next day the young man comes again. And because <span data-met="e17">the rain gives him no tears</span> he <span data-met="e18">stares into the emptiness</span> and twists his cap between his fingers. Only when they are about to raise the coffin onto the bier again does cover his face with his hands. He is crying. You remain no longer in the mortuary. What is he crying for? The coffin lid is now loose and it is broad daylight. <span data-met="e19">The sparrows twitter joyfully</span>. They do not know that it is <span data-met="e16">forbidden to awaken the dead</span>. The young man walks in front of your coffin <span data-met="e20">as though glasses stood between his steps</span>. <span data-met="e21">The wind is cool and playful like a romping child</span>.
 
-Then I have to go driving, Fedja. <span data-met="e36">I’m not short of other excuses</span> if you don’t believe them any longer, these <span data-met="e37">pitiful lies</span>. I lied to you again today, saying I wanted to visit Ruth, my sister, who’s ill. She’s ill, all right; but all the same, I don’t visit her, and you know it, you know that <span data-met="e38">I can’t stand Ruth</span>, that <span data-met="e39">I really can’t stand anyone</span>, not even — you.`
+They carry you into the house and up the stairs. You are lifted out of the coffin. <span data-met="e22">Your bed has been freshly made</span>. The young man stares though the window into the courtyard where two doves are mating and cooing loudly; he turns away in disgust.`
 };
+
 
 
 const STIM_HV2 = {
@@ -2274,93 +2177,92 @@ const STIM_LV2 = {
     }
   ],
 
-  de: "Dabei war mein Onkel natürlich kein Gastwirt. Aber er kannte einen Kellner. <span data-met=\"m01\">Dieser Kellner verfolgte meinen Onkel</span> so intensive <span data-met=\"m02\">mit seiner Treue und mit seiner Verehrung</span>, daß wir immer sagten: Das ist sein Kellner.\n\nAls sies ich kennenlernten, mein Onkel und der Kellner, war ich dabei. Ich war damals gerade so groß, daß ich die Nase auf den Tisch legen konnte. Meine Mutter war auch nicht viel älter. Etwas älter war sie wohl, aber wir waren beide noch so jung, daß wir uns ganz entsetzlich schämten, als der Onkel und der Kellner sich kennenlernten. Ja, wir waren dabei.\n\nMein Onkel natürlich auch, ebenso der Kellner, denn die beiden sollten sich ja kennenlernen und auf sie kam es an. Meine Mutter und ich <span data-met=\"m03\">waren nur als Statisten dabei</span>, <span data-met=\"m04\">als die Bekanntschaft der beiden begann</span>. Daß mein Onkel einen Zungenfehler hatte, wäre beinahe der Anlaß zu dieser Schlägerei geworden. Aber daß er einbeinig war, hat die Schlägerei dann schließlich doch verhindert. Er konnte kein s sprechen. Immer <span data-met=\"m05\">wenn in einem Wort ein harter s-Laut auftauchte</span>, <span data-met=\"m06\">dann machte er <span data-met=\"m07\">ein weiches feuchtwässeriges sch</span> daraus</span>. Und dabei schob er die Lippen weit vor, <span data-met=\"m08\">daß sein Mund entfernte Ähnlichkeit mit einem Hühnerpopo bekam</span>.\n\nDer Kellner stand also an unserem Tisch und fragte nervös: «Bitte schehr? Schie wünschen?»\n\nMein Onkel sagte gewohnheitsmäßig: «Alscho: Schwei Aschbach und für den Jungen eine Brausche»\n\nDer Kellner war sehr blaß. Und plötzlich merkte ich, daß mein Onkel auch blaß wurde. Nämlich als der Kellner die Bestellung der Sicherheit wegen wiederholte:\n\n«Scher wohl. Schwei Aschbach. Eine Brausche. Bitte schehr»\n\nMein Onkel sah meine Mutter mit hochgezogenen Brauen an, dann sagte er <span data-met=\"m09\">mit einer Stimme, die an fernen Geschützdonner erinnerte</span>:\n\n«Schie machen schich über mein Lischpeln luschtig?»\n\nDer Kellner stand da und dann fing es an, an ihm zu zittern. Vor allem aber zitterte seine Stimme, als er sich jetzt Mühe gab, auch etwas <span data-met=\"m10\">geschützdonnerähnlich zu antworten</span>:\n\n«Esch ischt schamlosch von Schie, schich über mich schu amüschieren.»\n\nAn meinem Onkel zitterte nichts. Als der Kellner ihn schamlos nannte, da stand mein Onkel doch wenigstens auf. Er stand eigentlich gar nicht auf. Das wäre ihm mit seinem einen Bein viel zu beschwerlich gewesen. <span data-met=\"m11\">Er blieb sitzen und stand dabei doch auf</span>. <span data-met=\"m12\">Innerlich stand er auf</span>. Der Kellner fühlte <span data-met=\"m13\">dieses innerliche Aufstehen</span> meines Onkels <span data-met=\"m14\">wie einen Angriff</span>, und <span data-met=\"m15\">er wich zwei kurze Schritte zurück</span>.\n\nSo standen sie nun und sahen sich an. <span data-met=\"m16\">Beide mit einer zu kurzen Zunge</span>, beide mit demselben Fehler. So standen sie sich gegenüber. <span data-met=\"m17\">Mordbereit, todwund der eine</span>, <span data-met=\"m18\">lachfertig</span>, <span data-met=\"m19\">randvoll mit <span data-met=\"m20\">Gelächtereruptionen</span></span> der andere. Ringsherum <span data-met=\"m21\">siebenhundert Augen und Ohren</span>, <span data-met=\"m22\">die den Auftritt mehr genossen als Bier und Brause</span>. Ach, und <span data-met=\"m23\">mittendrin</span> meine Mutter und ich. Rotköpfig, schamhaft, <span data-met=\"m24\">tief in die Wäsche verkrochen</span>.",
+  de: "Dabei war mein Onkel natürlich kein Gastwirt. Aber er kannte einen Kellner. <span data-met=\"m01\">Dieser Kellner verfolgte meinen Onkel</span> so intensive <span data-met=\"m02\">mit seiner Treue und mit seiner Verehrung</span>, daß wir immer sagten: Das ist sein Kellner.\n\nAls sie sich kennenlernten, mein Onkel und der Kellner, war ich dabei. Ich war damals gerade so groß, daß ich die Nase auf den Tisch legen konnte. Meine Mutter war auch nicht viel älter. Etwas älter war sie wohl, aber wir waren beide noch so jung, daß wir uns ganz entsetzlich schämten, als der Onkel und der Kellner sich kennenlernten. Ja, wir waren dabei.\n\nMein Onkel natürlich auch, ebenso der Kellner, denn die beiden sollten sich ja kennenlernen und auf sie kam es an. Meine Mutter und ich <span data-met=\"m03\">waren nur als Statisten dabei</span>, <span data-met=\"m04\">als die Bekanntschaft der beiden begann</span>. Daß mein Onkel einen Zungenfehler hatte, wäre beinahe der Anlaß zu dieser Schlägerei geworden. Aber daß er einbeinig war, hat die Schlägerei dann schließlich doch verhindert. Er konnte kein s sprechen. Immer <span data-met=\"m05\">wenn in einem Wort ein harter s-Laut auftauchte</span>, <span data-met=\"m06\">dann machte er <span data-met=\"m07\">ein weiches feuchtwässeriges sch</span> daraus</span>. Und dabei schob er die Lippen weit vor, <span data-met=\"m08\">daß sein Mund entfernte Ähnlichkeit mit einem Hühnerpopo bekam</span>.\n\nDer Kellner stand also an unserem Tisch und fragte nervös: «Bitte schehr? Schie wünschen?»\n\nMein Onkel sagte gewohnheitsmäßig: «Alscho: Schwei Aschbach und für den Jungen eine Brausche»\n\nDer Kellner war sehr blaß. Und plötzlich merkte ich, daß mein Onkel auch blaß wurde. Nämlich als der Kellner die Bestellung der Sicherheit wegen wiederholte:\n\n«Scher wohl. Schwei Aschbach. Eine Brausche. Bitte schehr»\n\nMein Onkel sah meine Mutter mit hochgezogenen Brauen an, dann sagte er <span data-met=\"m09\">mit einer Stimme, die an fernen Geschützdonner erinnerte</span>:\n\n«Schie machen schich über mein Lischpeln luschtig?»\n\nDer Kellner stand da und dann fing es an, an ihm zu zittern. Vor allem aber zitterte seine Stimme, als er sich jetzt Mühe gab, auch etwas <span data-met=\"m10\">geschützdonnerähnlich zu antworten</span>:\n\n«Esch ischt schamlosch von Schie, schich über mich schu amüschieren.»\n\nAn meinem Onkel zitterte nichts. Als der Kellner ihn schamlos nannte, da stand mein Onkel doch wenigstens auf. Er stand eigentlich gar nicht auf. Das wäre ihm mit seinem einen Bein viel zu beschwerlich gewesen. <span data-met=\"m11\">Er blieb sitzen und stand dabei doch auf</span>. <span data-met=\"m12\">Innerlich stand er auf</span>. Der Kellner fühlte <span data-met=\"m13\">dieses innerliche Aufstehen</span> meines Onkels <span data-met=\"m14\">wie einen Angriff</span>, und <span data-met=\"m15\">er wich zwei kurze Schritte zurück</span>.\n\nSo standen sie nun und sahen sich an. <span data-met=\"m16\">Beide mit einer zu kurzen Zunge</span>, beide mit demselben Fehler. So standen sie sich gegenüber. <span data-met=\"m17\">Mordbereit, todwund der eine</span>, <span data-met=\"m18\">lachfertig</span>, <span data-met=\"m19\">randvoll mit <span data-met=\"m20\">Gelächtereruptionen</span></span> der andere. Ringsherum <span data-met=\"m21\">siebenhundert Augen und Ohren</span>, <span data-met=\"m22\">die den Auftritt mehr genossen als Bier und Brause</span>. Ach, und <span data-met=\"m23\">mittendrin</span> meine Mutter und ich. Rotköpfig, schamhaft, <span data-met=\"m24\">tief in die Wäsche verkrochen</span>.",
   en: "Not, of course, that my uncle managed a pub. But he did know a waiter. <span data-met=\"e01\">This waiter dogged my uncle</span> <span data-met=\"e02\">with such devotion and respect</span> that we always said, “That’s his waiter.”\n\nI was present when my uncle and the waiter became acquainted. I was then just big enough to rest my nose on the table. My mother too was not much older. She was necessarily somewhat older, but we were both so young that we were quite horrified when my uncle and the waiter met. Yes, my mother and I were there.\n\nAnd my uncle of course, likewise the waiter, for <span data-met=\"e03\">the pair were destined to meet</span>, <span data-met=\"e04\">and so it came to pass</span>. My mother and I <span data-met=\"e05\">were only there as extras</span> when the pair’s acquaintance began. That my uncle had a speech defect was very nearly the occasion of this brawl. That he only has one leg finally prevented it. He couldn’t pronounce an “s”. <span data-met=\"e06\">When a hard “s” sound came up in a word</span>, <span data-met=\"e07\">he came out with <span data-met=\"e08\">a weak, damp, watery “th.”</span></span> And in doing so he pursed his lips out so that <span data-met=\"e09\">his mouth bore a faint resemblance to a hen’s backside</span>.\n\nWell, the waiter stood at our table and asked nervously: “Yeth pleath? Would you like thomething?”\n\nMy uncle replied in his habitual way: “Let’th thee. Two brandieth. And for the child a lemonade-thoda.”\n\nThe waiter was very pale. And I suddenly noticed that my uncle had also turned pale. Actually, this was when the waiter repeated the order to confirm it: “Very good. Two brandieth. A thoda. Thank you.”\n\nMy uncle looked at my mother with raised eyebrows. Then, <span data-met=\"e10\">in a voice reminiscent of the distant thunder of guns</span>, he said: “You’re making fun of my lithp?”\n\nThe waiter stood there and started to tremble. But above all his voice trembled as he endeavored to <span data-met=\"e11\">reply somewhat in the thunder-of-guns manner</span>: “It’th thcandalouth of you to amuthe yourthelf at my expenthe.”\n\nNo part of my uncle shook. But when the waiter called him scandalous, then at least my uncle stood up. That is to say, he by no means stood up properly speaking. With his one leg, that would have been much too difficult. <span data-met=\"e12\">He remained seated and nevertheless stood up</span>. <span data-met=\"e13\">He stood up within himself</span>. The waiter felt <span data-met=\"e14\">this inner rising</span> of my uncle’s <span data-met=\"e15\">like an offensive</span>, and <span data-met=\"e16\">he fell back a couple of short steps</span>.\n\nSo now they stood and looked at each other. <span data-met=\"e17\">Both with a too-short tongue</span>, both with the same deficiency. So they stood facing each other. <span data-met=\"e18\">Murderous and mortally wounded the one</span>, jovial and <span data-met=\"e19\">brimming with <span data-met=\"e20\">explosive laughter</span></span> the other. All around, <span data-met=\"e21\">seven hundred eyes and ears</span>, who enjoyed the scene more than beer and soda. Oh, and my mother and I <span data-met=\"e22\">in the middle of it all</span>. Red to the roots, ashamed, <span data-met=\"e23\">cringing into our clothes</span>."
 };
 
 // =====================================================================
-// PRACTICE STIMULUS  —  Ilse Aichinger, "Spiegelgeschichte" (excerpt)
-// =====================================================================
-// Replaces the earlier Khider practice excerpt. German-only practice text
-// shown to ALL participants before the main reading trials, so the codes
-// here are a FIXED anchor independent of the 16-cell counterbalancing.
-//
-// IMPORTANT: practice underlines are captured for task-comprehension /
-// engagement checks ONLY. Do NOT pool these with the four study texts in
-// analysis — filter on task == "practice_underline" / stimulus_id == "PRACTICE".
-//
-// Codes built from the Aichinger MIPVU sheet (18 rows) mapped onto 15
-// non-overlapping markers:
-//   * MIPVU #12+#13 folded into p12 ("reicht ... in die Nacht hinein"):
-//     sheet says code together (Night-as-container + Morning-reaches).
-//   * MIPVU #17+#18 folded into p17 ("faehrt froehlich nach Hause"):
-//     "nach Hause" is personification-dependent on "froehlich"; one instance.
-//   * MIPVU #16 "vom Leichenwagen" NOT coded: sheet flags it as lexicalized
-//     compound, "usually not worth coding." Left unmarked.
-// term_visibility / link_strength / lexical_cue are FIRST-PASS (Picken 2007),
-// parallel to the study texts; mipvu_status copied from the sheet. Review.
+// PRACTICE -- Gertrud Fussenegger, "Dame am Steuer" (first ~168 words)
+// Used as the FAMILIARIZATION practice text only; NOT analyzed.
+// (Fussenegger was removed from the live corpus over author-controversy
+// concerns; reused here as throwaway practice material so no live
+// stimulus is "burned" on practice, and so practice != any HV/LV text.)
+// Codes carried from the earlier Fussenegger coding (p01-p18); since
+// practice is not analyzed these need not be reliability-grade.
 // =====================================================================
 const STIM_PRACTICE = {
   stimulus_id: "PRACTICE",
   text_visibility_label: "practice",
-  title_de: "Spiegelgeschichte (Übungstext)",
-  title_en: "Mirror Story (practice excerpt)",
-  source: "Ilse Aichinger",
+  title_de: "Dame am Steuer (Übungstext)",
+  title_en: "Woman Driver (practice excerpt)",
+  source: "Gertrud Fussenegger",
 
   metaphors_de: [
-    { id: "p01", expression: "Dein Wagen wartet", type: "personification", mipvu_status: "positive",
+    { id: "p01", expression: "ich habe den Teufel im Leib", type: "indirect", mipvu_status: "positive",
       term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "MIPVU#1. Car given the human action of waiting; topic (Wagen)+vehicle (wartet); verb link. Conventional personification but clearly metaphor-related." },
-    { id: "p02", expression: "auf das grüne Licht", type: "metonymy", mipvu_status: "borderline",
+      note: "Recklessness as demonic possession; copula link. Practice." },
+    { id: "p02", expression: "sobald ich am Steuer sitze", type: "metonymy", mipvu_status: "borderline",
       term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
-      note: "MIPVU#2. Literal as a traffic light, but metonymic for permission to proceed. Borderline, not central. Filterable (WIDLII)." },
-    { id: "p03", expression: "Die Tropfen tanzen", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "MIPVU#3. Strong/vivid. Raindrops animated as dancing bodies; topic (Tropfen)+vehicle (tanzen); verb link." },
-    { id: "p04", expression: "Das Heu riecht aus der Ferne", type: "indirect", mipvu_status: "borderline",
+      note: "Metonymic 'am Steuer' = in control. Practice." },
+    { id: "p03", expression: "ich fahre rasch, rasch aber sauber", type: "indirect", mipvu_status: "positive",
       term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "MIPVU#4. Low-salience; scent treated as extending from a distant source. Weak borderline (WIDLII)." },
-    { id: "p05", expression: "Die Straßen sind frisch getauft", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "MIPVU#5. Strong. Rain on streets described as baptism; topic (Straßen)+vehicle (getauft); participle predicate. Ritual/consecrating quality." },
-    { id: "p06", expression: "der Himmel legt seine Hand auf alle Dächer", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "MIPVU#6. Central. Sky given a body and agency (hand); topic (Himmel)+vehicle (legt seine Hand); verb link." },
-    { id: "p07", expression: "aus reiner Höflichkeit", type: "personification", mipvu_status: "positive",
+      note: "Skill as cleanliness. Practice." },
+    { id: "p04", expression: "Kann man denn sauber fahren", type: "indirect", mipvu_status: "positive",
       term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "MIPVU#7. Car's movement explained as social courtesy; strong personification of the vehicle. Term visible via surrounding clause." },
-    { id: "p08", expression: "ein Stück Neben der Trambahn her", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
-      note: "MIPVU#8. Literal spatial motion alone; becomes social accompaniment only with p07. Code only as part of the larger personification (WIDLII)." },
-    { id: "p09", expression: "wetten um ihre Ehre", type: "indirect", mipvu_status: "positive",
+      note: "Repetition of sauber=control. Practice." },
+    { id: "p05", expression: "Der Abend — aufgeklärt nach Regen", type: "indirect", mipvu_status: "positive",
       term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "MIPVU#9. Conventional/active. Honor (Ehre) treated as a stake one can wager or risk; topic+vehicle adjacent." },
-    { id: "p10", expression: "auf die Trambahn gesetzt", type: "indirect", mipvu_status: "positive",
+      note: "Weather clearing / enlightened. Practice." },
+    { id: "p06", expression: "der Himmel reingefegt", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "Sky as swept surface. Practice." },
+    { id: "p07", expression: "kalt wie aus Jade", type: "direct", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 1, lexical_cue: 1, visibility_composite: 3, vehicle_zipf: null,
+      note: "Simile (wie). Practice." },
+    { id: "p08", expression: "Die Stadt sinkt unter der Rampe weg", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "City as sinking object. Practice." },
+    { id: "p09", expression: "Wie kühn die Straße steigt", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "Road given bold agency. Practice." },
+    { id: "p10", expression: "in dem Lichtgesprenkel", type: "indirect", mipvu_status: "positive",
       term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "MIPVU#10. Dead-to-conventional. Betting as physically placing something onto a chosen option; positive under MIPVU." },
-    { id: "p11", expression: "um dieser Ehre willen ist noch keiner aus dem Sarg gestiegen", type: "indirect", mipvu_status: "borderline",
+      note: "Light as sprinkled substance. Practice." },
+    { id: "p11", expression: "ihre Zeiger kriechen", type: "personification", mipvu_status: "positive",
       term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "MIPVU#11. Physically concrete but counterfactual image used hyperbolically to measure triviality of honor against death. Borderline figurative (WIDLII)." },
-    { id: "p12", expression: "Da reicht der Morgen noch lange in die Nacht hinein", type: "indirect", mipvu_status: "positive",
+      note: "Clock hands as creeping creature. Practice." },
+    { id: "p12", expression: "die Asche häuft sich in der Schale", type: "indirect", mipvu_status: "borderline",
       term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "MIPVU#12+#13 (coded together per sheet). Time/light given spatial extension reaching into night-as-container; topic (Morgen)+vehicle (reicht...hinein); verb link." },
-    { id: "p14", expression: "Ihr kommt zurecht", type: "indirect", mipvu_status: "positive",
+      note: "Ash accumulation; near-literal. Practice." },
+    { id: "p13", expression: "Großer breitgedrückter bronzebrauner Ball", type: "direct", mipvu_status: "positive",
       term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "MIPVU#14. Dead/conventional, low-salience but valid. Managing a situation as arriving correctly." },
-    { id: "p15", expression: "ein Streifen Mond fällt zugleich in die Einfahrt", type: "indirect", mipvu_status: "positive",
+      note: "Moon as ball. Practice." },
+    { id: "p14", expression: "schweres glosendes Licht", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      note: "Light given weight/heat. Practice." },
+    { id: "p15", expression: "Jägermond", type: "indirect", mipvu_status: "borderline",
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      note: "Cultural compound; hunting frame. Practice." },
+    { id: "p16", expression: "Halali über Heide und Felder", type: "indirect", mipvu_status: "borderline",
+      term_visibility: 0, link_strength: 0, lexical_cue: 0, visibility_composite: 0, vehicle_zipf: null,
+      note: "Hunting-call frame invocation. Practice." },
+    { id: "p17", expression: "die Büsche knallt", type: "indirect", mipvu_status: "positive",
       term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "MIPVU#15. Conventional but imageable. Moonlight treated as a physical thing that can fall into a space; topic (Mond/Streifen)+vehicle (fällt); verb link." },
-    { id: "p17", expression: "Und der Leichenwagen fährt fröhlich nach Hause", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "MIPVU#17+#18 (coded together per sheet). Very strong. Hearse given a cheerful emotional state (froehlich); 'nach Hause' personification-dependent. Produces the passage's unsettling irony." }
+      note: "Acoustic violence in landscape. Practice." },
+    { id: "p18", expression: "das Wild birgt sich zitternd im Busch", type: "indirect", mipvu_status: "borderline",
+      term_visibility: 0, link_strength: 0, lexical_cue: 0, visibility_composite: 0, vehicle_zipf: null,
+      note: "Literal within hunting frame; resonant. Practice." }
   ],
-
-  // English not used in practice (German-only warm-up), kept empty for shape parity.
   metaphors_en: [],
 
-  de: "<span data-met=\"p01\">Dein Wagen wartet</span> an der Kreuzung <span data-met=\"p02\">auf das gr\u00fcne Licht</span>. Es regnet schw\u00e4cher. <span data-met=\"p03\">Die Tropfen tanzen</span> auf dem Wagendach. <span data-met=\"p04\">Das Heu riecht aus der Ferne</span>. <span data-met=\"p05\">Die Stra\u00dfen sind frisch getauft</span>, und <span data-met=\"p06\">der Himmel legt seine Hand auf alle D\u00e4cher</span>. Dein Wagen f\u00e4hrt <span data-met=\"p07\">aus reiner H\u00f6flichkeit</span> <span data-met=\"p08\">ein St\u00fcck Neben der Trambahn her</span>. Zwei kleine Jungen am Stra\u00dfenrand <span data-met=\"p09\">wetten um ihre Ehre</span>. Aber der <span data-met=\"p10\">auf die Trambahn gesetzt</span> hat, wird verlieren. Du h\u00e4ttest ihn warnen k\u00f6nnen, aber <span data-met=\"p11\">um dieser Ehre willen ist noch keiner aus dem Sarg gestiegen</span>. Sei geduldig. Es ist ja Fr\u00fchsommer. <span data-met=\"p12\">Da reicht der Morgen noch lange in die Nacht hinein</span>. <span data-met=\"p14\">Ihr kommt zurecht</span>. Bevor es dunkel wird und alle Kinder von den Stra\u00dfenr\u00e4ndern verschwunden sind, biegt auch der Wagen schon in den Spitalshof ein, <span data-met=\"p15\">ein Streifen Mond f\u00e4llt zugleich in die Einfahrt</span>. Gleich kommen die M\u00e4nner und heben deinen Sarg vom Leichenwagen. <span data-met=\"p17\">Und der Leichenwagen f\u00e4hrt fr\u00f6hlich nach Hause</span>.",
-  en: ""
+  de: `Es ist ja nicht wahr, was Fedja immer sagt, <span data-met="p01">ich habe den Teufel im Leib</span>, <span data-met="p02">sobald ich am Steuer sitze</span>. Zugegeben, <span data-met="p03">ich fahre rasch, rasch aber sauber</span>. <span data-met="p04">Kann man denn sauber fahren</span>, wenn man rasch fährt?
+
+<span data-met="p05">Der Abend — aufgeklärt nach Regen</span>. Im Westen, fern, der blaßgelbe Schein, <span data-met="p06">der Himmel reingefegt</span> und <span data-met="p07">kalt wie aus Jade</span>. <span data-met="p08">Die Stadt sinkt unter der Rampe weg</span>. <span data-met="p09">Wie kühn die Straße steigt</span>, Kurve um Kurve. Da unten <span data-met="p10">in dem Lichtgesprenkel</span> blinkt auch Fedjas Haus und das meine. Er sitzt daheim und liest, liest und denkt nach und schweigt, die Uhr tickt, <span data-met="p11">ihre Zeiger kriechen</span>, von Zeit zu Zeit stäubt Fedja seine Zigarette ab und <span data-met="p12">die Asche häuft sich in der Schale</span>.
+
+Da — im Rückspiegel, was ist das? <span data-met="p13">Großer breitgedrückter bronzebrauner Ball</span> — ah, der Mond! geht dort im Osten auf, <span data-met="p14">schweres glosendes Licht</span>, Mond im September. Man nennt ihn <span data-met="p15">Jägermond</span>, wohl weil September die Zeit der Jäger ist, <span data-met="p16">Halali über Heide und Felder</span>, <span data-met="p17">die Büsche knallt</span> und <span data-met="p18">das Wild birgt sich zitternd im Busch</span>.`,
+  en: ``
 };
+
 
 // If using a global/script include (as in index.html), these four globals
 // (STIM_HV1, STIM_HV2, STIM_LV1, STIM_LV2) are available to experiment.js.
