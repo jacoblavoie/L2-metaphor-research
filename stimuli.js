@@ -2278,5 +2278,89 @@ const STIM_LV2 = {
   en: "Not, of course, that my uncle managed a pub. But he did know a waiter. <span data-met=\"e01\">This waiter dogged my uncle</span> <span data-met=\"e02\">with such devotion and respect</span> that we always said, “That’s his waiter.”\n\nI was present when my uncle and the waiter became acquainted. I was then just big enough to rest my nose on the table. My mother too was not much older. She was necessarily somewhat older, but we were both so young that we were quite horrified when my uncle and the waiter met. Yes, my mother and I were there.\n\nAnd my uncle of course, likewise the waiter, for <span data-met=\"e03\">the pair were destined to meet</span>, <span data-met=\"e04\">and so it came to pass</span>. My mother and I <span data-met=\"e05\">were only there as extras</span> when the pair’s acquaintance began. That my uncle had a speech defect was very nearly the occasion of this brawl. That he only has one leg finally prevented it. He couldn’t pronounce an “s”. <span data-met=\"e06\">When a hard “s” sound came up in a word</span>, <span data-met=\"e07\">he came out with <span data-met=\"e08\">a weak, damp, watery “th.”</span></span> And in doing so he pursed his lips out so that <span data-met=\"e09\">his mouth bore a faint resemblance to a hen’s backside</span>.\n\nWell, the waiter stood at our table and asked nervously: “Yeth pleath? Would you like thomething?”\n\nMy uncle replied in his habitual way: “Let’th thee. Two brandieth. And for the child a lemonade-thoda.”\n\nThe waiter was very pale. And I suddenly noticed that my uncle had also turned pale. Actually, this was when the waiter repeated the order to confirm it: “Very good. Two brandieth. A thoda. Thank you.”\n\nMy uncle looked at my mother with raised eyebrows. Then, <span data-met=\"e10\">in a voice reminiscent of the distant thunder of guns</span>, he said: “You’re making fun of my lithp?”\n\nThe waiter stood there and started to tremble. But above all his voice trembled as he endeavored to <span data-met=\"e11\">reply somewhat in the thunder-of-guns manner</span>: “It’th thcandalouth of you to amuthe yourthelf at my expenthe.”\n\nNo part of my uncle shook. But when the waiter called him scandalous, then at least my uncle stood up. That is to say, he by no means stood up properly speaking. With his one leg, that would have been much too difficult. <span data-met=\"e12\">He remained seated and nevertheless stood up</span>. <span data-met=\"e13\">He stood up within himself</span>. The waiter felt <span data-met=\"e14\">this inner rising</span> of my uncle’s <span data-met=\"e15\">like an offensive</span>, and <span data-met=\"e16\">he fell back a couple of short steps</span>.\n\nSo now they stood and looked at each other. <span data-met=\"e17\">Both with a too-short tongue</span>, both with the same deficiency. So they stood facing each other. <span data-met=\"e18\">Murderous and mortally wounded the one</span>, jovial and <span data-met=\"e19\">brimming with <span data-met=\"e20\">explosive laughter</span></span> the other. All around, <span data-met=\"e21\">seven hundred eyes and ears</span>, who enjoyed the scene more than beer and soda. Oh, and my mother and I <span data-met=\"e22\">in the middle of it all</span>. Red to the roots, ashamed, <span data-met=\"e23\">cringing into our clothes</span>."
 };
 
+// =====================================================================
+// PRACTICE STIMULUS  —  Ilse Aichinger, "Spiegelgeschichte" (excerpt)
+// =====================================================================
+// Replaces the earlier Khider practice excerpt. German-only practice text
+// shown to ALL participants before the main reading trials, so the codes
+// here are a FIXED anchor independent of the 16-cell counterbalancing.
+//
+// IMPORTANT: practice underlines are captured for task-comprehension /
+// engagement checks ONLY. Do NOT pool these with the four study texts in
+// analysis — filter on task == "practice_underline" / stimulus_id == "PRACTICE".
+//
+// Codes built from the Aichinger MIPVU sheet (18 rows) mapped onto 15
+// non-overlapping markers:
+//   * MIPVU #12+#13 folded into p12 ("reicht ... in die Nacht hinein"):
+//     sheet says code together (Night-as-container + Morning-reaches).
+//   * MIPVU #17+#18 folded into p17 ("faehrt froehlich nach Hause"):
+//     "nach Hause" is personification-dependent on "froehlich"; one instance.
+//   * MIPVU #16 "vom Leichenwagen" NOT coded: sheet flags it as lexicalized
+//     compound, "usually not worth coding." Left unmarked.
+// term_visibility / link_strength / lexical_cue are FIRST-PASS (Picken 2007),
+// parallel to the study texts; mipvu_status copied from the sheet. Review.
+// =====================================================================
+const STIM_PRACTICE = {
+  stimulus_id: "PRACTICE",
+  text_visibility_label: "practice",
+  title_de: "Spiegelgeschichte (Übungstext)",
+  title_en: "Mirror Story (practice excerpt)",
+  source: "Ilse Aichinger",
+
+  metaphors_de: [
+    { id: "p01", expression: "Dein Wagen wartet", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "MIPVU#1. Car given the human action of waiting; topic (Wagen)+vehicle (wartet); verb link. Conventional personification but clearly metaphor-related." },
+    { id: "p02", expression: "auf das grüne Licht", type: "metonymy", mipvu_status: "borderline",
+      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
+      note: "MIPVU#2. Literal as a traffic light, but metonymic for permission to proceed. Borderline, not central. Filterable (WIDLII)." },
+    { id: "p03", expression: "Die Tropfen tanzen", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "MIPVU#3. Strong/vivid. Raindrops animated as dancing bodies; topic (Tropfen)+vehicle (tanzen); verb link." },
+    { id: "p04", expression: "Das Heu riecht aus der Ferne", type: "indirect", mipvu_status: "borderline",
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      note: "MIPVU#4. Low-salience; scent treated as extending from a distant source. Weak borderline (WIDLII)." },
+    { id: "p05", expression: "Die Straßen sind frisch getauft", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "MIPVU#5. Strong. Rain on streets described as baptism; topic (Straßen)+vehicle (getauft); participle predicate. Ritual/consecrating quality." },
+    { id: "p06", expression: "der Himmel legt seine Hand auf alle Dächer", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "MIPVU#6. Central. Sky given a body and agency (hand); topic (Himmel)+vehicle (legt seine Hand); verb link." },
+    { id: "p07", expression: "aus reiner Höflichkeit", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      note: "MIPVU#7. Car's movement explained as social courtesy; strong personification of the vehicle. Term visible via surrounding clause." },
+    { id: "p08", expression: "ein Stück Neben der Trambahn her", type: "indirect", mipvu_status: "borderline",
+      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
+      note: "MIPVU#8. Literal spatial motion alone; becomes social accompaniment only with p07. Code only as part of the larger personification (WIDLII)." },
+    { id: "p09", expression: "wetten um ihre Ehre", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      note: "MIPVU#9. Conventional/active. Honor (Ehre) treated as a stake one can wager or risk; topic+vehicle adjacent." },
+    { id: "p10", expression: "auf die Trambahn gesetzt", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      note: "MIPVU#10. Dead-to-conventional. Betting as physically placing something onto a chosen option; positive under MIPVU." },
+    { id: "p11", expression: "um dieser Ehre willen ist noch keiner aus dem Sarg gestiegen", type: "indirect", mipvu_status: "borderline",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "MIPVU#11. Physically concrete but counterfactual image used hyperbolically to measure triviality of honor against death. Borderline figurative (WIDLII)." },
+    { id: "p12", expression: "Da reicht der Morgen noch lange in die Nacht hinein", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "MIPVU#12+#13 (coded together per sheet). Time/light given spatial extension reaching into night-as-container; topic (Morgen)+vehicle (reicht...hinein); verb link." },
+    { id: "p14", expression: "Ihr kommt zurecht", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      note: "MIPVU#14. Dead/conventional, low-salience but valid. Managing a situation as arriving correctly." },
+    { id: "p15", expression: "ein Streifen Mond fällt zugleich in die Einfahrt", type: "indirect", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "MIPVU#15. Conventional but imageable. Moonlight treated as a physical thing that can fall into a space; topic (Mond/Streifen)+vehicle (fällt); verb link." },
+    { id: "p17", expression: "Und der Leichenwagen fährt fröhlich nach Hause", type: "personification", mipvu_status: "positive",
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      note: "MIPVU#17+#18 (coded together per sheet). Very strong. Hearse given a cheerful emotional state (froehlich); 'nach Hause' personification-dependent. Produces the passage's unsettling irony." }
+  ],
+
+  // English not used in practice (German-only warm-up), kept empty for shape parity.
+  metaphors_en: [],
+
+  de: "<span data-met=\"p01\">Dein Wagen wartet</span> an der Kreuzung <span data-met=\"p02\">auf das gr\u00fcne Licht</span>. Es regnet schw\u00e4cher. <span data-met=\"p03\">Die Tropfen tanzen</span> auf dem Wagendach. <span data-met=\"p04\">Das Heu riecht aus der Ferne</span>. <span data-met=\"p05\">Die Stra\u00dfen sind frisch getauft</span>, und <span data-met=\"p06\">der Himmel legt seine Hand auf alle D\u00e4cher</span>. Dein Wagen f\u00e4hrt <span data-met=\"p07\">aus reiner H\u00f6flichkeit</span> <span data-met=\"p08\">ein St\u00fcck Neben der Trambahn her</span>. Zwei kleine Jungen am Stra\u00dfenrand <span data-met=\"p09\">wetten um ihre Ehre</span>. Aber der <span data-met=\"p10\">auf die Trambahn gesetzt</span> hat, wird verlieren. Du h\u00e4ttest ihn warnen k\u00f6nnen, aber <span data-met=\"p11\">um dieser Ehre willen ist noch keiner aus dem Sarg gestiegen</span>. Sei geduldig. Es ist ja Fr\u00fchsommer. <span data-met=\"p12\">Da reicht der Morgen noch lange in die Nacht hinein</span>. <span data-met=\"p14\">Ihr kommt zurecht</span>. Bevor es dunkel wird und alle Kinder von den Stra\u00dfenr\u00e4ndern verschwunden sind, biegt auch der Wagen schon in den Spitalshof ein, <span data-met=\"p15\">ein Streifen Mond f\u00e4llt zugleich in die Einfahrt</span>. Gleich kommen die M\u00e4nner und heben deinen Sarg vom Leichenwagen. <span data-met=\"p17\">Und der Leichenwagen f\u00e4hrt fr\u00f6hlich nach Hause</span>.",
+  en: ""
+};
+
 // If using a global/script include (as in index.html), these four globals
 // (STIM_HV1, STIM_HV2, STIM_LV1, STIM_LV2) are available to experiment.js.

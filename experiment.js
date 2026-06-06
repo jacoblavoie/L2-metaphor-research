@@ -1,8 +1,8 @@
 /* global initJsPsych, jsPsychHtmlButtonResponse, jsPsychSurveyText,
           jsPsychSurveyMultiChoice, jsPsychSurveyLikert,
-          jsPsychInitializeMicrophone, jsPsychHtmlAudioResponse,
+          jsPsychSurveyMultiSelect, jsPsychInstructions,
           jsPsychPipe,
-          STIM_HV1, STIM_HV2, STIM_LV1, STIM_LV2 */
+          STIM_HV1, STIM_HV2, STIM_LV1, STIM_LV2, STIM_PRACTICE */
 
           const EXPERIMENT_ID = "pyYN5xjQ1Iey";
 
@@ -406,7 +406,10 @@
               });
             }
           
-            const PRACTICE_PASSAGE_DE = `Dein Wagen wartet an der Kreuzung auf das grüne Licht. Es regnet schwächer. Die Tropfen tanzen auf dem Wagendach. Das Heu riecht aus der Ferne. Die Straßen sind frisch getauft, und der Himmel legt seine Hand auf alle Dächer. Dein Wagen fährt aus reiner Höflichkeit ein Stück Neben der Trambahn her. Zwei kleine Jungen am Straßenrand wetten um ihre Ehre. Aber der auf die Trambahn gesetzt hat, wird verlieren. Du hättest ihn warnen können, aber um dieser Ehre willen ist noch keiner aus dem Sarg gestiegen. Sei geduldig. Es ist ja Frühsommer. Da reicht der Morgen noch lange in die Nacht hinein. Ihr kommt zurecht. Bevor es dunkel wird und alle Kinder von den Straßenrändern verschwunden sind, biegt auch der Wagen schon in den Spitalshof ein, ein Streifen Mond fällt zugleich in die Einfahrt. Gleich kommen die Männer und heben deinen Sarg vom Leichenwagen. Und der Leichenwagen fährt fröhlich nach Hause.`;
+            // Practice passage now lives in stimuli.js as STIM_PRACTICE
+            // (marker-wrapped, with coded_instances). The old plain-text
+            // PRACTICE_PASSAGE_DE const has been removed.
+
 
             // -----------------------------
             // Trial builders
@@ -439,12 +442,11 @@
                 type: jsPsychHtmlButtonResponse,
                 stimulus: `
                   <div class="study-wrap instruction-box">
-                    <h3>Oral Recall Task</h3>
-                    <p>Now that you have finished reading the passage, please recall aloud as much as you can from the passage you just read, in the language most comfortable for you.</p>
-                    <p>Please tell us, in your own words, everything you remember from the passage. Try to be as complete and detailed as possible. You do not need to repeat the exact wording from the text; you can rephrase or paraphrase.</p>
-                    <p>We are interested in the ideas, points, and overall message you took away from the passage.</p>
-                    <p>If some parts were unclear or surprising, you may still include them in your recall as best you can.</p>
-                    <p>When you are ready to begin speaking, click the button below.</p>
+                    <h3>Recall Task</h3>
+                    <p>Now that you have finished reading the passage, please write down everything you can remember from the passage you just read, in the language most comfortable for you.</p>
+                    <p>Try to recall as much as possible: not just the main points, but every detail you can remember. You do not need to reproduce the exact wording from the text; you can rephrase or paraphrase.</p>
+                    <p>If some parts were unclear or surprising, you may still include them as best you can.</p>
+                    <p>When you are ready to begin writing, click the button below.</p>
                   </div>
                 `,
                 choices: ["Start recall"],
@@ -462,39 +464,33 @@
             
             function makeRecallTrial(stim, participantId, subject_id) {
               return {
-                type: jsPsychHtmlAudioResponse,
-                stimulus: `
+                type: jsPsychSurveyText,
+                preamble: `
                  <div class="study-wrap instruction-box">
-                  <div style="display:flex; align-items:center; gap:10px; justify-content:center; margin-bottom:16px;">
-                    <span class="recording-indicator"></span>
-                    <span style="color:#b00000; font-weight:700; font-size:20px;">
-                      Recording in progress
-                    </span>
-                  </div>
-
-                  <h3>Oral Recall</h3>
-                  <p>Please speak now.</p>
-                  <p>Try to include everything you remember, even if you were unsure or confused.</p>
-                  <p>Click <strong>End Recall / Continue</strong> when you are finished.</p>
+                  <h3>Recall</h3>
+                  <p>Please write down everything you remember from the passage, in the language most comfortable for you.</p>
+                  <p>Try to include every detail you can recall, even if you were unsure or confused about it.</p>
+                  <p>Click <strong>Continue</strong> when you are finished.</p>
                  </div>
                 `,
-                recording_duration: null,
-                show_done_button: true,
-                done_button_label: "End Recall / Continue",
-                allow_playback: false,
+                questions: [
+                  {
+                    prompt: "Your recall:",
+                    name: "recall_text",
+                    rows: 14,
+                    columns: 80,
+                    required: true
+                  }
+                ],
+                button_label: "Continue",
                 data: {
-                  task: "oral_recall",
+                  task: "written_recall",
                   stimulus_id: stim.stimulus_id,
                   text_visibility_label: stim.text_visibility_label,
                   title: stim.presented_title,
                   source: stim.source,
                   presented_language: stim.presented_language,
                   serial_position: stim.serial_position
-                },
-                on_finish: async function(data) {
-                  const audioFilename = `${subject_id}_${participantId}_${stim.stimulus_id}_${stim.serial_position}_recall.webm`;
-                  await jsPsychPipe.saveBase64Data(EXPERIMENT_ID, audioFilename, data.response);
-                  data.response = audioFilename;
                 }
               };
             }
@@ -507,8 +503,8 @@
                   <p>Now please look back at the same passage.</p>
                   <p>As you read, please underline any word or group of words that, in your judgment, is being used metaphorically.</p>
                   <p>Please use your own understanding of what counts as metaphorical language. There may be several examples, only a few, or none.</p>
-                  <p>Please underline the smallest stretch of text that you think carries the metaphorical use. This may be a single word, a phrase, or a longer expression. If you are unsure, you may still underline it.</p>
-                  <p>Some people may mark more expressions than others; please make the selections that best reflect your own reading. We are interested in how you read the passage and what you notice while reading.</p>
+                  <p>Underline the smallest stretch of text that carries the metaphorical use. This may be a single word, a phrase, or a longer expression.</p>
+                  <p>For each expression you underline, the next screen will ask what made it seem metaphorical to you, so please mark the expressions that best reflect your own reading.</p>
                 `,
                 text: stim.presented_text,
                 language: stim.presented_language.toUpperCase(),
@@ -571,8 +567,9 @@
                     <p>Before the main study begins, you will complete one short practice round in German.</p>
                     <p>This practice will help you get used to the sequence of tasks:</p>
                     <p>1. reading a passage<br>
-                    2. recalling it aloud<br>
-                    3. underlining language you judge to be metaphorical</p>
+                    2. writing down everything you remember from it<br>
+                    3. underlining language you judge to be metaphorical<br>
+                    4. noting what made each underlined expression seem metaphorical</p>
                     <p>The practice responses are only for familiarization.</p>
                   </div>
                 `,
@@ -587,7 +584,7 @@
                   <div class="study-wrap">
                     <div class="trial-header">Practice Passage</div>
                     <div class="language-badge">Language: DE</div>
-                    <div class="passage-box">${PRACTICE_PASSAGE_DE}</div>
+                    <div class="passage-box">${STIM_PRACTICE.de}</div>
                   </div>
                 `,
                 choices: ["Continue to recall"],
@@ -596,7 +593,7 @@
                   stimulus_id: "PRACTICE",
                   text_visibility_label: "practice",
                   title: "Practice passage",
-                  source: "Khider practice excerpt",
+                  source: "Aichinger practice excerpt",
                   presented_language: "de",
                   serial_position: 0
                 }
@@ -608,10 +605,10 @@
                 type: jsPsychHtmlButtonResponse,
                 stimulus: `
                   <div class="study-wrap instruction-box">
-                    <h3>Practice Oral Recall</h3>
-                    <p>Now please recall aloud as much as you can from the passage you just read, in the language most comfortable for you.</p>
-                    <p>Please tell us, in your own words, everything you remember from the passage. Try to be as complete and detailed as possible.</p>
-                    <p>When you are ready to begin speaking, click the button below.</p>
+                    <h3>Practice Recall</h3>
+                    <p>Now please write down everything you can remember from the passage you just read, in the language most comfortable for you.</p>
+                    <p>Try to recall as much as possible: not just the main points, but every detail you can remember.</p>
+                    <p>When you are ready to begin writing, click the button below.</p>
                   </div>
                 `,
                 choices: ["Start recall"],
@@ -629,39 +626,33 @@
 
             function makePracticeRecallTrial(participantId, subject_id) {
               return {
-                type: jsPsychHtmlAudioResponse,
-                stimulus: `
+                type: jsPsychSurveyText,
+                preamble: `
   <div class="study-wrap instruction-box">
-    <div style="display:flex; align-items:center; gap:10px; justify-content:center; margin-bottom:16px;">
-      <span class="recording-indicator"></span>
-      <span style="color:#b00000; font-weight:700; font-size:20px;">
-        Recording in progress
-      </span>
-    </div>
-
-    <h3>Oral Recall</h3>
-    <p>Please speak now.</p>
-    <p>Try to include everything you remember, even if you were unsure or confused.</p>
-    <p>Click <strong>End Recall / Continue</strong> when you are finished.</p>
+    <h3>Practice Recall</h3>
+    <p>Please write down everything you remember from the passage, in the language most comfortable for you.</p>
+    <p>Try to include every detail you can recall, even if you were unsure or confused about it.</p>
+    <p>Click <strong>Continue</strong> when you are finished.</p>
   </div>
 `,
-                recording_duration: null,
-                show_done_button: true,
-                done_button_label: "End Recall / Continue",
-                allow_playback: false,
+                questions: [
+                  {
+                    prompt: "Your recall:",
+                    name: "recall_text",
+                    rows: 14,
+                    columns: 80,
+                    required: true
+                  }
+                ],
+                button_label: "Continue",
                 data: {
-                  task: "practice_oral_recall",
+                  task: "practice_written_recall",
                   stimulus_id: "PRACTICE",
                   text_visibility_label: "practice",
                   title: "Practice passage",
-                  source: "Khider practice excerpt",
+                  source: "Aichinger practice excerpt",
                   presented_language: "de",
                   serial_position: 0
-                },
-                on_finish: async function(data) {
-                  const audioFilename = `${subject_id}_${participantId}_PRACTICE_recall.webm`;
-                  await jsPsychPipe.saveBase64Data(EXPERIMENT_ID, audioFilename, data.response);
-                  data.response = audioFilename;
                 }
               };
             }
@@ -689,20 +680,54 @@
                   <p>Now please look back at the same passage.</p>
                   <p>As you read, please underline any word or group of words that, in your judgment, is being used metaphorically.</p>
                   <p>Please use your own understanding of what counts as metaphorical language. There may be several examples, only a few, or none.</p>
-                  <p>Please underline the smallest stretch of text that you think carries the metaphorical use. This may be a single word, a phrase, or a longer expression. If you are unsure, you may still underline it.</p>
-                  <p>Some people may mark more expressions than others; please make the selections that best reflect your own reading.</p>
+                  <p>Underline the smallest stretch of text that carries the metaphorical use. This may be a single word, a phrase, or a longer expression.</p>
+                  <p>For each expression you underline, the next screen will ask what made it seem metaphorical to you, so please mark the expressions that best reflect your own reading.</p>
                 `,
-                text: PRACTICE_PASSAGE_DE,
+                text: STIM_PRACTICE.de,
                 language: "DE",
                 trial_id: "Practice",
                 stimulus_id: "PRACTICE",
                 serial_position: 0,
+                coded_instances: STIM_PRACTICE.metaphors_de || [],
                 data: {
                   task: "practice_underline",
                   stimulus_id: "PRACTICE",
                   text_visibility_label: "practice",
                   title: "Practice passage",
-                  source: "Khider practice excerpt",
+                  source: "Aichinger practice excerpt",
+                  presented_language: "de",
+                  serial_position: 0
+                }
+              };
+            }
+
+            function makePracticeReasoningTrial(jsPsych) {
+              return {
+                type: ReasoningChecklistPlugin,
+                prompt: `
+                  <h3>Practice Follow-up</h3>
+                  <p>For each expression you underlined below, please tell us what made it
+                     seem metaphorical to you. You may check more than one reason for each.</p>
+                  <p>You will be asked to do this after every passage in the main study, so this
+                     practice round is a chance to get used to it.</p>
+                `,
+                segments: function () {
+                  const lastUnderline = jsPsych.data.get().filter({
+                    task: "practice_underline",
+                    stimulus_id: "PRACTICE",
+                    serial_position: 0
+                  }).last(1).values()[0];
+                  return lastUnderline?.underlined_segments || [];
+                },
+                language: "DE",
+                stimulus_id: "PRACTICE",
+                serial_position: 0,
+                data: {
+                  task: "practice_reasoning",
+                  stimulus_id: "PRACTICE",
+                  text_visibility_label: "practice",
+                  title: "Practice passage",
+                  source: "Aichinger practice excerpt",
                   presented_language: "de",
                   serial_position: 0
                 }
@@ -988,17 +1013,33 @@
                   <div class="study-wrap instruction-box">
                     <h2>Instructions</h2>
                     <p>You will read several short passages in German and English.</p>
-                    <p>After each passage, you will first be asked to recall as much as you can from what you just read <strong>in the language you feel most comfortable with</strong>.</p>
-                    <p>After the recall task, you will look back at the same passage and complete a metaphor-underlining task.</p>
+                    <p>After each passage, you will first write down everything you can remember from it, <strong>in the language you feel most comfortable with</strong>.</p>
+                    <p>You will then look back at the same passage and underline any language you judge to be metaphorical, and briefly note what made each expression seem metaphorical to you.</p>
                     <p>Please read carefully and work at your own pace.</p>
                   </div>
                 `,
                 choices: ["Begin"]
               };
 
-            const initialize_microphone = {
-                type: jsPsychInitializeMicrophone
-              };
+              // Background-knowledge battery (Bernhardt 2011 compensatory model).
+              // Defined in background_knowledge_construct.js, exported as
+              // window.bk_battery. Runs BEFORE the practice and reading trials so
+              // a self-rating can't prime the tested items, and tested blocks
+              // precede the self-report block. Guarded so a missing include fails
+              // loudly rather than silently dropping the battery.
+              if (!window.bk_battery) {
+                console.error("background_knowledge_construct.js not loaded: window.bk_battery is undefined.");
+                alert("There was a problem starting the study (missing background module). Please contact the researcher.");
+                return;
+              }
+              const bk = window.bk_battery;
+              const backgroundKnowledgeTimeline = [
+                bk.bk_intro,
+                bk.block1a_hist,
+                bk.block1b_litgenre,
+                bk.block1c_art,
+                bk.block2_selfreport
+              ];
 
               const practiceTimeline = [
                 makePracticeIntroTrial(),
@@ -1006,6 +1047,7 @@
                 makePracticeRecallIntroTrial(),
                 makePracticeRecallTrial(participantId, subject_id),
                 makePracticeUnderlineTrial(),
+                makePracticeReasoningTrial(jsPsych),
                 makeTransitionToMainTrial()
               ];
 
@@ -1053,7 +1095,7 @@
           
               jsPsych.run([
                 general_intro,
-                initialize_microphone,
+                ...backgroundKnowledgeTimeline,
                 ...practiceTimeline,
                 ...trialTimeline,
                 ...surveyTimeline,
