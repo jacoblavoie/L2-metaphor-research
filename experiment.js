@@ -996,6 +996,97 @@
               };
             }
 
+            // -----------------------------
+            // Receptive vocabulary (Leipzig VLT-German)
+            // -----------------------------
+            // The vocabulary test is an external, self-contained app hosted on
+            // itt-leipzig.de; it does not post results back to this page. The
+            // participant launches it in a new tab, completes all five levels,
+            // and then transcribes two numbers from its results screen:
+            //   - Erreichte Punktzahl (points achieved, out of 150)
+            //   - the percentage shown (e.g. 91)
+            // These are not redundant: points/150 should ≈ percentage, so the
+            // two together give an internal consistency check (vlt_flag).
+            function makeVocabLaunchTrial() {
+              return {
+                type: jsPsychInstructions,
+                pages: [
+                  `
+                  <div class="study-wrap instruction-box">
+                    <h3>German Vocabulary Test</h3>
+                    <p>Next you will complete a short German vocabulary test on an external site.</p>
+                    <p><strong>Click the link below to open the test in a new tab.</strong>
+                       Complete all five levels. At the end you will see a results page
+                       showing your total score and a percentage.</p>
+                    <p style="margin-top:16px;">
+                      <a href="https://itt-leipzig.de/static/vltgerman_01.2r/index.html"
+                         target="_blank" rel="noopener noreferrer" style="font-size:17px;">
+                         &#9654; Open the vocabulary test (new tab)</a>
+                    </p>
+                    <p class="small-note">Leave this window open. When the results page appears,
+                       return here and click &ldquo;Continue&rdquo; to enter your scores.</p>
+                  </div>
+                  `
+                ],
+                show_clickable_nav: true,
+                button_label_next: "Continue",
+                data: {
+                  task: "vocab_launch",
+                  l1: "English",
+                  l2: "German"
+                }
+              };
+            }
+
+            function makeVocabScoresTrial() {
+              return {
+                type: jsPsychSurveyText,
+                preamble: `
+                  <div class="study-wrap instruction-box">
+                    <h3>German Vocabulary Test &mdash; Your Results</h3>
+                    <p>Enter both numbers from your results page.</p>
+                    <p class="small-note">The points total is the &ldquo;Erreichte Punktzahl&rdquo;
+                       number (like <strong>136</strong>, out of 150). The percentage is shown in
+                       the circle (like <strong>91</strong>%).</p>
+                    <p class="small-note" style="margin-top:10px;"><strong>Please enter exactly the
+                       numbers shown on your results page.</strong> Accurate entry is important for
+                       the study's data analysis.</p>
+                  </div>
+                `,
+                questions: [
+                  {
+                    prompt: "Total points achieved (Erreichte Punktzahl, out of 150), e.g. 136",
+                    name: "vlt_points",
+                    required: true
+                  },
+                  {
+                    prompt: "Percentage shown, e.g. 91 (enter the number only, without the % sign)",
+                    name: "vlt_percent",
+                    required: true
+                  }
+                ],
+                button_label: "Continue",
+                data: {
+                  task: "vocab_scores",
+                  l1: "English",
+                  l2: "German"
+                },
+                on_finish: function (data) {
+                  const pts = parseInt(data.response.vlt_points, 10);
+                  const pct = parseFloat(String(data.response.vlt_percent).replace("%", "").trim());
+                  data.vlt_points_num = isNaN(pts) ? null : pts;
+                  data.vlt_percent_num = isNaN(pct) ? null : pct;
+                  // Range checks + internal consistency: points/150 should ≈ stated percentage.
+                  const expectedPct = isNaN(pts) ? null : (pts / 150) * 100;
+                  data.vlt_flag = (
+                    isNaN(pts) || pts < 0 || pts > 150 ||
+                    isNaN(pct) || pct < 0 || pct > 100 ||
+                    (expectedPct !== null && Math.abs(expectedPct - pct) > 2)
+                  );
+                }
+              };
+            }
+
 
             // -----------------------------
             // Start experiment after ID entry
@@ -1086,7 +1177,9 @@
                 makeSurveyGermanBackgroundTrial(),
                 makeSurveyGermanProficiencyTrial(),
                 makeSurveyLanguageUseTrial(),
-                makeSurveyOtherLanguagesTrial()
+                makeSurveyOtherLanguagesTrial(),
+                makeVocabLaunchTrial(),
+                makeVocabScoresTrial()
               ];
 
           
