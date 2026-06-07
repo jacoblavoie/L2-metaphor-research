@@ -51,67 +51,67 @@ const STIM_HV1 = {
 
   metaphors_de: [
     { id: "m01", expression: "Dein Wagen wartet", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.0518, vehicles: [{ term: "wartet", zipf: 5.0518 }],
       note: "Car given human waiting; topic (Wagen) + vehicle (warten); verb link. Conventional personification." },
     { id: "m02", expression: "auf das grüne Licht", type: "metonymy", mipvu_status: "borderline",
       term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
       note: "Green light = permission to proceed; literal traffic light. Metonymic/borderline. Filterable." },
     { id: "m03", expression: "Die Tropfen tanzen", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.8556, vehicles: [{ term: "tanzen", zipf: 4.8556 }],
       note: "VIVID. Raindrops as dancing bodies; topic (Tropfen) + vehicle (tanzen); verb link." },
     { id: "m04", expression: "Die Straßen sind frisch getauft", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.4815, vehicles: [{ term: "getauft", zipf: 3.4815 }],
       note: "STRONG. Rain-wet streets as baptized; topic (Straßen) + vehicle (getauft); copula 'sind' + participle. Ritual/sacred." },
     { id: "m05", expression: "der Himmel legt seine Hand auf alle Dächer", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.9592, vehicles: [{ term: "Hand", zipf: 5.4399 }, { term: "legt", zipf: 4.4785 }],
       note: "STRONG. Sky given body/agency; topic (Himmel) + vehicle (Hand legen); verb link. Central image." },
     { id: "m06", expression: "Dein Wagen fährt aus reiner Höflichkeit", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.6923, vehicles: [{ term: "Höflichkeit", zipf: 3.6923 }],
       note: "Car's motion as human politeness; topic (Wagen) + vehicle (Höflichkeit); verb+adverbial link." },
     { id: "m07", expression: "wetten um ihre Ehre", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.8973, vehicles: [{ term: "Ehre", zipf: 4.8973 }],
       note: "Honor as wagerable possession; topic (Ehre) + vehicle (wetten um) verb-object. Conventional, active." },
     { id: "m08", expression: "auf die Trambahn gesetzt", type: "indirect", mipvu_status: "positive",
-      term_visibility: 0, link_strength: 2, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 0, link_strength: 2, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.5552, vehicles: [{ term: "gesetzt", zipf: 4.5552 }],
       note: "Betting as physical placing; topic implicit, vehicle (setzen auf) verb. Dead/conventional." },
     { id: "m09", expression: "ist noch keiner aus dem Sarg gestiegen", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.0828, vehicles: [{ term: "Sarg", zipf: 4.1523 }, { term: "gestiegen", zipf: 4.0133 }],
       note: "Finality of death via impossible bodily motion out of coffin; topic+vehicle; verb link. Hyperbolic concrete image. Borderline." },
     { id: "m10", expression: "reicht der Morgen noch lange in die Nacht hinein", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.8912, vehicles: [{ term: "reicht", zipf: 5.1878 }, { term: "hinein", zipf: 4.5947 }],
       note: "Time/light as spatially reaching body; topic (Morgen) + vehicle (reichen, Nacht as space); verb link. (Folds in #11/#12 from MIPVU.)" },
     { id: "m11", expression: "ein Streifen Mond fällt zugleich in die Einfahrt", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.0504, vehicles: [{ term: "fällt", zipf: 5.0504 }],
       note: "Moonlight as falling object; topic (Mond/light) + vehicle (fallen); verb link. Imageable." },
     { id: "m12", expression: "der Leichenwagen fährt fröhlich nach Hause", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.0838, vehicles: [{ term: "fröhlich", zipf: 4.0838 }],
       note: "STRONG, disturbing. Hearse given cheerfulness; topic (Leichenwagen) + vehicle (fröhlich); verb+adverb link." },
     { id: "m13", expression: "Dort wartet der leere Sockel", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.0518, vehicles: [{ term: "wartet", zipf: 5.0518 }],
       note: "Pedestal given expectant waiting; topic (Sockel) + vehicle (warten); verb link." },
     { id: "m14", expression: "Diese verdammte Gründlichkeit", type: "indirect", mipvu_status: "borderline",
       term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
       note: "Abstract thoroughness personified as blamed agent (cursed); topic+vehicle. Borderline / personified abstraction." },
     { id: "m15", expression: "es war schon hohe Zeit", type: "indirect", mipvu_status: "positive",
-      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
+      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: 4.1742, vehicles: [{ term: "hohe", zipf: 4.1742 }],
       note: "Urgency as vertical height; vehicle (hoch) only. Dead/conventional." },
     { id: "m16", expression: "die Toten zu erwecken", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.6618, vehicles: [{ term: "erwecken", zipf: 3.6618 }],
       note: "CENTRAL. Death as sleep one can be woken from; topic (Toten) + vehicle (erwecken); verb link. Conventional but structurally central (kept despite reversal context)." },
     { id: "m17", expression: "der Regen ihm keine Tränen gibt", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.3158, vehicles: [{ term: "Tränen", zipf: 4.5306 }, { term: "gibt", zipf: 6.1011 }],
       note: "STRONG. Rain as agent that could give tears; topic (Regen) + vehicle (geben); verb link." },
     { id: "m18", expression: "starrt er ins Leere", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.0623, vehicles: [{ term: "Leere", zipf: 4.0623 }],
       note: "Emotional blankness spatialized as void; topic (gaze) + vehicle (Leere) PP. Conventional, active." },
     { id: "m19", expression: "Die Spatzen schreien fröhlich", type: "personification", mipvu_status: "positive",
       term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
       note: "Sparrows humanized (schreien) + cheerful; topic (Spatzen) + vehicle; verb+adverb. Ironic contrast." },
     { id: "m20", expression: "als stünden Gläser zwischen seinen Schritten", type: "direct", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 1, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 1, visibility_composite: 3, vehicle_zipf: 3.9087, vehicles: [{ term: "Gläser", zipf: 3.9087 }],
       note: "VIVID. Fragile gait as walking among breakable glass; 'als' explicit comparison marker -> lexical_cue 1. (Folds in #34.)" },
     { id: "m21", expression: "Der Wind ist kühl und verspielt, ein unmündiges Kind", type: "direct", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 1, visibility_composite: 4, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 1, visibility_composite: 4, vehicle_zipf: 4.4594, vehicles: [{ term: "verspielt", zipf: 3.3567 }, { term: "Kind", zipf: 5.5621 }],
       note: "MAX. Wind personified (verspielt) AND direct metaphor (= ein unmündiges Kind); copula + appositive identity = explicit figure -> lexical_cue 1. Strongest item." },
     { id: "m22", expression: "Dein Bett ist frisch gerichtet", type: "indirect", mipvu_status: "borderline",
       term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
@@ -234,7 +234,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.0369, "vehicles": [{ "term": "hohle", "zipf": 3.036896376226979, "match_type": "exact_form" }],
       "note": "Ruin given bodily emptiness; topic (Fenster)+vehicle (hohl) adjacent (attributive). "
     },
     {
@@ -246,7 +246,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.2772, "vehicles": [{ "term": "vereinsamten", "zipf": 2.2772285315373484, "match_type": "lemma_fallback" }],
       "note": "Wall given human loneliness; topic (Mauer)+vehicle (vereinsamt) attributive."
     },
     {
@@ -258,7 +258,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.2772, "vehicles": [{ "term": "gähnte", "zipf": 2.2772285315373484, "match_type": "exact_form" }],
       "note": "STRONG. Window as mouth; topic (Fenster)+vehicle (gähnen); predicate verb = link 2."
     },
     {
@@ -270,7 +270,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.1904, "vehicles": [{ "term": "voll", "zipf": 5.190379844537188, "match_type": "exact_form" }],
       "note": "CONTAINER; window as vessel of light; topic+vehicle (voll) juxtaposed."
     },
     {
@@ -282,7 +282,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.1523, "vehicles": [{ "term": "Gewölke", "zipf": 2.1522897949290485, "match_type": "lemma_fallback" }],
       "note": "Dust as cloud; topic (Staub)+vehicle (Gewölke) fused compound = juxtaposition."
     },
     {
@@ -294,7 +294,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.5783, "vehicles": [{ "term": "flimmerte", "zipf": 2.5782585272013296, "match_type": "lemma_fallback" }],
       "note": "Dust shimmers like light/heat; topic+vehicle (flimmern); verb link."
     },
     {
@@ -306,7 +306,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.4533, "vehicles": [{ "term": "gereckten", "zipf": 2.4533197905930297, "match_type": "lemma_fallback" }],
       "note": "Chimneys as straining bodies; topic (Schornsteinreste)+vehicle (gereckt) attributive."
     },
     {
@@ -318,7 +318,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.509, "vehicles": [{ "term": "Wüste", "zipf": 4.508952914865865, "match_type": "exact_form" }],
       "note": "Rubble-field as desert; topic (Schutt)+vehicle (Wüste) fused compound."
     },
     {
@@ -330,7 +330,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.2772, "vehicles": [{ "term": "döste", "zipf": 2.2772285315373484, "match_type": "lemma_fallback" }],
       "note": "STRONG. Landscape as dozing body; topic+vehicle (dösen); verb link."
     },
     {
@@ -342,7 +342,7 @@ const STIM_HV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": null, "vehicles": [{ "term": "—", "zipf": null, "match_type": "no_match" }],
       "note": "Mostly literal/atmospheric. Borderline."
     },
     {
@@ -354,7 +354,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 6.7034, "vehicles": [{ "term": "haben", "zipf": 6.703381799753328, "match_type": "exact_form" }],
       "note": "Capture as possession; topic (capture) implicit, vehicle (haben) verb. Dead."
     },
     {
@@ -366,7 +366,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.3186, "vehicles": [{ "term": "riskierte", "zipf": 3.3186212166955733, "match_type": "exact_form" }],
       "note": "Looking as risky action; topic (Geblinzel)+vehicle (riskieren) verb-object juxtaposition."
     },
     {
@@ -378,7 +378,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 1,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.3519, "vehicles": [{ "term": "hoch", "zipf": 5.351862149834252, "match_type": "exact_form" }],
       "note": "Gaze as upward motion; vehicle (hoch) only. Dead."
     },
     {
@@ -390,7 +390,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.4533, "vehicles": [{ "term": "Gestrüpp", "zipf": 2.4533197905930297, "match_type": "exact_form" }],
       "note": "Hair as vegetation/undergrowth; topic (Haar)+vehicle (Gestrüpp) compound. Imageable."
     },
     {
@@ -402,7 +402,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.6529, "vehicles": [{ "term": "verrätst", "zipf": 3.652892145498234, "match_type": "exact_form" }],
       "note": "Disclosure as betrayal; topic implicit, vehicle (verraten) verb. Conventional/borderline."
     },
     {
@@ -414,7 +414,7 @@ const STIM_HV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.8451, "vehicles": [{ "term": "Beine", "zipf": 4.845136714206278, "match_type": "exact_form" }],
       "note": "Metonymy (legs for man), not strict metaphor. Stylistically salient; filterable."
     },
     {
@@ -426,7 +426,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 1,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 6.0076, "vehicles": [{ "term": "leben", "zipf": 6.007586799911871, "match_type": "exact_form" }],
       "note": "'von etwas leben' lexicalized; horror is literal. Borderline."
     },
     {
@@ -438,7 +438,7 @@ const STIM_HV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.4216, "vehicles": [{ "term": "liegt", "zipf": 5.421569184700947, "match_type": "exact_form" }],
       "note": "Death via spatial/posture language; mostly literal-euphemistic. Borderline."
     },
     {
@@ -450,7 +450,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.1523, "vehicles": [{ "term": "zusammengesackten", "zipf": 2.1522897949290485, "match_type": "lemma_fallback" }],
       "note": "Walls as collapsed bodies; topic (Mauern)+vehicle (zusammengesackt) attributive."
     },
     {
@@ -462,7 +462,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.7086, "vehicles": [{ "term": "kriegte", "zipf": 3.7085922956963357, "match_type": "exact_form" }],
       "note": "Destruction as childlike receiving/possession; topic (Haus)+vehicle (kriegen); verb link."
     },
     {
@@ -474,7 +474,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.8968, "vehicles": [{ "term": "weg", "zipf": 5.896765325949649, "match_type": "exact_form" }],
       "note": "Light as movable/departing object; topic (Licht)+vehicle (weg); copula 'war' link."
     },
     {
@@ -486,7 +486,7 @@ const STIM_HV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.8968, "vehicles": [{ "term": "weg", "zipf": 5.896765325949649, "match_type": "exact_form" }],
       "note": "Death as being-away (gapped 'war weg'); topic deictic, vehicle elided. Emotionally strong but structurally low visibility."
     },
     {
@@ -498,7 +498,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.779, "vehicles": [{ "term": "unruhig", "zipf": 3.7789722611653427, "match_type": "exact_form" }],
       "note": "Emotion displaced onto legs; topic (Beine)+vehicle (unruhig); copula 'waren'."
     },
     {
@@ -510,7 +510,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.8887, "vehicles": [{ "term": "Sonne", "zipf": 4.888686297205691, "match_type": "exact_form" }],
       "note": "Literal motion + symbolic move toward warmth/hope; topic (er)+vehicle (Sonne) directional. Borderline/symbolic."
     },
     {
@@ -522,7 +522,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.4084, "vehicles": [{ "term": "rot", "zipf": 4.408365805315955, "match_type": "exact_form" }],
       "note": "Evening as coloring agent; topic (Sonne/Abend)+vehicle (rot vom) PP-link. Borderline/poetic."
     },
     {
@@ -534,7 +534,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.5343, "vehicles": [{ "term": "aufgeregt", "zipf": 4.534306837503917, "match_type": "exact_form" }],
       "note": "STRONG. Man's excitement projected onto basket; topic (Korb)+vehicle (aufgeregt); verb 'schwenkte' + adverb."
     }
   ],
@@ -878,7 +878,7 @@ const STIM_LV1 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.8425, "vehicles": [{ "term": "höhere", "zipf": 3.842485874957562, "match_type": "exact_form" }],
       "note": "MORE IS UP; dead orientational. Vehicle (height) only; topic (amount) not named as such; no link."
     },
     {
@@ -890,7 +890,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.1762, "vehicles": [{ "term": "ersetzen", "zipf": 4.176227802427137, "match_type": "exact_form" }],
       "note": "Topic (Bein) + vehicle (ersetzen = replace a tradeable object) both present; finite verb carries it = strong link."
     },
     {
@@ -902,7 +902,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.7891, "vehicles": [{ "term": "schöpfte", "zipf": 2.789111892516223, "match_type": "exact_form" }],
       "note": "Topic (Atem) + vehicle (schöpfen = scoop liquid) present; verb is the link."
     },
     {
@@ -914,7 +914,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.8766, "vehicles": [{ "term": "loslegen", "zipf": 3.8765656645298376, "match_type": "exact_form" }],
       "note": "Speech-as-motion; topic (speaking) implied, vehicle in verb; verb link."
     },
     {
@@ -926,7 +926,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.3741, "vehicles": [{ "term": "teures", "zipf": 3.3741385445454046, "match_type": "exact_form" }],
       "note": "CENTRAL. Topic (Bein) + vehicle (teuer/cost) both present; copula 'ist' = strongest nominal link."
     },
     {
@@ -938,7 +938,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.3791, "vehicles": [{ "term": "einzige", "zipf": 5.37906149384193, "match_type": "exact_form" }],
       "note": "Reification of Bein as a cost-category; copula present. Borderline (metonymic)."
     },
     {
@@ -950,7 +950,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.5673, "vehicles": [{ "term": "unterschätzen", "zipf": 3.5672631428998662, "match_type": "exact_form" }],
       "note": "VALUE IS DOWN (unterschätzen); topic (Bein) named, vehicle in verb; verb link."
     },
     {
@@ -962,7 +962,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.7651, "vehicles": [{ "term": "teurer", "zipf": 3.765073651648784, "match_type": "exact_form" }],
       "note": "CENTRAL. Topic + vehicle present; copula 'ist'."
     },
     {
@@ -974,7 +974,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.3741, "vehicles": [{ "term": "teures", "zipf": 3.3741385445454046, "match_type": "exact_form" }],
       "note": "CENTRAL repetition; copula. (Surfaces in DE text right after m08.)"
     },
     {
@@ -986,7 +986,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.3784, "vehicles": [{ "term": "kurz", "zipf": 5.378373910904872, "match_type": "exact_form" }],
       "note": "TIME IS LENGTH; topic (Zeit) + vehicle (kurz/spatial) present; copula. Dead but fully visible structurally."
     },
     {
@@ -998,7 +998,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.0483, "vehicles": [{ "term": "gerettet", "zipf": 5.048264527288113, "match_type": "exact_form" }],
       "note": "Leg given agency (retten); topic (Bein) + animate-rescuer vehicle; verb link."
     },
     {
@@ -1010,7 +1010,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.799, "vehicles": [{ "term": "beziehen", "zipf": 3.7990201811764717, "match_type": "exact_form" }],
       "note": "Payment-as-drawn-substance; topic (Rente) named but vehicle source domain implicit; verb link."
     },
     {
@@ -1022,7 +1022,7 @@ const STIM_LV1 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": null, "vehicles": [{ "term": "stiftengehen", "zipf": null, "match_type": "no_match" }],
       "note": "Dead idiom (desert/flee); faded image. Vehicle only, no recoverable link."
     },
     {
@@ -1034,7 +1034,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.4147, "vehicles": [{ "term": "Packen", "zipf": 4.414740884659478, "match_type": "exact_form" }],
       "note": "Borderline / partly literal-metonymic; topic (Stäbe) present, packing = retreat prep."
     },
     {
@@ -1046,7 +1046,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.7478, "vehicles": [{ "term": "kostet", "zipf": 4.747786016754622, "match_type": "exact_form" }],
       "note": "Dead comrade as cost; topic (the man) only pronominal, vehicle (kosten) in verb; verb link."
     },
     {
@@ -1058,7 +1058,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.1465, "vehicles": [{ "term": "billig", "zipf": 4.146460251268325, "match_type": "exact_form" }],
       "note": "CENTRAL satirical. Topic (the dead comrade) only as 'der'; vehicle (billig) present; copula 'war'. Term_vis 0 because the human topic is not lexically present, only deictic."
     },
     {
@@ -1070,7 +1070,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.3618, "vehicles": [{ "term": "gekostet", "zipf": 4.361804809471679, "match_type": "exact_form" }],
       "note": "CENTRAL. Human life itemized as expense; topic deictic, vehicle (kosten) in verb."
     },
     {
@@ -1082,7 +1082,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.6153, "vehicles": [{ "term": "Sache", "zipf": 5.615336254243461, "match_type": "exact_form" }],
       "note": "Reification/euphemism; topic (Bein) present, vehicle (Sache) juxtaposed via genitive-like 'mit'. Borderline."
     },
     {
@@ -1094,7 +1094,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.9304, "vehicles": [{ "term": "durchgegeben", "zipf": 2.930441045312692, "match_type": "exact_form" }],
       "note": "Information as passed object; topic (message) is clitic 's', vehicle in verb; verb link."
     },
     {
@@ -1106,7 +1106,7 @@ const STIM_LV1 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.5178, "vehicles": [{ "term": "abhauen", "zipf": 4.517777779819948, "match_type": "exact_form" }],
       "note": "Dead idiom (fled); not strongly imageable. Vehicle only."
     },
     {
@@ -1118,7 +1118,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 1,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.6825, "vehicles": [{ "term": "Reihe", "zipf": 4.682489493132131, "match_type": "exact_form" }],
       "note": "Temporal order as spatial row; vehicle (Reihe) only, weak juxtaposition. Dead/conventional."
     },
     {
@@ -1130,7 +1130,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 1,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.6825, "vehicles": [{ "term": "Reihe", "zipf": 4.682489493132131, "match_type": "exact_form" }],
       "note": "Repetition of m21; contextually ironic but structurally same coding."
     },
     {
@@ -1142,7 +1142,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.7478, "vehicles": [{ "term": "kostet", "zipf": 4.747786016754622, "match_type": "exact_form" }],
       "note": "CORE. Topic (Bein) + vehicle (kosten) present; verb link."
     },
     {
@@ -1154,7 +1154,7 @@ const STIM_LV1 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.0834, "vehicles": [{ "term": "kern", "zipf": 4.083408505521236, "match_type": "exact_form" }],
       "note": "Health as intact core; vehicle (kern-) only, fused compound, no overt link."
     },
     {
@@ -1166,7 +1166,7 @@ const STIM_LV1 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.2905, "vehicles": [{ "term": "Herzen", "zipf": 4.99531482632044, "match_type": "exact_form" }, { "term": "Kopf", "zipf": 5.585686225726652, "match_type": "exact_form" }],
       "note": "Metonymic (organs for faculties), not strict metaphor. Filterable."
     },
     {
@@ -1178,7 +1178,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.3741, "vehicles": [{ "term": "teures", "zipf": 3.3741385445454046, "match_type": "exact_form" }],
       "note": "CENTRAL culmination; copula+geworden. Topic + vehicle present."
     },
     {
@@ -1190,7 +1190,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.1065, "vehicles": [{ "term": "teuersten", "zipf": 3.1065323043683732, "match_type": "exact_form" }],
       "note": "CENTRAL. Topic (Beine) + vehicle (teuer superlative) present; partitive-genitive link (weaker than copula)."
     }
   ],
@@ -1618,7 +1618,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.6795, "vehicles": [{ "term": "verfolgte", "zipf": 3.6794899139920285, "match_type": "exact_form" }],
       "note": "Loyalty as physical pursuit; topic (Kellner/Treue)+vehicle (verfolgen); verb link."
     },
     {
@@ -1630,7 +1630,7 @@ const STIM_LV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.6254, "vehicles": [{ "term": "Treue", "zipf": 4.057185582784254, "match_type": "exact_form" }, { "term": "Verehrung", "zipf": 3.1936824800872734, "match_type": "exact_form" }],
       "note": "Quasi-devotional coloring; weak/borderline. Filterable."
     },
     {
@@ -1642,7 +1642,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.5077, "vehicles": [{ "term": "Statisten", "zipf": 3.5076774529156225, "match_type": "exact_form" }],
       "note": "FRAME metaphor: social scene as theatre; topic (wir)+vehicle (Statisten); 'als'+copula link."
     },
     {
@@ -1654,7 +1654,7 @@ const STIM_LV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.5426, "vehicles": [{ "term": "begann", "zipf": 4.542636028068437, "match_type": "exact_form" }],
       "note": "Event as action with start-point; very dead. Borderline."
     },
     {
@@ -1666,7 +1666,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.5837, "vehicles": [{ "term": "auftauchte", "zipf": 3.583653559088036, "match_type": "exact_form" }],
       "note": "Linguistic occurrence as surfacing/emerging; topic (s-Laut)+vehicle (auftauchen); verb link. Dead but visible."
     },
     {
@@ -1678,7 +1678,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.1027, "vehicles": [{ "term": "machte", "zipf": 5.102654649305172, "match_type": "exact_form" }],
       "note": "Speech production as making an object; topic (sch)+vehicle (machen); verb link. Dead."
     },
     {
@@ -1690,7 +1690,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.2872, "vehicles": [{ "term": "weiches", "zipf": 3.2879523969291213, "match_type": "exact_form" }, { "term": "feuchtwässeriges", "zipf": null, "match_type": "no_match", "components": [{ "component": "feucht", "zipf": 3.897885011356969 }, { "component": "wässrig", "zipf": 2.675168540209386 }] }],
       "note": "STRONG sensory. Sound given tactile/liquid qualities; topic (sch)+vehicle (weich/feucht/wässerig) attributive."
     },
     {
@@ -1702,7 +1702,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 1,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.7813, "vehicles": [{ "term": "Hühnerpopo", "zipf": null, "match_type": "no_match", "components": [{ "component": "Huhn", "zipf": 4.30762583239411 }, { "component": "Popo", "zipf": 3.254952136826196 }] }],
       "note": "VIVID comic image. Mouth ~ hen's backside; 'Ähnlichkeit mit' explicitly marks the comparison -> lexical_cue 1; topic+vehicle present."
     },
     {
@@ -1714,7 +1714,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 1,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.4941, "vehicles": [{ "term": "Geschützdonner", "zipf": null, "match_type": "no_match", "components": [{ "component": "Geschütz", "zipf": 3.0553797819209922 }, { "component": "Donner", "zipf": 3.9328471150785704 }] }],
       "note": "War-sound mapped onto voice; 'erinnerte an' explicitly flags comparison -> lexical_cue 1."
     },
     {
@@ -1726,7 +1726,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 1,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.4941, "vehicles": [{ "term": "geschützdonner", "zipf": null, "match_type": "no_match", "components": [{ "component": "Geschütz", "zipf": 3.0553797819209922 }, { "component": "Donner", "zipf": 3.9328471150785704 }] }],
       "note": "Repeat of war-sound metaphor; '-ähnlich' is an explicit similarity marker -> lexical_cue 1."
     },
     {
@@ -1738,7 +1738,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 1,
       "visibility_composite": 4,
-      "vehicle_zipf": null,
+      "vehicle_zipf": null, "vehicles": [{ "term": "stand ... auf", "zipf": null, "match_type": "no_match" }],
       "note": "MAX VISIBILITY. Text stages literal-vs-figurative (sat yet stood up) -> the contrast itself is the cue; topic+vehicle+verb link. composite 4."
     },
     {
@@ -1750,7 +1750,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 1,
       "visibility_composite": 4,
-      "vehicle_zipf": null,
+      "vehicle_zipf": null, "vehicles": [{ "term": "stand ... auf", "zipf": null, "match_type": "no_match" }],
       "note": "CENTRAL, MAX. 'Innerlich' overtly flags the figurative reading of 'aufstehen' -> lexical_cue 1; verb link."
     },
     {
@@ -1762,7 +1762,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 1,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.4562, "vehicles": [{ "term": "Aufstehen", "zipf": 4.456205478830518, "match_type": "exact_form" }],
       "note": "Nominalized repeat; 'innerlich' flags figure -> lexical_cue 1; nominal juxtaposition link."
     },
     {
@@ -1774,7 +1774,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 1,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.7888, "vehicles": [{ "term": "Angriff", "zipf": 4.788777691282414, "match_type": "exact_form" }],
       "note": "Social tension as military attack; 'wie' explicit simile marker -> lexical_cue 1."
     },
     {
@@ -1786,7 +1786,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.1223, "vehicles": [{ "term": "wich", "zipf": 3.1223265715516053, "match_type": "exact_form" }],
       "note": "Literal step-back + military-retreat resonance (after 'Angriff'); topic+vehicle; verb link. Borderline."
     },
     {
@@ -1798,7 +1798,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.5656, "vehicles": [{ "term": "Zunge", "zipf": 4.5655895590103, "match_type": "exact_form" }],
       "note": "Folk-physiological/metonymic body-for-speech-defect; topic+vehicle adjacent. Borderline."
     },
     {
@@ -1810,7 +1810,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 1,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.7345, "vehicles": [{ "term": "Mordbereit", "zipf": null, "match_type": "no_match", "components": [{ "component": "Mord", "zipf": 4.8939665383211235 }, { "component": "bereit", "zipf": 5.446167745373327 }] }, { "term": "todwund", "zipf": null, "match_type": "no_match", "components": [{ "component": "Tod", "zipf": 5.391171883844185 }, { "component": "wund", "zipf": 3.2066474572516412 }] }],
       "note": "Emotional injury as lethal violence; vehicle (mordbereit/todwund) foregrounded, topic (der eine) deictic; appositive juxtaposition. Hyperbolic."
     },
     {
@@ -1822,7 +1822,7 @@ const STIM_LV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.1882, "vehicles": [{ "term": "lachfertig", "zipf": null, "match_type": "no_match", "components": [{ "component": "lachen", "zipf": 4.796399995359008 }, { "component": "fertig", "zipf": 5.57999224001033 }] }],
       "note": "Readiness-to-laugh as loaded/primed state; weak. Borderline."
     },
     {
@@ -1834,7 +1834,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 1,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.5783, "vehicles": [{ "term": "randvoll", "zipf": 2.5782585272013296, "match_type": "exact_form" }],
       "note": "PERSON AS CONTAINER; vehicle (randvoll) foregrounded, topic (the other man) deictic; PP juxtaposition."
     },
     {
@@ -1846,7 +1846,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 1.9762, "vehicles": [{ "term": "Eruptionen", "zipf": 1.9761985358733671, "match_type": "exact_form" }],
       "note": "Laughter as volcanic eruption; topic (Gelächter)+vehicle (Eruptionen) fused compound. Vivid."
     },
     {
@@ -1858,7 +1858,7 @@ const STIM_LV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.1269, "vehicles": [{ "term": "Augen", "zipf": 5.523727112333149, "match_type": "exact_form" }, { "term": "Ohren", "zipf": 4.730164401738527, "match_type": "exact_form" }],
       "note": "Metonymy (organs for onlookers), not strict metaphor. Filterable."
     },
     {
@@ -1870,7 +1870,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.3707, "vehicles": [{ "term": "Auftritt", "zipf": 4.370650216699583, "match_type": "exact_form" }],
       "note": "FRAME (with Statisten): scene as stage performance; topic (the scene)+vehicle (Auftritt) appositive. Theatrical frame."
     },
     {
@@ -1882,7 +1882,7 @@ const STIM_LV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.6246, "vehicles": [{ "term": "mittendrin", "zipf": 3.6245585468542987, "match_type": "exact_form" }],
       "note": "Social implication as spatial centre; could be literal. Borderline/weak."
     },
     {
@@ -1894,7 +1894,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.9762, "vehicles": [{ "term": "verkrochen", "zipf": 2.976198535873367, "match_type": "exact_form" }],
       "note": "VIVID. Shame as bodily crawling-into-clothes; topic (wir)+vehicle (verkriechen); verb link."
     }
   ],
@@ -2177,7 +2177,7 @@ const STIM_LV2 = {
     }
   ],
 
-  de: "Dabei war mein Onkel natürlich kein Gastwirt. Aber er kannte einen Kellner. <span data-met=\"m01\">Dieser Kellner verfolgte meinen Onkel</span> so intensive <span data-met=\"m02\">mit seiner Treue und mit seiner Verehrung</span>, daß wir immer sagten: Das ist sein Kellner.\n\nAls sie sich kennenlernten, mein Onkel und der Kellner, war ich dabei. Ich war damals gerade so groß, daß ich die Nase auf den Tisch legen konnte. Meine Mutter war auch nicht viel älter. Etwas älter war sie wohl, aber wir waren beide noch so jung, daß wir uns ganz entsetzlich schämten, als der Onkel und der Kellner sich kennenlernten. Ja, wir waren dabei.\n\nMein Onkel natürlich auch, ebenso der Kellner, denn die beiden sollten sich ja kennenlernen und auf sie kam es an. Meine Mutter und ich <span data-met=\"m03\">waren nur als Statisten dabei</span>, <span data-met=\"m04\">als die Bekanntschaft der beiden begann</span>. Daß mein Onkel einen Zungenfehler hatte, wäre beinahe der Anlaß zu dieser Schlägerei geworden. Aber daß er einbeinig war, hat die Schlägerei dann schließlich doch verhindert. Er konnte kein s sprechen. Immer <span data-met=\"m05\">wenn in einem Wort ein harter s-Laut auftauchte</span>, <span data-met=\"m06\">dann machte er <span data-met=\"m07\">ein weiches feuchtwässeriges sch</span> daraus</span>. Und dabei schob er die Lippen weit vor, <span data-met=\"m08\">daß sein Mund entfernte Ähnlichkeit mit einem Hühnerpopo bekam</span>.\n\nDer Kellner stand also an unserem Tisch und fragte nervös: «Bitte schehr? Schie wünschen?»\n\nMein Onkel sagte gewohnheitsmäßig: «Alscho: Schwei Aschbach und für den Jungen eine Brausche»\n\nDer Kellner war sehr blaß. Und plötzlich merkte ich, daß mein Onkel auch blaß wurde. Nämlich als der Kellner die Bestellung der Sicherheit wegen wiederholte:\n\n«Scher wohl. Schwei Aschbach. Eine Brausche. Bitte schehr»\n\nMein Onkel sah meine Mutter mit hochgezogenen Brauen an, dann sagte er <span data-met=\"m09\">mit einer Stimme, die an fernen Geschützdonner erinnerte</span>:\n\n«Schie machen schich über mein Lischpeln luschtig?»\n\nDer Kellner stand da und dann fing es an, an ihm zu zittern. Vor allem aber zitterte seine Stimme, als er sich jetzt Mühe gab, auch etwas <span data-met=\"m10\">geschützdonnerähnlich zu antworten</span>:\n\n«Esch ischt schamlosch von Schie, schich über mich schu amüschieren.»\n\nAn meinem Onkel zitterte nichts. Als der Kellner ihn schamlos nannte, da stand mein Onkel doch wenigstens auf. Er stand eigentlich gar nicht auf. Das wäre ihm mit seinem einen Bein viel zu beschwerlich gewesen. <span data-met=\"m11\">Er blieb sitzen und stand dabei doch auf</span>. <span data-met=\"m12\">Innerlich stand er auf</span>. Der Kellner fühlte <span data-met=\"m13\">dieses innerliche Aufstehen</span> meines Onkels <span data-met=\"m14\">wie einen Angriff</span>, und <span data-met=\"m15\">er wich zwei kurze Schritte zurück</span>.\n\nSo standen sie nun und sahen sich an. <span data-met=\"m16\">Beide mit einer zu kurzen Zunge</span>, beide mit demselben Fehler. So standen sie sich gegenüber. <span data-met=\"m17\">Mordbereit, todwund der eine</span>, <span data-met=\"m18\">lachfertig</span>, <span data-met=\"m19\">randvoll mit <span data-met=\"m20\">Gelächtereruptionen</span></span> der andere. Ringsherum <span data-met=\"m21\">siebenhundert Augen und Ohren</span>, <span data-met=\"m22\">die den Auftritt mehr genossen als Bier und Brause</span>. Ach, und <span data-met=\"m23\">mittendrin</span> meine Mutter und ich. Rotköpfig, schamhaft, <span data-met=\"m24\">tief in die Wäsche verkrochen</span>.",
+  de: "Dabei war mein Onkel natürlich kein Gastwirt. Aber er kannte einen Kellner. <span data-met=\"m01\">Dieser Kellner verfolgte meinen Onkel</span> so intensive <span data-met=\"m02\">mit seiner Treue und mit seiner Verehrung</span>, daß wir immer sagten: Das ist sein Kellner.\n\nAls sies ich kennenlernten, mein Onkel und der Kellner, war ich dabei. Ich war damals gerade so groß, daß ich die Nase auf den Tisch legen konnte. Meine Mutter war auch nicht viel älter. Etwas älter war sie wohl, aber wir waren beide noch so jung, daß wir uns ganz entsetzlich schämten, als der Onkel und der Kellner sich kennenlernten. Ja, wir waren dabei.\n\nMein Onkel natürlich auch, ebenso der Kellner, denn die beiden sollten sich ja kennenlernen und auf sie kam es an. Meine Mutter und ich <span data-met=\"m03\">waren nur als Statisten dabei</span>, <span data-met=\"m04\">als die Bekanntschaft der beiden begann</span>. Daß mein Onkel einen Zungenfehler hatte, wäre beinahe der Anlaß zu dieser Schlägerei geworden. Aber daß er einbeinig war, hat die Schlägerei dann schließlich doch verhindert. Er konnte kein s sprechen. Immer <span data-met=\"m05\">wenn in einem Wort ein harter s-Laut auftauchte</span>, <span data-met=\"m06\">dann machte er <span data-met=\"m07\">ein weiches feuchtwässeriges sch</span> daraus</span>. Und dabei schob er die Lippen weit vor, <span data-met=\"m08\">daß sein Mund entfernte Ähnlichkeit mit einem Hühnerpopo bekam</span>.\n\nDer Kellner stand also an unserem Tisch und fragte nervös: «Bitte schehr? Schie wünschen?»\n\nMein Onkel sagte gewohnheitsmäßig: «Alscho: Schwei Aschbach und für den Jungen eine Brausche»\n\nDer Kellner war sehr blaß. Und plötzlich merkte ich, daß mein Onkel auch blaß wurde. Nämlich als der Kellner die Bestellung der Sicherheit wegen wiederholte:\n\n«Scher wohl. Schwei Aschbach. Eine Brausche. Bitte schehr»\n\nMein Onkel sah meine Mutter mit hochgezogenen Brauen an, dann sagte er <span data-met=\"m09\">mit einer Stimme, die an fernen Geschützdonner erinnerte</span>:\n\n«Schie machen schich über mein Lischpeln luschtig?»\n\nDer Kellner stand da und dann fing es an, an ihm zu zittern. Vor allem aber zitterte seine Stimme, als er sich jetzt Mühe gab, auch etwas <span data-met=\"m10\">geschützdonnerähnlich zu antworten</span>:\n\n«Esch ischt schamlosch von Schie, schich über mich schu amüschieren.»\n\nAn meinem Onkel zitterte nichts. Als der Kellner ihn schamlos nannte, da stand mein Onkel doch wenigstens auf. Er stand eigentlich gar nicht auf. Das wäre ihm mit seinem einen Bein viel zu beschwerlich gewesen. <span data-met=\"m11\">Er blieb sitzen und stand dabei doch auf</span>. <span data-met=\"m12\">Innerlich stand er auf</span>. Der Kellner fühlte <span data-met=\"m13\">dieses innerliche Aufstehen</span> meines Onkels <span data-met=\"m14\">wie einen Angriff</span>, und <span data-met=\"m15\">er wich zwei kurze Schritte zurück</span>.\n\nSo standen sie nun und sahen sich an. <span data-met=\"m16\">Beide mit einer zu kurzen Zunge</span>, beide mit demselben Fehler. So standen sie sich gegenüber. <span data-met=\"m17\">Mordbereit, todwund der eine</span>, <span data-met=\"m18\">lachfertig</span>, <span data-met=\"m19\">randvoll mit <span data-met=\"m20\">Gelächtereruptionen</span></span> der andere. Ringsherum <span data-met=\"m21\">siebenhundert Augen und Ohren</span>, <span data-met=\"m22\">die den Auftritt mehr genossen als Bier und Brause</span>. Ach, und <span data-met=\"m23\">mittendrin</span> meine Mutter und ich. Rotköpfig, schamhaft, <span data-met=\"m24\">tief in die Wäsche verkrochen</span>.",
   en: "Not, of course, that my uncle managed a pub. But he did know a waiter. <span data-met=\"e01\">This waiter dogged my uncle</span> <span data-met=\"e02\">with such devotion and respect</span> that we always said, “That’s his waiter.”\n\nI was present when my uncle and the waiter became acquainted. I was then just big enough to rest my nose on the table. My mother too was not much older. She was necessarily somewhat older, but we were both so young that we were quite horrified when my uncle and the waiter met. Yes, my mother and I were there.\n\nAnd my uncle of course, likewise the waiter, for <span data-met=\"e03\">the pair were destined to meet</span>, <span data-met=\"e04\">and so it came to pass</span>. My mother and I <span data-met=\"e05\">were only there as extras</span> when the pair’s acquaintance began. That my uncle had a speech defect was very nearly the occasion of this brawl. That he only has one leg finally prevented it. He couldn’t pronounce an “s”. <span data-met=\"e06\">When a hard “s” sound came up in a word</span>, <span data-met=\"e07\">he came out with <span data-met=\"e08\">a weak, damp, watery “th.”</span></span> And in doing so he pursed his lips out so that <span data-met=\"e09\">his mouth bore a faint resemblance to a hen’s backside</span>.\n\nWell, the waiter stood at our table and asked nervously: “Yeth pleath? Would you like thomething?”\n\nMy uncle replied in his habitual way: “Let’th thee. Two brandieth. And for the child a lemonade-thoda.”\n\nThe waiter was very pale. And I suddenly noticed that my uncle had also turned pale. Actually, this was when the waiter repeated the order to confirm it: “Very good. Two brandieth. A thoda. Thank you.”\n\nMy uncle looked at my mother with raised eyebrows. Then, <span data-met=\"e10\">in a voice reminiscent of the distant thunder of guns</span>, he said: “You’re making fun of my lithp?”\n\nThe waiter stood there and started to tremble. But above all his voice trembled as he endeavored to <span data-met=\"e11\">reply somewhat in the thunder-of-guns manner</span>: “It’th thcandalouth of you to amuthe yourthelf at my expenthe.”\n\nNo part of my uncle shook. But when the waiter called him scandalous, then at least my uncle stood up. That is to say, he by no means stood up properly speaking. With his one leg, that would have been much too difficult. <span data-met=\"e12\">He remained seated and nevertheless stood up</span>. <span data-met=\"e13\">He stood up within himself</span>. The waiter felt <span data-met=\"e14\">this inner rising</span> of my uncle’s <span data-met=\"e15\">like an offensive</span>, and <span data-met=\"e16\">he fell back a couple of short steps</span>.\n\nSo now they stood and looked at each other. <span data-met=\"e17\">Both with a too-short tongue</span>, both with the same deficiency. So they stood facing each other. <span data-met=\"e18\">Murderous and mortally wounded the one</span>, jovial and <span data-met=\"e19\">brimming with <span data-met=\"e20\">explosive laughter</span></span> the other. All around, <span data-met=\"e21\">seven hundred eyes and ears</span>, who enjoyed the scene more than beer and soda. Oh, and my mother and I <span data-met=\"e22\">in the middle of it all</span>. Red to the roots, ashamed, <span data-met=\"e23\">cringing into our clothes</span>."
 };
 
@@ -2199,58 +2199,58 @@ const STIM_PRACTICE = {
 
   metaphors_de: [
     { id: "p01", expression: "ich habe den Teufel im Leib", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.5027, vehicles: [{ term: "Teufel", zipf: 5.50273165146411, match_type: "exact_form" }],
       note: "Recklessness as demonic possession; copula link. Practice." },
     { id: "p02", expression: "sobald ich am Steuer sitze", type: "metonymy", mipvu_status: "borderline",
-      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
+      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: 4.1693, vehicles: [{ term: "Steuer", zipf: 4.169323134227829, match_type: "exact_form" }],
       note: "Metonymic 'am Steuer' = in control. Practice." },
     { id: "p03", expression: "ich fahre rasch, rasch aber sauber", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.8686, vehicles: [{ term: "sauber", zipf: 4.8685714432718035, match_type: "exact_form" }],
       note: "Skill as cleanliness. Practice." },
     { id: "p04", expression: "Kann man denn sauber fahren", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.8686, vehicles: [{ term: "sauber", zipf: 4.8685714432718035, match_type: "exact_form" }],
       note: "Repetition of sauber=control. Practice." },
     { id: "p05", expression: "Der Abend — aufgeklärt nach Regen", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 3.4676, vehicles: [{ term: "aufgeklärt", zipf: 3.4675602297076398, match_type: "exact_form" }],
       note: "Weather clearing / enlightened. Practice." },
     { id: "p06", expression: "der Himmel reingefegt", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null, vehicles: [{ term: "reingefegt", zipf: null, match_type: "no_match" }],
       note: "Sky as swept surface. Practice." },
     { id: "p07", expression: "kalt wie aus Jade", type: "direct", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 1, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 1, visibility_composite: 3, vehicle_zipf: 3.7166, vehicles: [{ term: "Jade", zipf: 3.716561225367611, match_type: "exact_form" }],
       note: "Simile (wie). Practice." },
     { id: "p08", expression: "Die Stadt sinkt unter der Rampe weg", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.6964, vehicles: [{ term: "sinkt", zipf: 3.696357839279324, match_type: "exact_form" }],
       note: "City as sinking object. Practice." },
     { id: "p09", expression: "Wie kühn die Straße steigt", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.2066, vehicles: [{ term: "kühn", zipf: 3.2066474572516412, match_type: "exact_form" }],
       note: "Road given bold agency. Practice." },
     { id: "p10", expression: "in dem Lichtgesprenkel", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null, vehicles: [{ term: "Gesprenkel", zipf: null, match_type: "no_match", components: [{ component: "sprenkeln", zipf: null }] }],
       note: "Light as sprinkled substance. Practice." },
     { id: "p11", expression: "ihre Zeiger kriechen", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.9256, vehicles: [{ term: "kriechen", zipf: 3.92558854251828, match_type: "exact_form" }],
       note: "Clock hands as creeping creature. Practice." },
     { id: "p12", expression: "die Asche häuft sich in der Schale", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 2.8213, vehicles: [{ term: "häuft", zipf: 2.821296575887624, match_type: "exact_form" }],
       note: "Ash accumulation; near-literal. Practice." },
     { id: "p13", expression: "Großer breitgedrückter bronzebrauner Ball", type: "direct", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.8259, vehicles: [{ term: "Ball", zipf: 4.825924980069695, match_type: "exact_form" }],
       note: "Moon as ball. Practice." },
     { id: "p14", expression: "schweres glosendes Licht", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 3.6752, vehicles: [{ term: "schweres", zipf: 3.675168540209386, match_type: "exact_form" }, { term: "glosendes", zipf: null, match_type: "no_match" }],
       note: "Light given weight/heat. Practice." },
     { id: "p15", expression: "Jägermond", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.255, vehicles: [{ term: "Jäger", zipf: 4.254952136826196, match_type: "exact_form" }],
       note: "Cultural compound; hunting frame. Practice." },
     { id: "p16", expression: "Halali über Heide und Felder", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 0, link_strength: 0, lexical_cue: 0, visibility_composite: 0, vehicle_zipf: null,
+      term_visibility: 0, link_strength: 0, lexical_cue: 0, visibility_composite: 0, vehicle_zipf: 2.3741, vehicles: [{ term: "Halali", zipf: 2.3741385445454046, match_type: "exact_form" }],
       note: "Hunting-call frame invocation. Practice." },
     { id: "p17", expression: "die Büsche knallt", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.6922, vehicles: [{ term: "knallt", zipf: 3.692201879508166, match_type: "exact_form" }],
       note: "Acoustic violence in landscape. Practice." },
     { id: "p18", expression: "das Wild birgt sich zitternd im Busch", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 0, link_strength: 0, lexical_cue: 0, visibility_composite: 0, vehicle_zipf: null,
+      term_visibility: 0, link_strength: 0, lexical_cue: 0, visibility_composite: 0, vehicle_zipf: 4.3895, vehicles: [{ term: "Wild", zipf: 4.389498299954619, match_type: "exact_form" }],
       note: "Literal within hunting frame; resonant. Practice." }
   ],
   metaphors_en: [],
