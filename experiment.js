@@ -1117,6 +1117,26 @@
                 condition: assignedCondition
               });
           
+              const time_disclaimer = {
+                type: jsPsychHtmlButtonResponse,
+                stimulus: `
+                  <div class="study-wrap instruction-box">
+                    <h2>Before you start</h2>
+                    <p>Please set aside enough uninterrupted time to complete this study in
+                       one sitting. Most participants finish within about <strong>90 minutes</strong>.</p>
+                    <p>There is no time limit, so please work carefully at your own pace.
+                       If the study takes you considerably longer than expected, you may
+                       contact the researcher afterward — additional compensation may be
+                       available.</p>
+                    <p>When you are ready to begin, click below.</p>
+                  </div>
+                `,
+                choices: ["I'm ready to begin"],
+                data: {
+                  task: "time_disclaimer"
+                }
+              };
+
               const general_intro = {
                 type: jsPsychHtmlButtonResponse,
                 stimulus: `
@@ -1151,6 +1171,15 @@
                 bk.block2_selfreport
               ];
 
+              // Receptive vocabulary (Leipzig VLT-German). Placed FIRST, right
+              // after the intro and before the background battery: it is a
+              // self-contained external test launched in a new tab, so we get
+              // it out of the way before the in-page tasks begin.
+              const vocabTimeline = [
+                makeVocabLaunchTrial(),
+                makeVocabScoresTrial()
+              ];
+
               const practiceTimeline = [
                 makePracticeIntroTrial(),
                 makePracticeReadingTrial(),
@@ -1161,13 +1190,40 @@
                 makeTransitionToMainTrial()
               ];
 
-              const trialTimeline = assignedStimuli.flatMap((stim) => [
-                makeReadingTrial(stim),
-                makeRecallIntroTrial(stim),
-                makeRecallTrial(stim, participantId, subject_id),
-                makeUnderlineTrial(stim),
-                makeReasoningTrial(stim, jsPsych)
-              ]);
+              // Midpoint message: shown once, immediately after the participant
+              // finishes the SECOND text's block (serial_position === 2). Keyed
+              // on serial position rather than a fixed array index so it stays
+              // correct under every condition's stimulus order.
+              const halfway_message = {
+                type: jsPsychHtmlButtonResponse,
+                stimulus: `
+                  <div class="study-wrap instruction-box">
+                    <h2>You're halfway there</h2>
+                    <p>You have completed two of the four passages. Nice work.</p>
+                    <p>Feel free to take a short break if you need one, then click below
+                       to continue with the second half.</p>
+                  </div>
+                `,
+                choices: ["Continue"],
+                data: {
+                  task: "halfway_message"
+                }
+              };
+
+              const trialTimeline = assignedStimuli.flatMap((stim) => {
+                const block = [
+                  makeReadingTrial(stim),
+                  makeRecallIntroTrial(stim),
+                  makeRecallTrial(stim, participantId, subject_id),
+                  makeUnderlineTrial(stim),
+                  makeReasoningTrial(stim, jsPsych)
+                ];
+                // splice the halfway interstitial in after the 2nd passage
+                if (stim.serial_position === 2) {
+                  block.push(halfway_message);
+                }
+                return block;
+              });
           
               const surveyTimeline = [
                 makeSurveyIntroTrial(),
@@ -1177,9 +1233,7 @@
                 makeSurveyGermanBackgroundTrial(),
                 makeSurveyGermanProficiencyTrial(),
                 makeSurveyLanguageUseTrial(),
-                makeSurveyOtherLanguagesTrial(),
-                makeVocabLaunchTrial(),
-                makeVocabScoresTrial()
+                makeSurveyOtherLanguagesTrial()
               ];
 
           
@@ -1206,7 +1260,9 @@
               };
           
               jsPsych.run([
+                time_disclaimer,
                 general_intro,
+                ...vocabTimeline,
                 ...backgroundKnowledgeTimeline,
                 ...practiceTimeline,
                 ...trialTimeline,
