@@ -10,7 +10,7 @@
           // OUT of the research dataset. Create a second DataPipe experiment with
           // data collection enabled (no condition assignment needed) and paste
           // its ID here. Until set, roster saving is skipped (a warning logs).
-          const ROSTER_EXPERIMENT_ID = "REPLACE_WITH_ROSTER_EXPERIMENT_ID";
+          const ROSTER_EXPERIMENT_ID = "zxnz1Ze0G3Bk";
 
           // Human-friendly payment code the participant keeps, e.g. "METAPHOR-7K2P".
           // Excludes ambiguous chars (0/O, 1/I/L) for readability when transcribed.
