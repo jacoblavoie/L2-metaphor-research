@@ -753,6 +753,78 @@
               };
             }
 
+            // -----------------------------
+            // Metaphor-conception probe (metalinguistic).
+            // Placed AFTER the reading/underlining/reasoning tasks (so it does
+            // not prime recognition) and BEFORE the background survey.
+            // NOT scored against a key (there is no single agreed definition of
+            // metaphor); analyzed as a participant-level MODERATOR of recognition.
+            // Free text FIRST (their own conception), then the closed
+            // narrow/broad dimension item (reads as a clarification of what they
+            // just wrote, not a prime). Tagged task: "metaphor_conception".
+            // -----------------------------
+            function makeMetaphorConceptionOpenTrial() {
+              return {
+                type: jsPsychSurveyText,
+                preamble: `
+                  <div class="study-wrap instruction-box">
+                    <h3>One Last Question About Language</h3>
+                    <p>Before the final background questions, we are interested in
+                       your own view.</p>
+                  </div>
+                `,
+                questions: [
+                  {
+                    prompt: "In your own words, what is a metaphor? There is no right or wrong answer — we are interested in how you think about it.",
+                    name: "metaphor_definition_open",
+                    rows: 5,
+                    columns: 80,
+                    required: true
+                  }
+                ],
+                button_label: "Continue",
+                data: {
+                  task: "metaphor_conception",
+                  subtask: "open"
+                }
+              };
+            }
+
+            function makeMetaphorConceptionDimensionTrial() {
+              // Single-select locating the participant on a narrow<->broad cline.
+              // Option ORDER is fixed here (narrow -> broad) for interpretability;
+              // response is recorded as the option TEXT, so scoring/coding in R
+              // keys on the text, not the position.
+              return {
+                type: jsPsychSurveyMultiChoice,
+                preamble: `
+                  <div class="study-wrap instruction-box">
+                    <h3>One Last Question About Language</h3>
+                    <p>Thinking about what you just wrote, which statement best
+                       matches how you understand the word "metaphor"?</p>
+                  </div>
+                `,
+                questions: [
+                  {
+                    prompt: "A metaphor is…",
+                    name: "metaphor_conception_breadth",
+                    options: [
+                      "only an explicit comparison using words like \u201clike\u201d or \u201cas\u201d (e.g., \u201cbrave as a lion\u201d)",
+                      "a direct comparison that calls one thing another (e.g., \u201cmy lawyer is a shark\u201d), but not \u201clike/as\u201d comparisons",
+                      "any expression where one thing is described in terms of another, including everyday phrases (e.g., \u201cgrasp an idea\u201d)",
+                      "any non-literal or figurative language at all, broadly defined"
+                    ],
+                    required: true
+                  }
+                ],
+                button_label: "Continue",
+                data: {
+                  task: "metaphor_conception",
+                  subtask: "breadth_dimension"
+                }
+              };
+            }
+
             function makeSurveyIntroTrial() {
               return {
                 type: jsPsychHtmlButtonResponse,
@@ -1236,6 +1308,12 @@
                 makeSurveyOtherLanguagesTrial()
               ];
 
+              // Metaphor-conception probe: runs AFTER reading, BEFORE survey.
+              const conceptionTimeline = [
+                makeMetaphorConceptionOpenTrial(),
+                makeMetaphorConceptionDimensionTrial()
+              ];
+
           
               const filename = `${subject_id}_${participantId}_condition${assignedCondition}.csv`;
 
@@ -1266,6 +1344,7 @@
                 ...backgroundKnowledgeTimeline,
                 ...practiceTimeline,
                 ...trialTimeline,
+                ...conceptionTimeline,
                 ...surveyTimeline,
                 save_data,
                 thank_you

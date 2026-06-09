@@ -3,10 +3,10 @@
 // =====================================================================
 //
 // Four global stimulus objects, one per design slot:
-//   STIM_HV1  Der Lacher          (HIGH)  -- CODED SHELL, codes pending
+//   STIM_HV1  Spiegelgeschichte         (HIGH)  
 //   STIM_HV2  Nachts schlafen die Ratten doch  (HIGH)
 //   STIM_LV1  Mein teures Bein    (LOW)
-//   STIM_LV2  Schischyphusch / Thithyphuth      (replaces Das Brot)
+//   STIM_LV2  Schischyphusch / Thithyphuth   
 //
 // experiment.js keys its language-condition maps on stimulus_id
 // ("HV1"/"HV2"/"LV1"/"LV2"), so those ids are preserved as the SLOT names
@@ -30,7 +30,7 @@
 // Aichinger: persecuted under National Socialism; canonical postwar text
 // (1949). Coheres with the postwar-reckoning framing of the corpus.
 // Coded from German + English MIPVU; Picken features assigned per the
-// corpus rubric. First-pass codes for Jacob to check.
+// corpus rubric. 
 //
 // REVERSE-CHRONOLOGY DECISION: items that are figurative ONLY by virtue of
 // the text's reversed temporality (flowers un-wilting -> buds; "frisch"
@@ -50,140 +50,98 @@ const STIM_HV1 = {
   source: "Ilse Aichinger",
 
   metaphors_de: [
-    { id: "m01", expression: "Dein Wagen wartet", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.0518, vehicles: [{ term: "wartet", zipf: 5.0518 }],
-      note: "Car given human waiting; topic (Wagen) + vehicle (warten); verb link. Conventional personification." },
-    { id: "m02", expression: "auf das grüne Licht", type: "metonymy", mipvu_status: "borderline",
-      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
-      note: "Green light = permission to proceed; literal traffic light. Metonymic/borderline. Filterable." },
-    { id: "m03", expression: "Die Tropfen tanzen", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.8556, vehicles: [{ term: "tanzen", zipf: 4.8556 }],
-      note: "VIVID. Raindrops as dancing bodies; topic (Tropfen) + vehicle (tanzen); verb link." },
-    { id: "m04", expression: "Die Straßen sind frisch getauft", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.4815, vehicles: [{ term: "getauft", zipf: 3.4815 }],
-      note: "STRONG. Rain-wet streets as baptized; topic (Straßen) + vehicle (getauft); copula 'sind' + participle. Ritual/sacred." },
-    { id: "m05", expression: "der Himmel legt seine Hand auf alle Dächer", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.9592, vehicles: [{ term: "Hand", zipf: 5.4399 }, { term: "legt", zipf: 4.4785 }],
-      note: "STRONG. Sky given body/agency; topic (Himmel) + vehicle (Hand legen); verb link. Central image." },
-    { id: "m06", expression: "Dein Wagen fährt aus reiner Höflichkeit", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.6923, vehicles: [{ term: "Höflichkeit", zipf: 3.6923 }],
-      note: "Car's motion as human politeness; topic (Wagen) + vehicle (Höflichkeit); verb+adverbial link." },
-    { id: "m07", expression: "wetten um ihre Ehre", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.8973, vehicles: [{ term: "Ehre", zipf: 4.8973 }],
-      note: "Honor as wagerable possession; topic (Ehre) + vehicle (wetten um) verb-object. Conventional, active." },
-    { id: "m08", expression: "auf die Trambahn gesetzt", type: "indirect", mipvu_status: "positive",
-      term_visibility: 0, link_strength: 2, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.5552, vehicles: [{ term: "gesetzt", zipf: 4.5552 }],
-      note: "Betting as physical placing; topic implicit, vehicle (setzen auf) verb. Dead/conventional." },
-    { id: "m09", expression: "ist noch keiner aus dem Sarg gestiegen", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.0828, vehicles: [{ term: "Sarg", zipf: 4.1523 }, { term: "gestiegen", zipf: 4.0133 }],
-      note: "Finality of death via impossible bodily motion out of coffin; topic+vehicle; verb link. Hyperbolic concrete image. Borderline." },
-    { id: "m10", expression: "reicht der Morgen noch lange in die Nacht hinein", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.8912, vehicles: [{ term: "reicht", zipf: 5.1878 }, { term: "hinein", zipf: 4.5947 }],
-      note: "Time/light as spatially reaching body; topic (Morgen) + vehicle (reichen, Nacht as space); verb link. (Folds in #11/#12 from MIPVU.)" },
-    { id: "m11", expression: "ein Streifen Mond fällt zugleich in die Einfahrt", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.0504, vehicles: [{ term: "fällt", zipf: 5.0504 }],
-      note: "Moonlight as falling object; topic (Mond/light) + vehicle (fallen); verb link. Imageable." },
-    { id: "m12", expression: "der Leichenwagen fährt fröhlich nach Hause", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.0838, vehicles: [{ term: "fröhlich", zipf: 4.0838 }],
-      note: "STRONG, disturbing. Hearse given cheerfulness; topic (Leichenwagen) + vehicle (fröhlich); verb+adverb link." },
-    { id: "m13", expression: "Dort wartet der leere Sockel", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.0518, vehicles: [{ term: "wartet", zipf: 5.0518 }],
-      note: "Pedestal given expectant waiting; topic (Sockel) + vehicle (warten); verb link." },
-    { id: "m14", expression: "Diese verdammte Gründlichkeit", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "Abstract thoroughness personified as blamed agent (cursed); topic+vehicle. Borderline / personified abstraction." },
-    { id: "m15", expression: "es war schon hohe Zeit", type: "indirect", mipvu_status: "positive",
-      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: 4.1742, vehicles: [{ term: "hohe", zipf: 4.1742 }],
-      note: "Urgency as vertical height; vehicle (hoch) only. Dead/conventional." },
-    { id: "m16", expression: "die Toten zu erwecken", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.6618, vehicles: [{ term: "erwecken", zipf: 3.6618 }],
-      note: "CENTRAL. Death as sleep one can be woken from; topic (Toten) + vehicle (erwecken); verb link. Conventional but structurally central (kept despite reversal context)." },
-    { id: "m17", expression: "der Regen ihm keine Tränen gibt", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.3158, vehicles: [{ term: "Tränen", zipf: 4.5306 }, { term: "gibt", zipf: 6.1011 }],
-      note: "STRONG. Rain as agent that could give tears; topic (Regen) + vehicle (geben); verb link." },
-    { id: "m18", expression: "starrt er ins Leere", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.0623, vehicles: [{ term: "Leere", zipf: 4.0623 }],
-      note: "Emotional blankness spatialized as void; topic (gaze) + vehicle (Leere) PP. Conventional, active." },
-    { id: "m19", expression: "Die Spatzen schreien fröhlich", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
-      note: "Sparrows humanized (schreien) + cheerful; topic (Spatzen) + vehicle; verb+adverb. Ironic contrast." },
-    { id: "m20", expression: "als stünden Gläser zwischen seinen Schritten", type: "direct", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 1, visibility_composite: 3, vehicle_zipf: 3.9087, vehicles: [{ term: "Gläser", zipf: 3.9087 }],
-      note: "VIVID. Fragile gait as walking among breakable glass; 'als' explicit comparison marker -> lexical_cue 1. (Folds in #34.)" },
-    { id: "m21", expression: "Der Wind ist kühl und verspielt, ein unmündiges Kind", type: "direct", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 1, visibility_composite: 4, vehicle_zipf: 4.4594, vehicles: [{ term: "verspielt", zipf: 3.3567 }, { term: "Kind", zipf: 5.5621 }],
-      note: "MAX. Wind personified (verspielt) AND direct metaphor (= ein unmündiges Kind); copula + appositive identity = explicit figure -> lexical_cue 1. Strongest item." },
-    { id: "m22", expression: "Dein Bett ist frisch gerichtet", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
-      note: "'gerichtet' = set in order/prepared; conventional, faint ritual echo. Borderline / low-salience." }
+    { id: "m01", expression: "Dein Wagen wartet", type: "personification", mipvu_status: "positive", term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.0518, vehicles: [{ term: "wartet", zipf: 5.0518 }], note: "Car given human waiting; topic (Wagen) + vehicle (warten); verb link. Conventional personification." },
+    { id: "m02", expression: "auf das grüne Licht", type: "metonymy", mipvu_status: "borderline", term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null, note: "Green light = permission to proceed; literal traffic light. Metonymic/borderline. Filterable." },
+    { id: "m03", expression: "Die Tropfen tanzen", type: "personification", mipvu_status: "positive", term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.8556, vehicles: [{ term: "tanzen", zipf: 4.8556 }], note: "VIVID. Raindrops as dancing bodies; topic (Tropfen) + vehicle (tanzen); verb link." },
+    { id: "m04", expression: "Die Straßen sind frisch getauft", type: "indirect", mipvu_status: "positive", term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.4815, vehicles: [{ term: "getauft", zipf: 3.4815 }], note: "STRONG. Rain-wet streets as baptized; topic (Straßen) + vehicle (getauft); copula 'sind' + participle. Ritual/sacred." },
+    { id: "m05", expression: "der Himmel legt seine Hand auf alle Dächer", type: "personification", mipvu_status: "positive", term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.9592, vehicles: [{ term: "Hand", zipf: 5.4399 }, { term: "legt", zipf: 4.4785 }], note: "STRONG. Sky given body/agency; topic (Himmel) + vehicle (Hand legen); verb link. Central image." },
+    { id: "m06", expression: "Dein Wagen fährt aus reiner Höflichkeit", type: "personification", mipvu_status: "positive", term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.6923, vehicles: [{ term: "Höflichkeit", zipf: 3.6923 }], note: "Car's motion as human politeness; topic (Wagen) + vehicle (Höflichkeit); verb+adverbial link." },
+    { id: "m07", expression: "wetten um ihre Ehre", type: "indirect", mipvu_status: "positive", term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.8973, vehicles: [{ term: "Ehre", zipf: 4.8973 }], note: "Honor as wagerable possession; topic (Ehre) + vehicle (wetten um) verb-object. Conventional, active." },
+    { id: "m08", expression: "auf die Trambahn gesetzt", type: "indirect", mipvu_status: "positive", term_visibility: 0, link_strength: 2, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.5552, vehicles: [{ term: "gesetzt", zipf: 4.5552 }], note: "Betting as physical placing; topic implicit, vehicle (setzen auf) verb. Dead/conventional." },
+    { id: "m09", expression: "ist noch keiner aus dem Sarg gestiegen", type: "indirect", mipvu_status: "borderline", term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.0828, vehicles: [{ term: "Sarg", zipf: 4.1523 }, { term: "gestiegen", zipf: 4.0133 }], note: "Finality of death via impossible bodily motion out of coffin; topic+vehicle; verb link. Hyperbolic concrete image. Borderline." },
+    { id: "m10", expression: "reicht der Morgen noch lange in die Nacht hinein", type: "indirect", mipvu_status: "positive", term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.8912, vehicles: [{ term: "reicht", zipf: 5.1878 }, { term: "hinein", zipf: 4.5947 }], note: "Time/light as spatially reaching body; topic (Morgen) + vehicle (reichen, Nacht as space); verb link. (Folds in #11/#12 from MIPVU.)" },
+    { id: "m11", expression: "ein Streifen Mond fällt zugleich in die Einfahrt", type: "indirect", mipvu_status: "positive", term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.0504, vehicles: [{ term: "fällt", zipf: 5.0504 }], note: "Moonlight as falling object; topic (Mond/light) + vehicle (fallen); verb link. Imageable." },
+    { id: "m12", expression: "der Leichenwagen fährt fröhlich nach Hause", type: "personification", mipvu_status: "positive", term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.0838, vehicles: [{ term: "fröhlich", zipf: 4.0838 }], note: "STRONG, disturbing. Hearse given cheerfulness; topic (Leichenwagen) + vehicle (fröhlich); verb+adverb link." },
+    { id: "m13", expression: "Dort wartet der leere Sockel", type: "personification", mipvu_status: "positive", term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.0518, vehicles: [{ term: "wartet", zipf: 5.0518 }], note: "Pedestal given expectant waiting; topic (Sockel) + vehicle (warten); verb link." },
+    { id: "m14", expression: "Diese verdammte Gründlichkeit", type: "indirect", mipvu_status: "borderline", term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null, note: "Abstract thoroughness personified as blamed agent (cursed); topic+vehicle. Borderline / personified abstraction." },
+    { id: "m15", expression: "es war schon hohe Zeit", type: "indirect", mipvu_status: "positive", term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: 4.1742, vehicles: [{ term: "hohe", zipf: 4.1742 }], note: "Urgency as vertical height; vehicle (hoch) only. Dead/conventional." },
+    { id: "m16", expression: "da kannst du ruhig sein", type: "indirect", mipvu_status: "borderline", term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 5.4192, vehicles: [{ term: "ruhig", zipf: 5.41922670608822, match_type: "exact_form" }], note: "Borderline: calm/peaceful state applied idiomatically to assurance." },
+    { id: "m17", expression: "der Regen ihm keine Tränen gibt", type: "personification", mipvu_status: "positive", term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.3158, vehicles: [{ term: "Tränen", zipf: 4.5306 }, { term: "gibt", zipf: 6.1011 }], note: "STRONG. Rain as agent that could give tears; topic (Regen) + vehicle (geben); verb link." },
+    { id: "m18", expression: "starrt er ins Leere", type: "indirect", mipvu_status: "positive", term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.0623, vehicles: [{ term: "Leere", zipf: 4.0623 }], note: "Emotional blankness spatialized as void; topic (gaze) + vehicle (Leere) PP. Conventional, active." },
+    { id: "m19", expression: "Die Spatzen schreien fröhlich", type: "personification", mipvu_status: "positive", term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null, note: "Sparrows humanized (schreien) + cheerful; topic (Spatzen) + vehicle; verb+adverb. Ironic contrast." },
+    { id: "m20", expression: "Sie wissen nicht", type: "indirect", mipvu_status: "positive", term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 6.0643, vehicles: [{ term: "wissen", zipf: 6.06433462457392, match_type: "exact_form" }], note: "Human knowledge attributed to sparrows (irony of reverse-time scene)." },
+    { id: "m21", expression: "es verboten ist", type: "indirect", mipvu_status: "positive", term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.5221, vehicles: [{ term: "verboten", zipf: 4.52212386522921, match_type: "exact_form" }], note: "Legal/prohibitive frame applied to an impossible/supernatural act." },
+    { id: "m22", expression: "die Toten zu erwecken", type: "indirect", mipvu_status: "positive", term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.6618, vehicles: [{ term: "erwecken", zipf: 3.6618 }], note: "CENTRAL. Death as sleep one can be woken from; topic (Toten) + vehicle (erwecken); verb link. Conventional but structurally central (kept despite reversal context)." },
+    { id: "m23", expression: "als stünden Gläser zwischen seinen Schritten", type: "direct", mipvu_status: "positive", term_visibility: 1, link_strength: 1, lexical_cue: 1, visibility_composite: 3, vehicle_zipf: 3.9087, vehicles: [{ term: "Gläser", zipf: 3.9087 }], note: "VIVID. Fragile gait as walking among breakable glass; 'als' explicit comparison marker -> lexical_cue 1. (Folds in #34.)" },
+    { id: "m24", expression: "Der Wind ist kühl und verspielt, ein unmündiges Kind", type: "direct", mipvu_status: "positive", term_visibility: 1, link_strength: 2, lexical_cue: 1, visibility_composite: 4, vehicle_zipf: 4.4594, vehicles: [{ term: "verspielt", zipf: 3.3567 }, { term: "Kind", zipf: 5.5621 }], note: "MAX. Wind personified (verspielt) AND direct metaphor (= ein unmündiges Kind); copula + appositive identity = explicit figure -> lexical_cue 1. Strongest item." },
+    { id: "m25", expression: "Dein Bett ist frisch gerichtet", type: "indirect", mipvu_status: "borderline", term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.1001, note: "'gerichtet' = set in order/prepared; conventional, faint ritual echo. Borderline / low-salience." }
   ],
-
   metaphors_en: [
     { id: "e01", expression: "Your car is waiting", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.324, vehicles: [{ term: "waiting", zipf: 5.324 }],
       note: "Car given human waiting; topic (car) + vehicle (waiting); verb link." },
     { id: "e02", expression: "The rain is easing off", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 2.7832, vehicles: [{ term: "easing", zipf: 2.7832 }],
       note: "Rain as force/pressure that relaxes; topic (rain) + vehicle (ease off); verb link. (No DE counterpart - EN-only.)" },
     { id: "e03", expression: "The raindrops dance off the car roof", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.1698, vehicles: [{ term: "dance", zipf: 5.1698 }],
       note: "VIVID. Raindrops as dancing bodies; topic (raindrops) + vehicle (dance); verb link." },
     { id: "e04", expression: "The streets are freshly christened", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 2.769, vehicles: [{ term: "christened", zipf: 2.769 }],
       note: "STRONG. Wet streets as baptized; topic (streets) + vehicle (christened); copula + participle. Ritual." },
     { id: "e05", expression: "the sky placing its hand on all the roofs", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.454, vehicles: [{ term: "hand", zipf: 5.446 }, { term: "placing", zipf: 3.4621 }],
       note: "STRONG. Sky given body/agency; topic (sky) + vehicle (placing hand); participial verb link." },
     { id: "e06", expression: "Out of sheer gallantry your car drives", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 2.797, vehicles: [{ term: "gallantry", zipf: 2.797 }],
       note: "Car's motion as chivalrous courtesy; topic (car) + vehicle (gallantry); verb+adverbial link." },
     { id: "e07", expression: "staking their honor", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 2.9253, vehicles: [{ term: "staking", zipf: 2.9253 }],
       note: "Honor as stakeable possession; topic (honor) + vehicle (stake) verb-object. Conventional, active." },
     { id: "e08", expression: "has bet on the tram", type: "indirect", mipvu_status: "positive",
-      term_visibility: 0, link_strength: 2, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 0, link_strength: 2, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 5.2345, vehicles: [{ term: "bet", zipf: 5.2345 }],
       note: "Betting as placing on; topic implicit, vehicle (bet on) verb. Dead/conventional." },
     { id: "e09", expression: "arisen from his coffin", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.1638, vehicles: [{ term: "coffin", zipf: 3.9565 }, { term: "arisen", zipf: 2.371 }],
       note: "Death's finality via impossible rising from coffin; topic+vehicle; verb link. Hyperbolic. Borderline." },
     { id: "e10", expression: "The morning still reaches far back into the night", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.72, vehicles: [{ term: "reaches", zipf: 3.72 }],
       note: "Time/light as reaching body, night as space; topic (morning) + vehicle (reach into); verb link. (Folds in #11/#12.)" },
     { id: "e11", expression: "a ray of moonlight falls directly onto the entrance", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.4064, vehicles: [{ term: "falls", zipf: 4.4064 }],
       note: "Moonlight as falling object; topic (moonlight) + vehicle (fall); verb link. Imageable." },
     { id: "e12", expression: "the hearse drives cheerfully home", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 2.7068, vehicles: [{ term: "cheerfully", zipf: 2.7068 }],
       note: "STRONG, disturbing. Hearse given cheerfulness; topic (hearse) + vehicle (cheerfully); verb+adverb link." },
     { id: "e13", expression: "the empty pedestal … is waiting", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 5.324, vehicles: [{ term: "waiting", zipf: 5.324 }],
       note: "Pedestal given expectant waiting; topic (pedestal) + vehicle (waiting); verb link." },
     { id: "e14", expression: "It was high time", type: "indirect", mipvu_status: "positive",
-      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: null,
+      term_visibility: 0, link_strength: 1, lexical_cue: 0, visibility_composite: 1, vehicle_zipf: 5.2895, vehicles: [{ term: "high", zipf: 5.2895 }],
       note: "Urgency as vertical height; vehicle (high) only. Dead/conventional." },
     { id: "e15", expression: "you can relax", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 4.9853, vehicles: [{ term: "relax", zipf: 4.9853 }],
       note: "Reassurance as bodily relaxation; topic (you) + vehicle (relax). Conventional, weak. Borderline." },
     { id: "e16", expression: "forbidden to awaken the dead", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.3922, vehicles: [{ term: "awaken", zipf: 3.3922 }],
       note: "CENTRAL. Death as sleep one is woken from; topic (dead) + vehicle (awaken); verb link. (Kept despite reversal context.)" },
     { id: "e17", expression: "the rain gives him no tears", type: "personification", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.5792, vehicles: [{ term: "tears", zipf: 4.3491 }, { term: "gives", zipf: 4.8092 }],
       note: "STRONG. Rain as agent that could give tears; topic (rain) + vehicle (give); verb link." },
     { id: "e18", expression: "stares into the emptiness", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 3.2603, vehicles: [{ term: "emptiness", zipf: 3.2603 }],
       note: "Blankness as void; topic (gaze) + vehicle (emptiness) PP. Conventional, active." },
     { id: "e19", expression: "The sparrows twitter joyfully", type: "personification", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 2.269, vehicles: [{ term: "twitter", zipf: 2.2461 }, { term: "joyfully", zipf: 2.2918 }],
       note: "Sparrows given joy; topic (sparrows) + vehicle (joyfully); verb+adverb. Borderline-positive (birds do vocalize)." },
     { id: "e20", expression: "as though glasses stood between his steps", type: "direct", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 1, visibility_composite: 3, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 1, visibility_composite: 3, vehicle_zipf: 4.5197, vehicles: [{ term: "glasses", zipf: 4.5197 }],
       note: "VIVID. Fragile gait as walking among breakable glass; 'as though' explicit comparison marker -> lexical_cue 1." },
     { id: "e21", expression: "The wind is cool and playful like a romping child", type: "direct", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 1, visibility_composite: 4, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 2, lexical_cue: 1, visibility_composite: 4, vehicle_zipf: 4.1335, vehicles: [{ term: "playful", zipf: 3.07 }, { term: "child", zipf: 5.1971 }],
       note: "MAX. Wind personified (playful) AND simile (like a romping child); copula + 'like' marker -> lexical_cue 1. Strongest item." },
     { id: "e22", expression: "Your bed has been freshly made", type: "indirect", mipvu_status: "borderline",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null,
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 5.7486, vehicles: [{ term: "made", zipf: 5.7486 }],
       note: "'made/prepared' conventional; faint ritual echo. Borderline / low-salience." }
   ],
 
@@ -193,11 +151,11 @@ Sei geduldig. Es ist ja Frühsommer. Da <span data-met="m10">reicht der Morgen n
 
 Sie tragen deinen Sarg durch die zweite Einfahrt über den Hof in die Leichenhalle. <span data-met="m13">Dort wartet der leere Sockel</span> schwarz und schief und erhöht, und sie setzen den Sarg darauf und öffnen ihn wieder, und einer von ihnen flucht, weil die Nägel zu fest eingeschlagen sind. <span data-met="m14">Diese verdammte Gründlichkeit</span>!
 
-Gleich darauf kommt auch der junge Mann und bringt den Kranz zurück, <span data-met="m15">es war schon hohe Zeit</span>. Die Männer ordnen die Schleifen und legen ihn vorne hin, da kannst du ruhig sein, der Kranz liegt gut. Bis morgen sind die welken Blüten frisch und schließen sich zu Knospen. Die Nacht über bleibst du allein, das Kreuz zwischen den Händen, und auch den Tag über wirst du viel Ruhe haben. Du wirst es später lange nicht mehr fertig bringen, so still zu liegen.
+Gleich darauf kommt auch der junge Mann und bringt den Kranz zurück, <span data-met="m15">es war schon hohe Zeit</span>. Die Männer ordnen die Schleifen und legen ihn vorne hin, <span data-met="m16">da kannst du ruhig sein</span>, der Kranz liegt gut. Bis morgen sind die welken Blüten frisch und schließen sich zu Knospen. Die Nacht über bleibst du allein, das Kreuz zwischen den Händen, und auch den Tag über wirst du viel Ruhe haben. Du wirst es später lange nicht mehr fertig bringen, so still zu liegen.
 
-Am nächsten Tag kommt der junge Mann wieder. Und weil <span data-met="m17">der Regen ihm keine Tränen gibt</span>, <span data-met="m18">starrt er ins Leere</span> und dreht die Mütze zwischen den Fingern. Erst bevor sie den Sarg wieder auf das Brett heben, schlägt er die Hände vor das Gesicht. Er weint. Du bleibst nicht länger in der Leichenhalle. Warum weint er? Der Sargdeckel liegt nur mehr lose, und es ist heller Morgen. <span data-met="m19">Die Spatzen schreien fröhlich</span>. Sie wissen nicht, daß es verboten ist, <span data-met="m16">die Toten zu erwecken</span>. Der junge Mann geht vor deinem Sarg her, <span data-met="m20">als stünden Gläser zwischen seinen Schritten</span>. <span data-met="m21">Der Wind ist kühl und verspielt, ein unmündiges Kind</span>.
+Am nächsten Tag kommt der junge Mann wieder. Und weil <span data-met="m17">der Regen ihm keine Tränen gibt</span>, <span data-met="m18">starrt er ins Leere</span> und dreht die Mütze zwischen den Fingern. Erst bevor sie den Sarg wieder auf das Brett heben, schlägt er die Hände vor das Gesicht. Er weint. Du bleibst nicht länger in der Leichenhalle. Warum weint er? Der Sargdeckel liegt nur mehr lose, und es ist heller Morgen. <span data-met="m19">Die Spatzen schreien fröhlich</span>. <span data-met="m20">Sie wissen nicht</span>, daß <span data-met="m21">es verboten ist</span>, <span data-met="m22">die Toten zu erwecken</span>. Der junge Mann geht vor deinem Sarg her, <span data-met="m23">als stünden Gläser zwischen seinen Schritten</span>. <span data-met="m24">Der Wind ist kühl und verspielt, ein unmündiges Kind</span>.
 
-Sie tragen dich ins Haus und die Stiegen hinauf. Du wirst aus dem Sarg gehoben. <span data-met="m22">Dein Bett ist frisch gerichtet</span>. Der junge Mann starrt durch das Fenster in den Hof hinunter, da paaren sich zwei Tauben und gurren laut, geekelt wendet er sich ab.`,
+Sie tragen dich ins Haus und die Stiegen hinauf. Du wirst aus dem Sarg gehoben. <span data-met="m25">Dein Bett ist frisch gerichtet</span>. Der junge Mann starrt durch das Fenster in den Hof hinunter, da paaren sich zwei Tauben und gurren laut, geekelt wendet er sich ab.`,
   en: `<span data-met="e01">Your car is waiting</span> for the green light at the crossroads. <span data-met="e02">The rain is easing off</span>. <span data-met="e03">The raindrops dance off the car roof</span>. There is a smell of distant hay. <span data-met="e04">The streets are freshly christened</span>, <span data-met="e05">the sky placing its hand on all the roofs</span>. <span data-met="e06">Out of sheer gallantry your car drives</span> for a while alongside the tram. Two little boys at the curb are <span data-met="e07">staking their honor</span> on which is the faster. But the one who <span data-met="e08">has bet on the tram</span> is going to lose. You might have warned him, but no one has yet for the sake of this honor <span data-met="e09">arisen from his coffin</span>.
 
 Have patience. After all, it is early summer. <span data-met="e10">The morning still reaches far back into the night</span>. You arrive in time. Before it is dark and all the children have vanished from the curbs, the car turns into the courtyard of the hospital, <span data-met="e11">a ray of moonlight falls directly onto the entrance</span>. Soon the men have come and lift your coffin from the hearse. And <span data-met="e12">the hearse drives cheerfully home</span>.
@@ -342,7 +300,7 @@ const STIM_HV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null, "vehicles": [{ "term": "—", "zipf": null, "match_type": "no_match" }],
+      "vehicle_zipf": 4.5165, "vehicles": [{ "term": "dunkel", "zipf": 4.5165, "match_type": "exact_form" }],
       "note": "Mostly literal/atmospheric. Borderline."
     },
     {
@@ -548,7 +506,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.0856, "vehicles": [{ "term": "hollow", "zipf": 4.0856 }],
       "note": "Ruin given bodily emptiness; topic (window)+vehicle (hollow) attributive."
     },
     {
@@ -560,7 +518,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.7846, "vehicles": [{ "term": "isolated", "zipf": 3.7846 }],
       "note": "Weaker than German vereinsamt; 'isolated' less personifying. Borderline; attributive."
     },
     {
@@ -572,7 +530,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.07, "vehicles": [{ "term": "yawned", "zipf": 2.07 }],
       "note": "STRONG. Window as mouth; topic (window)+vehicle (yawned); verb link."
     },
     {
@@ -584,7 +542,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.2219, "vehicles": [{ "term": "full", "zipf": 5.2219 }],
       "note": "CONTAINER; vessel of light; topic+vehicle (full of) juxtaposed."
     },
     {
@@ -596,7 +554,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.07, "vehicles": [{ "term": "cloud", "zipf": 4.07 }],
       "note": "Dust as cloud; topic (dust)+vehicle (cloud) via 'of'-genitive link."
     },
     {
@@ -608,7 +566,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 1.769, "vehicles": [{ "term": "shimmered", "zipf": 1.769 }],
       "note": "Dust shimmers like light; topic+vehicle (shimmered); verb link."
     },
     {
@@ -620,7 +578,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.6898, "vehicles": [{ "term": "carcasses", "zipf": 2.6898 }],
       "note": "STRONG (stronger than German). Chimneys as corpses; topic (chimneys)+vehicle (carcasses) 'of'-genitive."
     },
     {
@@ -632,7 +590,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.2238, "vehicles": [{ "term": "wasted", "zipf": 4.2238 }],
       "note": "'wasted' evokes bodily depletion; topic (ruins)+vehicle (wasted) attributive. Borderline body metaphor."
     },
     {
@@ -644,7 +602,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 1.769, "vehicles": [{ "term": "slumbered", "zipf": 1.769 }],
       "note": "STRONG. Landscape as sleeping body; topic+vehicle (slumbered); verb link."
     },
     {
@@ -656,7 +614,7 @@ const STIM_HV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": null, "vehicles": [],
       "note": "Mostly literal/atmospheric. Borderline."
     },
     {
@@ -668,7 +626,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 6.5188, "vehicles": [{ "term": "got", "zipf": 6.5188 }],
       "note": "Capture as possession; topic implicit, vehicle (got) verb. Dead."
     },
     {
@@ -680,7 +638,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.5841, "vehicles": [{ "term": "risked", "zipf": 3.5841 }],
       "note": "Looking as risky action; topic (glance)+vehicle (risk) verb-object."
     },
     {
@@ -692,7 +650,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 1,
-      "vehicle_zipf": null,
+      "vehicle_zipf": null, "vehicles": [],
       "note": "Seeing as upward movement; vehicle (above) only. Dead."
     },
     {
@@ -704,7 +662,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.7068, "vehicles": [{ "term": "bushy", "zipf": 2.7068 }],
       "note": "Hair as vegetation; topic (hair)+vehicle (bushy) attributive. Imageable."
     },
     {
@@ -716,7 +674,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 6.2361, "vehicles": [{ "term": "tell", "zipf": 6.2361 }],
       "note": "Disclosure as betrayal; topic implicit, vehicle (tell on) verb. Borderline. (Corresponds to DE verraten.)"
     },
     {
@@ -728,7 +686,7 @@ const STIM_HV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.7445, "vehicles": [{ "term": "legs", "zipf": 4.7445 }],
       "note": "Metonymy (legs for man), not strict metaphor. Filterable."
     },
     {
@@ -740,7 +698,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 1,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.5367, "vehicles": [{ "term": "live", "zipf": 5.5367 }],
       "note": "'live on' lexicalized; horror is literal. Borderline."
     },
     {
@@ -752,7 +710,7 @@ const STIM_HV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.9424, "vehicles": [{ "term": "lying", "zipf": 4.9424 }],
       "note": "Death via posture/spatial language; mostly literal-euphemistic. Borderline."
     },
     {
@@ -764,7 +722,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.5223, "vehicles": [{ "term": "sagging", "zipf": 2.5223 }],
       "note": "Wall as weakened body; topic (wall)+vehicle (sagging) attributive."
     },
     {
@@ -776,7 +734,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.4388, "vehicles": [{ "term": "hit", "zipf": 5.4388 }],
       "note": "Destruction as bodily impact; topic (house)+vehicle (hit); verb link. (Less childlike than DE kriegte.)"
     },
     {
@@ -788,7 +746,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.6138, "vehicles": [{ "term": "went", "zipf": 5.6138 }],
       "note": "Light as departing entity; topic (light)+vehicle (went out); verb link. Dead."
     },
     {
@@ -800,7 +758,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.4718, "vehicles": [{ "term": "gone", "zipf": 5.4718 }],
       "note": "Death as going-away; topic (he) deictic, vehicle (gone); copula 'was'. Emotionally alive understatement."
     },
     {
@@ -812,7 +770,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.3212, "vehicles": [{ "term": "uneasy", "zipf": 3.3212 }],
       "note": "Emotion displaced onto legs; topic (legs)+vehicle (uneasy); copula 'were'."
     },
     {
@@ -824,7 +782,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.0912, "vehicles": [{ "term": "hurried", "zipf": 3.0912 }],
       "note": "Literal motion + symbolic move toward warmth/hope; topic (he)+vehicle (sun) directional. Borderline/symbolic."
     },
     {
@@ -836,7 +794,7 @@ const STIM_HV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.1699, "vehicles": [{ "term": "red", "zipf": 5.1699 }],
       "note": "Evening as coloring agent; topic (sun/it)+vehicle (red with) PP-link. Borderline/poetic."
     },
     {
@@ -848,7 +806,7 @@ const STIM_HV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.4679, "vehicles": [{ "term": "excitedly", "zipf": 2.4679 }],
       "note": "STRONG. Man's excitement projected onto basket; topic (basket)+vehicle (excitedly); verb 'swung' + adverb."
     }
   ],
@@ -1022,7 +980,7 @@ const STIM_LV1 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null, "vehicles": [{ "term": "stiftengehen", "zipf": null, "match_type": "no_match" }],
+      "vehicle_zipf": 3.4533, "vehicles": [{ "term": "stiftengehen", "zipf": null, "match_type": "compound_split", "components": [{ "component": "stiften", "zipf": 3.4533 }] }],
       "note": "Dead idiom (desert/flee); faded image. Vehicle only, no recoverable link."
     },
     {
@@ -1204,7 +1162,7 @@ const STIM_LV1 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.4444, "vehicles": [{ "term": "higher", "zipf": 4.4444 }],
       "note": "MORE IS UP; dead. Vehicle (height) only."
     },
     {
@@ -1216,7 +1174,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 6.5866, "vehicles": [{ "term": "out", "zipf": 6.5866 }],
       "note": "MIND IS A CONTAINER; topic (mind) named, vehicle (out of) juxtaposed. Conventional."
     },
     {
@@ -1228,7 +1186,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 6.0668, "vehicles": [{ "term": "give", "zipf": 6.0668 }],
       "note": "Leg as returnable possession; topic+vehicle present; verb link."
     },
     {
@@ -1240,7 +1198,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.3984, "vehicles": [{ "term": "drew", "zipf": 4.3984 }],
       "note": "Breath as manipulable substance; topic (breath)+vehicle (draw); verb link."
     },
     {
@@ -1252,7 +1210,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.3817, "vehicles": [{ "term": "launching", "zipf": 3.3817 }],
       "note": "Speech as projectile launch; topic (lecture)+vehicle; verb link."
     },
     {
@@ -1264,7 +1222,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.446, "vehicles": [{ "term": "expensive", "zipf": 4.446 }],
       "note": "CENTRAL. Topic (leg)+vehicle (expensive); copula."
     },
     {
@@ -1276,7 +1234,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 1,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.5613, "vehicles": [{ "term": "fiddle", "zipf": 3.5613 }],
       "note": "Simile idiom; 'as ... as' is an explicit comparison marker -> lexical_cue 1. Topic (you)+vehicle (fiddle)."
     },
     {
@@ -1288,7 +1246,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.6222, "vehicles": [{ "term": "ripe", "zipf": 3.6222 }],
       "note": "AGING IS RIPENING; topic (age)+vehicle (ripe) adjacent."
     },
     {
@@ -1300,7 +1258,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.1351, "vehicles": [{ "term": "unique", "zipf": 4.1351 }],
       "note": "Leg = case/category (reification); copula 's. Borderline."
     },
     {
@@ -1312,7 +1270,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.7051, "vehicles": [{ "term": "underestimate", "zipf": 3.7051 }],
       "note": "VALUE IS DOWN; topic (leg)+vehicle in verb; verb link. Dead but visible."
     },
     {
@@ -1324,7 +1282,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.446, "vehicles": [{ "term": "expensive", "zipf": 4.446 }],
       "note": "CENTRAL; copula."
     },
     {
@@ -1336,7 +1294,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 1,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.156, "vehicles": [{ "term": "sound", "zipf": 5.156 }],
       "note": "Health as structural soundness; 'as...as' comparison marker -> lexical_cue 1."
     },
     {
@@ -1348,7 +1306,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.446, "vehicles": [{ "term": "expensive", "zipf": 4.446 }],
       "note": "CENTRAL repetition; appositive NP (no copula here) = juxtaposition link."
     },
     {
@@ -1360,7 +1318,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.027, "vehicles": [{ "term": "busy", "zipf": 5.027 }],
       "note": "Weak borderline (occupied=physically full). Low salience; filterable."
     },
     {
@@ -1372,7 +1330,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.8432, "vehicles": [{ "term": "saved", "zipf": 4.8432 }],
       "note": "Leg given agency (save); topic (leg)+animate-rescuer vehicle; verb link."
     },
     {
@@ -1384,7 +1342,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.552, "vehicles": [{ "term": "drawing", "zipf": 4.2046 }, { "term": "fat", "zipf": 4.8995 }],
       "note": "'drawing' = drawn substance (verb link) + 'fat' gives money bodily size; topic (pensions) present."
     },
     {
@@ -1396,7 +1354,7 @@ const STIM_LV1 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.2584, "vehicles": [{ "term": "front", "zipf": 5.2584 }],
       "note": "Lexicalized military 'front'; vehicle only. Borderline."
     },
     {
@@ -1408,7 +1366,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.2345, "vehicles": [{ "term": "clear", "zipf": 5.2345 }],
       "note": "Leaving = emptying a space; topic (leaving) implicit, vehicle in verb."
     },
     {
@@ -1420,7 +1378,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.8288, "vehicles": [{ "term": "long", "zipf": 5.8288 }],
       "note": "TIME IS LENGTH; topic (it=time)+vehicle (long) adjacent. Dead."
     },
     {
@@ -1432,7 +1390,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.3817, "vehicles": [{ "term": "costing", "zipf": 3.3817 }],
       "note": "Death as cost; topic (he) deictic, vehicle (cost) in verb; verb link."
     },
     {
@@ -1444,7 +1402,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.0793, "vehicles": [{ "term": "bargain", "zipf": 4.0793 }],
       "note": "CENTRAL satirical; copula 'was'. Topic (he) only pronominal -> term_vis 0."
     },
     {
@@ -1456,7 +1414,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.7393, "vehicles": [{ "term": "cost", "zipf": 4.7393 }],
       "note": "CENTRAL; life itemized as cost; topic deictic, vehicle (cost) in verb."
     },
     {
@@ -1468,7 +1426,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.5059, "vehicles": [{ "term": "business", "zipf": 5.5059 }],
       "note": "Reification; topic (leg)+vehicle (business) via 'of'-genitive link. Borderline."
     },
     {
@@ -1480,7 +1438,7 @@ const STIM_LV1 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.9424, "vehicles": [{ "term": "lying", "zipf": 4.9424 }],
       "note": "Mostly literal posture; include only for existential force. Borderline."
     },
     {
@@ -1492,7 +1450,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.0334, "vehicles": [{ "term": "pass", "zipf": 5.0334 }],
       "note": "Info as transferable object; topic (word)+vehicle (pass); verb link."
     },
     {
@@ -1504,7 +1462,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.5338, "vehicles": [{ "term": "took", "zipf": 5.5338 }],
       "note": "Escape as lift-off; idiom, image faded; vehicle in verb; verb link."
     },
     {
@@ -1516,7 +1474,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.2263, "vehicles": [{ "term": "descending", "zipf": 3.2263 }],
       "note": "Rank as vertical scale; topic (rank)+vehicle (descending) juxtaposed."
     },
     {
@@ -1528,7 +1486,7 @@ const STIM_LV1 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 6.1727, "vehicles": [{ "term": "down", "zipf": 6.1727 }],
       "note": "Hierarchy as vertical; vehicle (down) only. Dead."
     },
     {
@@ -1540,7 +1498,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.3817, "vehicles": [{ "term": "costing", "zipf": 3.3817 }],
       "note": "CORE; topic (leg)+vehicle (cost); verb link."
     },
     {
@@ -1552,7 +1510,7 @@ const STIM_LV1 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.2665, "vehicles": [{ "term": "hale", "zipf": 3.2412 }, { "term": "hearty", "zipf": 3.2918 }],
       "note": "Health as bodily fullness; idiom, vehicle only. Dead."
     },
     {
@@ -1564,7 +1522,7 @@ const STIM_LV1 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.4955, "vehicles": [{ "term": "heads", "zipf": 4.6299 }, { "term": "hearts", "zipf": 4.3611 }],
       "note": "Metonymic (organs for faculties). Filterable."
     },
     {
@@ -1576,7 +1534,7 @@ const STIM_LV1 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.446, "vehicles": [{ "term": "expensive", "zipf": 4.446 }],
       "note": "CENTRAL culmination; copula+become."
     },
     {
@@ -1588,7 +1546,7 @@ const STIM_LV1 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.446, "vehicles": [{ "term": "expensive", "zipf": 4.446 }],
       "note": "CENTRAL; topic (legs)+vehicle (expensive superlative); partitive link."
     }
   ],
@@ -1738,7 +1696,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 1,
       "visibility_composite": 4,
-      "vehicle_zipf": null, "vehicles": [{ "term": "stand ... auf", "zipf": null, "match_type": "no_match" }],
+      "vehicle_zipf": 4.4562, "vehicles": [{ "term": "stand ... auf", "zipf": 4.456205478830518, "match_type": "no_match" }],
       "note": "MAX VISIBILITY. Text stages literal-vs-figurative (sat yet stood up) -> the contrast itself is the cue; topic+vehicle+verb link. composite 4."
     },
     {
@@ -1750,7 +1708,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 1,
       "visibility_composite": 4,
-      "vehicle_zipf": null, "vehicles": [{ "term": "stand ... auf", "zipf": null, "match_type": "no_match" }],
+      "vehicle_zipf": 4.4562, "vehicles": [{ "term": "stand ... auf", "zipf": 4.456205478830518, "match_type": "no_match" }],
       "note": "CENTRAL, MAX. 'Innerlich' overtly flags the figurative reading of 'aufstehen' -> lexical_cue 1; verb link."
     },
     {
@@ -1908,7 +1866,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.7232, "vehicles": [{ "term": "dogged", "zipf": 2.7232 }],
       "note": "Loyalty as animal tracking; topic (waiter)+vehicle (dogged); verb link."
     },
     {
@@ -1920,7 +1878,7 @@ const STIM_LV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.6182, "vehicles": [{ "term": "devotion", "zipf": 3.6182 }],
       "note": "Quasi-worship coloring; weak/borderline. Filterable."
     },
     {
@@ -1932,7 +1890,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.6141, "vehicles": [{ "term": "destined", "zipf": 3.6141 }],
       "note": "Personified fate directing events; topic implicit, vehicle (destined) verb. Conventional/comic."
     },
     {
@@ -1944,7 +1902,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.0334, "vehicles": [{ "term": "pass", "zipf": 5.0334 }],
       "note": "Event as motion/arrival; topic deictic, vehicle verb. Very dead."
     },
     {
@@ -1956,7 +1914,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.3171, "vehicles": [{ "term": "extras", "zipf": 3.3171 }],
       "note": "FRAME: scene as theatre; topic (we)+vehicle (extras); 'as'+copula link."
     },
     {
@@ -1968,7 +1926,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.6657, "vehicles": [{ "term": "came", "zipf": 5.6657 }],
       "note": "Linguistic occurrence as upward emergence; topic (sound)+vehicle (came up); verb link. Dead."
     },
     {
@@ -1980,7 +1938,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 5.6657, "vehicles": [{ "term": "came", "zipf": 5.6657 }],
       "note": "Speech production as exiting a container/body; topic (th)+vehicle (came out); verb link. (e08 nests inside.)"
     },
     {
@@ -1992,7 +1950,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.86, "vehicles": [{ "term": "watery", "zipf": 2.86 }],
       "note": "STRONG sensory. Sound given tactile/liquid qualities; topic (th)+vehicle (damp/watery) attributive."
     },
     {
@@ -2004,7 +1962,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 1,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.2263, "vehicles": [{ "term": "backside", "zipf": 3.2263 }],
       "note": "VIVID comic. 'bore a resemblance to' explicitly marks comparison -> lexical_cue 1; topic+vehicle present."
     },
     {
@@ -2016,7 +1974,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 1,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.1243, "vehicles": [{ "term": "thunder", "zipf": 4.1243 }],
       "note": "War-sound mapped onto voice; 'reminiscent of' explicitly flags comparison -> lexical_cue 1."
     },
     {
@@ -2028,7 +1986,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 1,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.1243, "vehicles": [{ "term": "thunder", "zipf": 4.1243 }],
       "note": "Repeat of war-sound metaphor; 'in the ... manner' flags the figure -> lexical_cue 1."
     },
     {
@@ -2040,7 +1998,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 1,
       "visibility_composite": 4,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.4111, "vehicles": [{ "term": "stood", "zipf": 4.4111 }],
       "note": "MAX VISIBILITY. Text stages literal-vs-figurative contrast -> the contrast is the cue; topic+vehicle+verb link. composite 4."
     },
     {
@@ -2052,7 +2010,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 1,
       "visibility_composite": 4,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.4111, "vehicles": [{ "term": "stood", "zipf": 4.4111 }],
       "note": "CENTRAL, MAX. 'within himself' overtly flags figurative reading of 'stood up' -> lexical_cue 1; verb link."
     },
     {
@@ -2064,7 +2022,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 1,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.9253, "vehicles": [{ "term": "rising", "zipf": 3.9253 }],
       "note": "Nominalized repeat; 'inner' flags figure -> lexical_cue 1; nominal juxtaposition."
     },
     {
@@ -2076,7 +2034,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 1,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.8077, "vehicles": [{ "term": "offensive", "zipf": 3.8077 }],
       "note": "Social exchange as battle; 'like' explicit simile marker -> lexical_cue 1."
     },
     {
@@ -2088,7 +2046,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.8628, "vehicles": [{ "term": "fell", "zipf": 4.8628 }],
       "note": "Literal step-back + military-retreat resonance (after 'offensive'); topic+vehicle; verb link. Borderline."
     },
     {
@@ -2100,7 +2058,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.4932, "vehicles": [{ "term": "tongue", "zipf": 4.4932 }],
       "note": "Folk-physiological/metonymic body-for-defect; topic+vehicle adjacent. Borderline."
     },
     {
@@ -2112,7 +2070,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 1,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.2888, "vehicles": [{ "term": "wounded", "zipf": 4.2888 }],
       "note": "Emotional injury as lethal violence; vehicle foregrounded, topic (the one) deictic; appositive. Hyperbolic/comic."
     },
     {
@@ -2124,7 +2082,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.5706, "vehicles": [{ "term": "brimming", "zipf": 2.5706 }],
       "note": "PERSON AS CONTAINER; topic (the other)+vehicle (brimming) present; PP juxtaposition."
     },
     {
@@ -2136,7 +2094,7 @@ const STIM_LV2 = {
       "link_strength": 1,
       "lexical_cue": 0,
       "visibility_composite": 2,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 3.7264, "vehicles": [{ "term": "explosive", "zipf": 3.7264 }],
       "note": "Laughter as explosion; topic (laughter)+vehicle (explosive) attributive. Alive."
     },
     {
@@ -2148,7 +2106,7 @@ const STIM_LV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.9344, "vehicles": [{ "term": "eyes", "zipf": 5.3449 }, { "term": "ears", "zipf": 4.5238 }],
       "note": "Metonymy (organs for onlookers), not strict metaphor. Filterable."
     },
     {
@@ -2160,7 +2118,7 @@ const STIM_LV2 = {
       "link_strength": 0,
       "lexical_cue": 0,
       "visibility_composite": 0,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 4.9498, "vehicles": [{ "term": "middle", "zipf": 4.9498 }],
       "note": "Social implication as spatial centre; could be literal. Borderline/weak."
     },
     {
@@ -2172,7 +2130,7 @@ const STIM_LV2 = {
       "link_strength": 2,
       "lexical_cue": 0,
       "visibility_composite": 3,
-      "vehicle_zipf": null,
+      "vehicle_zipf": 2.3332, "vehicles": [{ "term": "cringing", "zipf": 2.3332 }],
       "note": "VIVID. Shame as bodily shrinking-into-clothing; topic (we/our)+vehicle (cringing into); verb link."
     }
   ],
@@ -2214,7 +2172,7 @@ const STIM_PRACTICE = {
       term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 3.4676, vehicles: [{ term: "aufgeklärt", zipf: 3.4675602297076398, match_type: "exact_form" }],
       note: "Weather clearing / enlightened. Practice." },
     { id: "p06", expression: "der Himmel reingefegt", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: null, vehicles: [{ term: "reingefegt", zipf: null, match_type: "no_match" }],
+      term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 4.3438, vehicles: [{ term: "reingefegt", zipf: null, match_type: "compound_split", components: [{ component: "rein", zipf: 5.6701 }, { component: "gefegt", zipf: 3.0175 }] }],
       note: "Sky as swept surface. Practice." },
     { id: "p07", expression: "kalt wie aus Jade", type: "direct", mipvu_status: "positive",
       term_visibility: 1, link_strength: 1, lexical_cue: 1, visibility_composite: 3, vehicle_zipf: 3.7166, vehicles: [{ term: "Jade", zipf: 3.716561225367611, match_type: "exact_form" }],
@@ -2226,7 +2184,7 @@ const STIM_PRACTICE = {
       term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.2066, vehicles: [{ term: "kühn", zipf: 3.2066474572516412, match_type: "exact_form" }],
       note: "Road given bold agency. Practice." },
     { id: "p10", expression: "in dem Lichtgesprenkel", type: "indirect", mipvu_status: "positive",
-      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: null, vehicles: [{ term: "Gesprenkel", zipf: null, match_type: "no_match", components: [{ component: "sprenkeln", zipf: null }] }],
+      term_visibility: 1, link_strength: 1, lexical_cue: 0, visibility_composite: 2, vehicle_zipf: 1.9761, vehicles: [{ term: "Gesprenkel", zipf: 1.97619853587337, match_type: "no_match", components: [{ component: "Sprenkel", zipf: 1.97619853587337 }] }],
       note: "Light as sprinkled substance. Practice." },
     { id: "p11", expression: "ihre Zeiger kriechen", type: "personification", mipvu_status: "positive",
       term_visibility: 1, link_strength: 2, lexical_cue: 0, visibility_composite: 3, vehicle_zipf: 3.9256, vehicles: [{ term: "kriechen", zipf: 3.92558854251828, match_type: "exact_form" }],
