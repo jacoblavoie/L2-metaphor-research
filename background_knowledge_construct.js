@@ -321,7 +321,7 @@
     pages: [
       `<div style="max-width:640px;text-align:left;margin:0 auto;">
         <h2>Before you begin reading</h2>
-        <p>First, a short set of background questions (about 6 minutes). They ask
+        <p>Please complete a short set of background questions (about 6 minutes). They ask
         about history, literature, and authors. Some you may know well; others you
         may not — that is expected and completely fine. Please answer on your own,
         without looking anything up.</p>

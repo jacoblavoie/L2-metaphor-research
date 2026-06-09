@@ -5,6 +5,23 @@
           STIM_HV1, STIM_HV2, STIM_LV1, STIM_LV2, STIM_PRACTICE */
 
           const EXPERIMENT_ID = "pyYN5xjQ1Iey";
+          // Separate DataPipe experiment that receives ONLY the payment roster
+          // (payment_id + name + email + timestamp). This keeps participant PII
+          // OUT of the research dataset. Create a second DataPipe experiment with
+          // data collection enabled (no condition assignment needed) and paste
+          // its ID here. Until set, roster saving is skipped (a warning logs).
+          const ROSTER_EXPERIMENT_ID = "REPLACE_WITH_ROSTER_EXPERIMENT_ID";
+
+          // Human-friendly payment code the participant keeps, e.g. "METAPHOR-7K2P".
+          // Excludes ambiguous chars (0/O, 1/I/L) for readability when transcribed.
+          function generatePaymentId() {
+            const chars = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
+            let code = "";
+            for (let i = 0; i < 4; i++) {
+              code += chars[Math.floor(Math.random() * chars.length)];
+            }
+            return "METAPHOR-" + code;
+          }
 
           (function () {
             "use strict";
@@ -280,9 +297,12 @@
                   serial_position: { type: "INT" },
                   language:        { type: "STRING" },
                   // One object per underlined segment:
-                  //   { segment, segment_index, semantic_clash, pragmatic_clash,
-                  //     l1_divergence, conventional_familiarity, lexical_gap,
-                  //     processing_effort, other_text }
+                  //   { segment, segment_index,
+                  //     reasons: { semantic_clash, pragmatic_clash, l1_divergence,
+                  //                conventional_familiarity, lexical_gap, processing_effort },
+                  //     other_text }
+                  // (Reason binaries are nested under `reasons` so analysis never
+                  //  mistakes bookkeeping fields like segment_index for a reason.)
                   instance_reasons: { type: "COMPLEX", array: true },
                   n_segments:       { type: "INT" }
                 }
@@ -346,18 +366,26 @@
                 display_element.querySelector("#reasoning-continue")
                   .addEventListener("click", () => {
                     const instance_reasons = segments.map((seg, i) => {
-                      const record = { segment: seg, segment_index: i };
+                      // Reason binaries live in their OWN object so that tallying
+                      // "which reasons were checked" never picks up bookkeeping
+                      // fields (segment_index, etc.). Every key in `reasons` is a
+                      // real reason; metadata stays at the top level.
+                      const reasons = {};
                       REASONS.forEach((r) => {
                         const box = display_element.querySelector(
                           `input[data-seg="${i}"][data-reason="${r.tag}"]`
                         );
-                        record[r.tag] = box && box.checked ? 1 : 0;
+                        reasons[r.tag] = box && box.checked ? 1 : 0;
                       });
                       const ta = display_element.querySelector(
                         `textarea[data-seg="${i}"][data-reason="other_text"]`
                       );
-                      record.other_text = ta ? ta.value.trim() : "";
-                      return record;
+                      return {
+                        segment: seg,
+                        segment_index: i,
+                        reasons: reasons,
+                        other_text: ta ? ta.value.trim() : ""
+                      };
                     });
 
                     this.jsPsych.finishTrial({
@@ -1352,39 +1380,95 @@
             }
           
             // -----------------------------
-            // Pre-jsPsych ID screen
+            // Pre-jsPsych entry: collect name + email, generate a payment code,
+            // save PII to the SEPARATE roster experiment, show the code, then start.
+            // The research data only ever receives the payment code (as
+            // participant_id) — never the name or email.
             // -----------------------------
             document.body.innerHTML = `
               <div class="study-wrap">
                 <div class="instruction-box">
                   <h2>Reading Study</h2>
-                  <p>Please enter the study ID provided to you by the researcher.</p>
-                  <input
-                    id="participant-id-input"
-                    type="text"
-                    placeholder="Enter your study ID"
-                    style="font-size:18px; padding:10px; width:100%; max-width:420px; margin:16px 0;"
-                  />
+                  <p>Please enter your name and email. We use these only to send
+                     your participation payment. After you continue, you will be
+                     shown a personal code to keep for payment.</p>
+                  <p style="font-size:14px; color:#555;">Your name and email are
+                     stored separately from your study responses, which remain
+                     anonymous.</p>
+                  <label style="display:block; margin:14px 0 4px;">Full name</label>
+                  <input id="pp-name" type="text" autocomplete="name"
+                    style="font-size:18px; padding:10px; width:100%; max-width:420px;" />
+                  <label style="display:block; margin:14px 0 4px;">Email</label>
+                  <input id="pp-email" type="email" autocomplete="email"
+                    style="font-size:18px; padding:10px; width:100%; max-width:420px;" />
+                  <div id="pp-error" style="color:#b00020; margin-top:10px;"></div>
                   <br />
-                  <button
-                    id="start-study-btn"
-                    style="font-size:18px; padding:10px 18px;"
-                  >
+                  <button id="start-study-btn" style="font-size:18px; padding:10px 18px; margin-top:8px;">
                     Continue
                   </button>
                 </div>
               </div>
             `;
-          
+
             document.getElementById("start-study-btn").addEventListener("click", async function () {
-              const participantId = document.getElementById("participant-id-input").value.trim();
-          
-              if (!participantId) {
-                alert("Please enter your study ID.");
-                return;
+              const name = document.getElementById("pp-name").value.trim();
+              const email = document.getElementById("pp-email").value.trim();
+              const err = document.getElementById("pp-error");
+              const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+              if (!name) { err.textContent = "Please enter your name."; return; }
+              if (!emailOk) { err.textContent = "Please enter a valid email address."; return; }
+
+              const paymentId = generatePaymentId();
+
+              // Save PII to the separate roster experiment (NOT the research data).
+              // Uses DataPipe's documented REST endpoint directly.
+              if (ROSTER_EXPERIMENT_ID && ROSTER_EXPERIMENT_ID !== "REPLACE_WITH_ROSTER_EXPERIMENT_ID") {
+                try {
+                  const rosterRow = JSON.stringify([{
+                    payment_id: paymentId,
+                    name: name,
+                    email: email,
+                    timestamp: new Date().toISOString()
+                  }]);
+                  await fetch("https://pipe.jspsych.org/api/data/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", "Accept": "*/*" },
+                    body: JSON.stringify({
+                      experimentID: ROSTER_EXPERIMENT_ID,
+                      filename: `${paymentId}.json`,
+                      data: rosterRow
+                    })
+                  });
+                } catch (e) {
+                  console.error("Roster save failed:", e);
+                  // Do not block participation if roster save fails; the code is
+                  // still shown so the participant can report it for payment.
+                }
+              } else {
+                console.warn("ROSTER_EXPERIMENT_ID not set — PII roster not saved.");
               }
-          
-              document.body.innerHTML = "";
-              await startExperiment(participantId);
+
+              // Show the payment code and require acknowledgment before starting.
+              document.body.innerHTML = `
+                <div class="study-wrap">
+                  <div class="instruction-box">
+                    <h2>Your Payment Code</h2>
+                    <p>Please write this code down and keep it. You will need it to
+                       receive your payment:</p>
+                    <p style="font-size:30px; font-weight:bold; letter-spacing:2px; margin:18px 0;">
+                      ${paymentId}
+                    </p>
+                    <p style="font-size:14px; color:#555;">This code is not shown again.</p>
+                    <br />
+                    <button id="ack-code-btn" style="font-size:18px; padding:10px 18px;">
+                      I have saved my code — begin the study
+                    </button>
+                  </div>
+                </div>
+              `;
+              document.getElementById("ack-code-btn").addEventListener("click", async function () {
+                document.body.innerHTML = "";
+                await startExperiment(paymentId);
+              });
             });
           })();
